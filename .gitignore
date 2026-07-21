@@ -1,0 +1,23 @@
+# Maven
+target/
+bin/
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Build outputs
+*.war
+*.war.original
+*.class
+
+# Videos
+src/main/resources/static/videos/*.mp4
+target/classes/static/videos/

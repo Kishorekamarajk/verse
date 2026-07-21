@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section th:fragment="venue" id="venue" aria-labelledby="venue-heading" class="relative isolate overflow-hidden bg-[#F8F9FB]">
+
+    <div class="relative mx-auto max-w-[1440px] px-6 py-[120px] lg:px-10">
+
+        <div class="section-heading-wrap mx-auto max-w-5xl" data-reveal="fade-up">
+            <h2 id="venue-heading" class="section-heading">A VENUE THAT MATCHES YOUR VISION</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+
+            <!-- Left: venue details -->
+            <div class="flex flex-col gap-6" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="rounded-3xl border border-line bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Venue</span>
+                    <p class="mt-3 text-[25px] font-bold leading-tight text-ink">Chennai Trade Centre</p>
+                </div>
+                <div class="rounded-3xl border border-line bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+                    <p class="text-base leading-8 text-muted sm:text-[18px]">
+                        Chennai Trade Centre is one of South India's most prominent exhibition and convention venues.
+                        Located in Nandambakkam, this venue plays a vital role in hosting international trade fairs,
+                        B2B expos, and industry conferences across sectors like technology, construction, energy,
+                        manufacturing, and retail. B2B expos, and industry conferences across sectors like technology,
+                        construction, energy, manufacturing, and retail.Located in Nandambakkam, this venue plays a 
+                        vital role in hosting international trade fairsChennai Trade Centre is one of South India'
+                        most prominent exhibition and convention venues.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: venue floor plan -->
+            <div data-reveal="zoom" data-reveal-delay="120"
+                 class="relative overflow-hidden rounded-3xl border border-line bg-white p-6 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-8">
+
+                <img th:src="@{/images/tech.png}" alt="" aria-hidden="true"
+                     class="pointer-events-none absolute -bottom-4 -right-4 h-24 w-auto opacity-[0.06]" />
+
+                <div class="relative grid grid-cols-4 grid-rows-4 gap-3">
+                    <div class="col-span-2 row-span-2 flex flex-col items-center justify-center rounded-2xl border border-line bg-brand/5 p-4 text-center">
+                        <span class="text-sm font-bold text-ink">Convention Hall</span>
+                        <span class="mt-1 text-xs text-muted">51M x 55M</span>
+                    </div>
+                    <div class="col-span-2 flex flex-col items-center justify-center rounded-2xl border border-line bg-[#F8F9FB] p-3 text-center">
+                        <span class="text-xs font-bold text-ink">Food Court</span>
+                    </div>
+                    <div class="col-span-2 flex flex-col items-center justify-center rounded-2xl border border-line bg-[#F8F9FB] p-3 text-center">
+                        <span class="text-xs font-bold text-ink">Food Court</span>
+                    </div>
+
+                    <div class="col-span-2 flex flex-col items-center justify-center rounded-2xl border border-line bg-brand/5 p-3 text-center">
+                        <span class="text-sm font-bold text-ink">Dining Space</span>
+                        <span class="mt-1 text-xs text-muted">48M x 24M</span>
+                    </div>
+                    <div class="col-span-2 row-span-2 flex flex-col items-center justify-center rounded-2xl border border-line bg-brand/10 p-4 text-center">
+                        <span class="text-sm font-bold text-ink">Start Up Booth</span>
+                        <span class="mt-1 text-xs text-muted">2M x 2M &ndash; 40 Nos.</span>
+                        <div class="mt-3 grid grid-cols-8 gap-1" aria-hidden="true">
+                            <span th:each="n : ${#numbers.sequence(1, 40)}"
+                                  th:class="${n % 5 == 0} ? 'h-2 w-2 rounded-[2px] bg-brand/60' : 'h-2 w-2 rounded-[2px] bg-brand/20'"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1 flex flex-col items-center justify-center rounded-2xl border border-line bg-[#F8F9FB] p-3 text-center">
+                        <span class="text-xs font-bold text-ink">Open Courtyard</span>
+                        <span class="mt-1 text-[10px] text-muted">22M x 22M</span>
+                    </div>
+                    <div class="col-span-1 flex flex-col items-center justify-center rounded-2xl border border-line bg-[#F8F9FB] p-3 text-center">
+                        <span class="text-xs font-bold text-ink">Conference 1</span>
+                    </div>
+
+                    <div class="col-span-1 flex flex-col items-center justify-center rounded-full border border-line bg-white p-3 text-center">
+                        <span class="text-[10px] font-bold text-ink">Waiting Area</span>
+                    </div>
+                    <div class="col-span-1 flex flex-col items-center justify-center rounded-2xl border border-line bg-[#F8F9FB] p-3 text-center">
+                        <span class="text-xs font-bold text-ink">Conference 2</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

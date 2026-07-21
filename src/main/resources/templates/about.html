@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Tec-Verse 2026</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Tailwind CSS (footer + content sections) - preflight disabled so it doesn't reset the Bootstrap-based page -->
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="about-page">
+
+<div th:replace="~{fragments/navbar :: navbar('about')}"></div>
+
+<!-- Banner -->
+<section class="contact-hero about-hero-banner" aria-labelledby="about-page-heading">
+    <div class="contact-hero__overlay"></div>
+    <div class="contact-hero__content container">
+        <span>TECVERSE 2026</span>
+        <h1 id="about-page-heading" class="section-heading">About Tec-Verse</h1>
+        <p>A flagship technology conclave uniting researchers, innovators, startups, academia, industry, and
+            government to shape the future of technology.</p>
+    </div>
+</section>
+
+<!-- About Tec-Verse -->
+<section id="about-tecverse" class="relative isolate overflow-hidden bg-white">
+    <div class="relative mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+
+            <div data-reveal="fade-up">
+                <span class="inline-flex items-center gap-2 rounded-full border border-line bg-govt-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-govt">
+                    <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
+                    About TECVERSE
+                </span>
+
+                <h2 class="mt-6 text-[27px] font-bold leading-tight tracking-tight text-ink sm:text-[42px]">
+                    Shaping Tomorrow Through Technology and Innovation
+                </h2>
+                <span class="section-heading-rule !mx-0" aria-hidden="true"><span></span><span></span><span></span></span>
+
+                <p class="mt-6 text-base font-normal leading-[1.45] text-muted sm:text-[18px]">
+                    TECVERSE is a flagship technology conclave bringing together researchers, innovators, startups,
+                    academia, government organizations, industry experts, and policymakers to explore emerging
+                    technologies shaping the future.
+                </p>
+                <p class="mt-5 text-base font-normal leading-[1.45] text-muted sm:text-[18px]">
+                    Organized with the vision of accelerating innovation and collaboration, Tec-Verse provides a
+                    platform for knowledge exchange, cutting-edge research, networking, technical workshops, and
+                    transformative ideas that drive national digital transformation.
+                </p>
+            </div>
+
+            <div class="relative" data-reveal="fade-up" data-reveal-delay="150">
+                <div class="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <img th:src="@{/images/about.jpeg}" alt="Tec-Verse conference showcase"
+                         class="h-72 w-full object-cover sm:h-96" loading="lazy" />
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07182F]/45 via-transparent to-transparent"></div>
+                </div>
+                <div class="pointer-events-none absolute -bottom-6 -right-6 -z-10 h-40 w-40 rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+                <div class="pointer-events-none absolute -top-6 -left-6 -z-10 h-32 w-32 rounded-full bg-govt/15 blur-3xl" aria-hidden="true"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Journey of Tec-Verse -->
+<section id="journey" class="journey-section content-section">
+    <div class="container">
+        <div class="section-heading-wrap" data-reveal="fade-up">
+            <h2 class="section-heading">Journey of Tec-Verse</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            <p class="mx-auto mt-4 max-w-2xl text-center text-muted">From a bold first edition to a growing national
+                platform for innovation.</p>
+        </div>
+
+        <div class="journey-timeline">
+            <div class="journey-item" data-reveal="slide-right">
+                <div class="journey-marker"><i class="bi bi-flag-fill"></i></div>
+                <div class="journey-card">
+                    <span class="journey-year">TEC 2023</span>
+                    <h3>Laying the Foundation</h3>
+                    <p>The inaugural edition brought together early innovators, government bodies, and academia,
+                        introducing the core thematic areas that would define Tec-Verse in the years ahead.</p>
+                </div>
+            </div>
+
+            <div class="journey-item" data-reveal="slide-right" data-reveal-delay="120">
+                <div class="journey-marker"><i class="bi bi-graph-up-arrow"></i></div>
+                <div class="journey-card">
+                    <span class="journey-year">TEC 2024</span>
+                    <h3>Expanding Horizons</h3>
+                    <p>Participation grew across exhibitors, speakers, and partner organizations, with new thematic
+                        tracks in AI, cybersecurity, and semiconductor technologies joining the fold.</p>
+                </div>
+            </div>
+
+            <div class="journey-item" data-reveal="slide-right" data-reveal-delay="240">
+                <div class="journey-marker"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                <div class="journey-card">
+                    <span class="journey-year">TEC 2025</span>
+                    <h3>Accelerating Innovation</h3>
+                    <p>Tec-Verse matured into a nationally recognised platform, hosting record participation, deeper
+                        industry-government collaboration, and a wider network of strategic partners.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Tec-Verse -->
+<section id="why-tecverse" class="content-section">
+    <div class="container">
+        <div class="section-heading-wrap" data-reveal="fade-up">
+            <h2 class="section-heading">Why Tec-Verse</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            <p class="mx-auto mt-4 max-w-2xl text-center text-muted">A platform built to connect people, ideas, and
+                technology for lasting national impact.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div class="rounded-2xl border border-line bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                 data-reveal="fade-up">
+                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+                    <i class="bi bi-diagram-3-fill text-xl"></i>
+                </div>
+                <h3 class="mt-4 text-base font-bold text-ink">Industry &amp; Academia Synergy</h3>
+                <p class="mt-2 text-sm text-muted">Bridging researchers, startups, and enterprises to turn ideas into
+                    deployable solutions.</p>
+            </div>
+
+            <div class="rounded-2xl border border-line bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                 data-reveal="fade-up" data-reveal-delay="120">
+                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-govt/10 text-govt">
+                    <i class="bi bi-shield-check text-xl"></i>
+                </div>
+                <h3 class="mt-4 text-base font-bold text-ink">Government-Backed Trust</h3>
+                <p class="mt-2 text-sm text-muted">Organized in association with national institutions, ensuring
+                    credibility and lasting impact.</p>
+            </div>
+
+            <div class="rounded-2xl border border-line bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                 data-reveal="fade-up" data-reveal-delay="240">
+                <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#061933]/10 text-[#061933]">
+                    <i class="bi bi-globe2 text-xl"></i>
+                </div>
+                <h3 class="mt-4 text-base font-bold text-ink">National &amp; Global Networking</h3>
+                <p class="mt-2 text-sm text-muted">Connecting delegates, partners, and visitors across regions to
+                    build lasting collaborations.</p>
+            </div>
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-4" data-reveal="fade-up">
+            <a th:href="@{/inquiry}"
+               class="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                <i class="bi bi-envelope-fill"></i> Get in Touch
+            </a>
+            <a th:href="@{/exhibitor-registration}"
+               class="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-bold text-ink transition duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand">
+                <i class="bi bi-calendar-event-fill"></i> Register as Exhibitor
+            </a>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

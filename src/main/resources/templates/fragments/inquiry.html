@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry | Tec-Verse 2026</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="inquiry-page">
+<div th:replace="~{fragments/navbar :: navbar('inquiry')}"></div>
+
+<div th:fragment="content">
+<th:block th:if="${param.type != null and param.type[0] == 'exhibitor'}">
+    <section class="exhibitor-hero">
+        <div class="exhibitor-hero__overlay"></div>
+        <div class="container exhibitor-hero__content">
+            <h1>Become An Exhibitor</h1>
+        </div>
+    </section>
+
+    <section class="exhibitor-build-section">
+        <div class="container exhibitor-build-container">
+            <div class="exhibitor-form-side">
+                <div class="exhibitor-section-heading">
+                    <h2>Let's Build The Next Tech Era, Together!</h2>
+                    <span></span>
+                    <p>Showcase your innovations, connect with decision-makers, and position your brand at the forefront of Gujarat's rapidly evolving technology ecosystem.</p>
+                </div>
+
+                <form th:action="@{/inquiry(type='exhibitor')}" th:object="${inquiry}" method="post" class="exhibitor-form">
+                    <div class="exhibitor-form-grid">
+                        <label>
+                            <span>Full Name*</span>
+                            <input type="text" th:field="*{name}" placeholder="Name*" required>
+                        </label>
+                        <label>
+                            <span>Email Address*</span>
+                            <input type="email" th:field="*{email}" placeholder="Email*" required>
+                        </label>
+                        <label>
+                            <span>Mobile Number*</span>
+                            <input type="tel" th:field="*{phone}" placeholder="Mobile Number*" required>
+                        </label>
+                        <label>
+                            <span>Company Name*</span>
+                            <input type="text" th:field="*{company}" placeholder="Company Name*" required>
+                        </label>
+                        <label>
+                            <span>Designation*</span>
+                            <input type="text" th:field="*{jobTitle}" placeholder="Designation*" required>
+                        </label>
+                        <label>
+                            <span>Stall Type*</span>
+                            <select name="stallType" required>
+                                <option value="">Select Stall</option>
+                                <option>Startup Booth</option>
+                                <option>Standard Stall</option>
+                                <option>Premium Stall</option>
+                                <option>Sponsor Booth</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>City / Location*</span>
+                            <input type="text" th:field="*{country}" placeholder="City / Location*" required>
+                        </label>
+                        <label>
+                            <span>Website URL</span>
+                            <input type="url" name="website" placeholder="Website URL">
+                        </label>
+                        <label>
+                            <span>Industry / Category*</span>
+                            <select name="industry" required>
+                                <option value="">Select Industry</option>
+                                <option>AI &amp; Automation</option>
+                                <option>Software</option>
+                                <option>Manufacturing Tech</option>
+                                <option>Healthcare Tech</option>
+                                <option>Finance Tech</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>What do you want to exhibit?*</span>
+                            <select name="exhibitType" required>
+                                <option value="">Please Select</option>
+                                <option>Product</option>
+                                <option>Service</option>
+                                <option>Platform</option>
+                                <option>Live Demo</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <label class="exhibitor-form-message">
+                        <span>Message / Remarks</span>
+                        <textarea rows="3" th:field="*{message}" placeholder="Message / Remarks" required></textarea>
+                    </label>
+
+                    <button type="submit" class="exhibitor-submit">Submit</button>
+                    <p class="success" th:if="${successMessage}" th:text="${successMessage}"></p>
+                </form>
+            </div>
+
+            <aside class="exhibitor-benefits">
+                <div class="exhibitor-section-heading">
+                    <h2>Why Exhibit At Techverse Chennai?</h2>
+                    <span></span>
+                </div>
+
+                <div class="benefit-card benefit-card--blue">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>Direct Access to 3,000+ Business Visitors</h3>
+                    <p>Engage with SMEs, MSMEs, and decision-makers who are actively seeking IT solutions and technology partners.</p>
+                </div>
+                <div class="benefit-card benefit-card--yellow">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>AI &amp; Future Tech Positioning</h3>
+                    <p>Be part of a platform focused on AI, automation, and digital transformation, aligning your brand with future-ready solutions.</p>
+                </div>
+                <div class="benefit-card benefit-card--green">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>High-Quality Lead Generation</h3>
+                    <p>Meet serious buyers with real requirements, not just visitors, leading to faster conversions and deal closures.</p>
+                </div>
+                <div class="benefit-card benefit-card--blue">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>Strong Business Networking</h3>
+                    <p>Connect with founders, CEOs, and industry leaders through the TEG App to build long-term partnerships and collaborations.</p>
+                </div>
+                <div class="benefit-card benefit-card--red">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>Multi-Industry Exposure</h3>
+                    <p>Showcase your solutions across manufacturing, retail, logistics, healthcare, finance, and more all under one roof.</p>
+                </div>
+                <div class="benefit-card benefit-card--yellow">
+                    <div class="benefit-confetti" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>Live Product Demonstrations</h3>
+                    <p>Demonstrate your solutions in real time, helping prospects understand the value instantly and build trust.</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="stall-packages-section">
+        <div class="container stall-packages-grid">
+            <article class="stall-package stall-package--red">
+                <div class="stall-package__label">Stall Package</div>
+                <h2>Stall Size : 3 X 3 Mtr.</h2>
+                <ul>
+                    <li>2 Exhibitor Passes (Food coupon)</li>
+                    <li>1 Exhibitor Pass for Pre &amp; post party</li>
+                    <li>5 Visitor Passes</li>
+                    <li>TEG Community Network Portal Access</li>
+                    <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                    <li>One-to-one messaging can be done to visitors (in app)</li>
+                    <li><strong>Visibility</strong>
+                        <ul>
+                            <li>On Website (Logo)</li>
+                            <li>On Ground Visibility</li>
+                        </ul>
+                    </li>
+                    <li><strong>Including Infrastructure</strong>
+                        <ul>
+                            <li>Modular Stall Structure (White Octanorm Panels)</li>
+                            <li>Fascia with Company Name</li>
+                            <li>1 Table + 2 Chairs</li>
+                            <li>3 Spotlights</li>
+                            <li>1 Power Socket (15 Amp)</li>
+                            <li>Carpet Flooring</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="stall-package stall-package--yellow">
+                <div class="stall-package__label">Stall Package</div>
+                <h2>Stall Size : 3 X 6 Mtr.</h2>
+                <ul>
+                    <li>4 Exhibitor Passes (Food coupon)</li>
+                    <li>2 Exhibitor Pass for Pre &amp; post party</li>
+                    <li>10 Visitor Passes</li>
+                    <li>TEG Community Network Portal Access</li>
+                    <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                    <li>One-to-one messaging can be done to visitors (in app)</li>
+                    <li><strong>Visibility</strong>
+                        <ul>
+                            <li>On Website (Logo)</li>
+                            <li>On Ground Visibility</li>
+                        </ul>
+                    </li>
+                    <li><strong>Including Infrastructure</strong>
+                        <ul>
+                            <li>Modular Stall Structure (White Octanorm Panels)</li>
+                            <li>Fascia with Company Name</li>
+                            <li>2 Tables + 4 Chairs</li>
+                            <li>6 Spotlights</li>
+                            <li>2 Power Sockets (15 Amp)</li>
+                            <li>Carpet Flooring</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="stall-package stall-package--green">
+                <div class="stall-package__label">Stall Package</div>
+                <h2>Stall Size : 6 X 6 Mtr.</h2>
+                <ul>
+                    <li>8 Exhibitor Passes (Food coupon)</li>
+                    <li>3 Exhibitor Pass invited for pre &amp; post party</li>
+                    <li>20 Visitor Passes</li>
+                    <li>TEG Community Network Portal Access</li>
+                    <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                    <li>One-to-one messaging can be done to visitors (in app)</li>
+                    <li><strong>Visibility</strong>
+                        <ul>
+                            <li>On Website (Logo)</li>
+                            <li>On Ground Visibility</li>
+                        </ul>
+                    </li>
+                    <li><strong>Including Infrastructure</strong>
+                        <ul>
+                            <li>Modular Stall Structure (White Octanorm Panels)</li>
+                            <li>Fascia with Company Name</li>
+                            <li>2 Tables + 2 Round Glass Tables</li>
+                            <li>2 Sofas + 6 Chairs</li>
+                            <li>12 Spotlights</li>
+                            <li>3 Power Sockets (15 Amp)</li>
+                            <li>Carpet Flooring</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+        </div>
+        
+        <div class="container stall-packages-grid stall-packages-grid--two">
+            <article class="stall-package stall-package--blue">
+                <div class="stall-package__label">Stall Package</div>
+                <h2>Stall Size : 3 X 9 Mtr. (Corner Stall)</h2>
+                <ul>
+                    <li>6 Exhibitor Pass (Food coupon)</li>
+                    <li>2 Exhibitor Pass invited for pre &amp; post party</li>
+                    <li>15 Visitor Passes</li>
+                    <li>TEG Community Network Portal Access</li>
+                    <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                    <li>One-to-one messaging can be done to visitors (in app)</li>
+                    <li><strong>Visibility</strong>
+                        <ul>
+                            <li>On Website (Logo)</li>
+                            <li>On Ground Visibility</li>
+                        </ul>
+                    </li>
+                    <li><strong>Including Infrastructure</strong>
+                        <ul>
+                            <li>Modular Stall Structure (White Octanorm Panels)</li>
+                            <li>Fascia with Company Name</li>
+                            <li>2 Tables + 1 Round Glass Table</li>
+                            <li>1 Sofa + 4 Chairs</li>
+                            <li>9 Spotlights</li>
+                            <li>3 Power Sockets (15 Amp)</li>
+                            <li>Carpet Flooring</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="stall-package stall-package--red">
+                <div class="stall-package__label">The Catalyst Zone</div>
+                <h2>Stall Size : 2 × 2 SQ MTS</h2>
+                <ul>
+                    <li>2 Exhibitor Passes (Food coupon)</li>
+                    <li>TEG Community Network Portal Acces</li>
+                    <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                    <li>One-to-one messaging can be done to visitors (In app)</li>
+                    <li><strong>Including Infrastructure</strong>
+                        <ul>
+                            <li>Modular Stall Structure (White Octanorm Panels)</li>
+                            <li>Fascia with Company Name</li>
+                            <li>1 Table + 2 Chairs</li>
+                            <li>2 Spotlights</li>
+                            <li>1 Power Socket (15 Amp)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+</th:block>
+
+<th:block th:unless="${param.type != null and param.type[0] == 'exhibitor'}">
+<section class="contact-hero" aria-labelledby="contact-heading">
+    <div class="contact-hero__overlay"></div>
+    <div class="contact-hero__content container">
+        <span>TECVERSE 2026</span>
+        <h1 id="contact-heading">Contact Us</h1>
+        <p>Connect with the organizing team for participation, sponsorship, exhibition, and event support.</p>
+    </div>
+</section>
+
+<nav class="contact-social-rail" aria-label="Social media links">
+    <a href="https://www.facebook.com/TechExpoGujarat" target="_blank" class="contact-social-rail__facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://www.linkedin.com/company/techexpogujarat" target="_blank" class="contact-social-rail__linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.instagram.com/techexpogujarat/" target="_blank" class="contact-social-rail__instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    <a href="https://www.youtube.com/@TechExpoGujarat" target="_blank" class="contact-social-rail__youtube" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+</nav>
+
+<section class="contact-info-strip" aria-label="Contact details">
+    <div class="container">
+        <div class="contact-info">
+            <span class="contact-info__icon contact-info__icon--red"><i class="bi bi-envelope-fill"></i></span>
+            <h2>Email</h2>
+            <p>**************@cdac.in</p>
+        </div>
+        <div class="contact-info">
+            <span class="contact-info__icon contact-info__icon--blue"><i class="bi bi-geo-alt-fill"></i></span>
+            <h2>Venue Office</h2>
+            <p>
+                <strong>8th Floor, D Block (North & South),</strong><br>
+                TIDEL Park, No. 4, Rajiv Gandhi Salai,<br>
+               Tharamani, Chennai, Tamil Nadu 600113, India
+            </p>
+        </div>
+        <div class="contact-info">
+            <span class="contact-info__icon contact-info__icon--green"><i class="bi bi-telephone-fill"></i></span>
+            <h2>Phone</h2>
+            <p>+91 ***** *****</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-page">
+    <div class="container contact-layout">
+        <div class="contact-event">
+            <span class="contact-event__badge">Event Help Desk</span>
+            <h1>Tec-Verse 2026</h1>
+            <span class="accent-line"></span>
+            <p class="contact-event__subtitle">Beacon of Rising Tech Innovation &amp; AI</p>
+
+            <div class="contact-event__list">
+                <div class="contact-event__item">
+                    <span><i class="bi bi-calendar-event-fill"></i></span>
+                    <p>26-27 NOV 2026</p>
+                </div>
+                <div class="contact-event__item">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p>CDAC</p>
+                </div>
+                <div class="contact-event__item">
+                    <span><i class="bi bi-telephone-fill"></i></span>
+                    <p>+91 ***** *****</p>
+                </div>
+                <div class="contact-event__item">
+                    <span><i class="bi bi-envelope-fill"></i></span>
+                    <p>***********@cdac.in</p>
+                </div>
+            </div>
+
+            <div class="contact-event__actions">
+                <a th:href="@{/exhibitor-registration}" class="btn btn-contact-outline">Book Your Stall</a>
+                <a th:href="@{/inquiry}" class="btn btn-contact-outline">Become Sponsor</a>
+            </div>
+
+            <div class="contact-event__social">
+                <span>Follow us:</span>
+                <a href="https://www.facebook.com/TechExpoGujarat" target="_blank" class="social-dot social-dot--facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/techexpogujarat" target="_blank" class="social-dot social-dot--linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.instagram.com/techexpogujarat/" target="_blank" class="social-dot social-dot--instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/@TechExpoGujarat" target="_blank" class="social-dot social-dot--youtube" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+
+            <img th:src="@{/images/tecverselogo.png}" alt="" class="contact-event__mark" aria-hidden="true">
+        </div>
+
+        <form th:action="@{/inquiry}" th:object="${inquiry}" method="post" class="contact-form contact-form--panel">
+            <span class="contact-form__corner" aria-hidden="true"></span>
+            <h2>Interested In</h2>
+            <span class="accent-line"></span>
+            <p>Let's talk about what you want to accomplish and how we can make it happen.</p>
+
+            <div class="form-row">
+                <label>Name*</label>
+                <input type="text" th:field="*{name}" placeholder="Name*" />
+                <small class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+            </div>
+            <div class="form-row">
+                <label>Email*</label>
+                <input type="email" th:field="*{email}" placeholder="Email*" />
+                <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+            </div>
+            <div class="form-row">
+                <label>Phone Number</label>
+                <input type="text" th:field="*{phone}" placeholder="Phone Number" />
+            </div>
+            <div class="form-row">
+                <label>Company Name*</label>
+                <input type="text" th:field="*{company}" placeholder="Company Name*" />
+                <small class="error" th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></small>
+            </div>
+            <div class="form-row">
+                <label>Job title</label>
+                <input type="text" th:field="*{jobTitle}" placeholder="Job title" />
+            </div>
+            <div class="form-row">
+                <label>Country</label>
+                <input type="text" th:field="*{country}" placeholder="Country" />
+            </div>
+            <div class="form-row">
+                <label>Describe Your Message*</label>
+                <textarea rows="3" th:field="*{message}" placeholder="Describe Your Message*"></textarea>
+                <small class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></small>
+            </div>
+            <button class="btn btn-contact-submit" type="submit">Submit</button>
+            <p class="success" th:if="${successMessage}" th:text="${successMessage}"></p>
+        </form>
+    </div>
+
+    <div class="contact-bottom-actions">
+        <a th:href="@{/exhibitor-registration}"><i class="bi bi-calendar-event-fill"></i><span>Book Your Stall</span></a>
+        <a th:href="@{/inquiry}"><i class="bi bi-credit-card-2-front-fill"></i><span>Become Sponsor</span></a>
+    </div>
+</section>
+</th:block>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

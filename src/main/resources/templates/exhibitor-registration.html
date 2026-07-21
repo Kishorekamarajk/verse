@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Exhibitor | TECVERSE 2026</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF',
+                        surface: '#F3F7FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="register-page bg-white font-sans text-ink antialiased">
+<div th:replace="~{fragments/navbar :: navbar('exhibitor-registration')}"></div>
+
+<main>
+    <!-- 1. Hero -->
+    <section class="xr-darksection xr-hero" aria-labelledby="register-heading">
+        <div class="xr-darksection__pattern" aria-hidden="true"></div>
+        <div class="xr-blob xr-blob--a" aria-hidden="true"></div>
+        <div class="xr-blob xr-blob--b" aria-hidden="true"></div>
+
+        <div class="xr-float-icon d-none d-lg-flex" style="top:20%; left:5%;" aria-hidden="true"><i class="bi bi-wifi"></i></div>
+        <div class="xr-float-icon d-none d-lg-flex" style="top:72%; left:9%; animation-delay:-2s;" aria-hidden="true"><i class="bi bi-mic-fill"></i></div>
+        <div class="xr-float-icon d-none d-lg-flex" style="top:16%; right:6%; animation-delay:-4s;" aria-hidden="true"><i class="bi bi-cpu-fill"></i></div>
+        <div class="xr-float-icon d-none d-lg-flex" style="top:70%; right:8%; animation-delay:-1s;" aria-hidden="true"><i class="bi bi-camera-reels-fill"></i></div>
+
+        <div class="container position-relative">
+            <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+                <div data-reveal="fade-up">
+                    <span class="xr-hero-badge"><i class="bi bi-stars"></i> Exhibitor Registration</span>
+                    <h1 id="register-heading" class="mt-6 text-[32px] font-extrabold leading-[1.12] text-white sm:text-[46px]">
+                        Showcase Your Innovation at TECVERSE 2026
+                    </h1>
+                    <p class="mt-5 max-w-xl text-base leading-[1.6] text-white/85 sm:text-lg">
+                        Become an exhibitor and connect with government organizations, industries, startups,
+                        investors, researchers, academia, and thousands of technology professionals.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#registration-form" class="inline-flex items-center gap-2 rounded-full xr-btn-gradient px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand/30 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                            <i class="bi bi-pencil-square"></i> Register Now
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-bold text-white backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/20">
+                            <i class="bi bi-download"></i> Download Brochure
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative" data-reveal="fade-up" data-reveal-delay="150">
+                    <div class="xr-hero-visual">
+                        <div class="xr-hero-visual__ring" aria-hidden="true"></div>
+                        <div class="xr-hero-visual__core" aria-hidden="true"><i class="bi bi-building-fill-gear"></i></div>
+
+                        <div class="xr-stat-card absolute z-10" style="left:1.25rem; top:1.75rem;">
+                            <span class="xr-stat-card__icon"><i class="bi bi-shop-window"></i></span>
+                            <span><strong><span data-xr-counter="500">0</span>+</strong><span>Exhibitors</span></span>
+                        </div>
+                        <div class="xr-stat-card absolute z-10" style="right:1.25rem; top:5.5rem;">
+                            <span class="xr-stat-card__icon"><i class="bi bi-people-fill"></i></span>
+                            <span><strong><span data-xr-counter="10000">0</span>+</strong><span>Visitors</span></span>
+                        </div>
+                        <div class="xr-stat-card absolute z-10" style="left:2rem; bottom:5.5rem;">
+                            <span class="xr-stat-card__icon"><i class="bi bi-diagram-3-fill"></i></span>
+                            <span><strong><span data-xr-counter="25">0</span>+</strong><span>Tech Domains</span></span>
+                        </div>
+                        <div class="xr-stat-card absolute z-10" style="right:1.75rem; bottom:1.5rem;">
+                            <span class="xr-stat-card__icon"><i class="bi bi-handshake"></i></span>
+                            <span><strong><span data-xr-counter="100">0</span>+</strong><span>Industry Partners</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- 7. Registration Form -->
+    <section id="registration-form" class="xr-form-section">
+        <div class="container">
+            <div class="mx-auto max-w-[720px] text-center" data-reveal="fade-up">
+                <span class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-govt shadow-sm">
+                    <span class="h-1.5 w-1.5 rounded-full bg-brand"></span> Exhibitor Application
+                </span>
+                <h2 id="registration-title" class="section-heading mt-5">Complete Your Exhibitor Application</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mt-5 text-base leading-[1.5] text-muted">
+                    Complete the three quick steps below. Our team will confirm your stall allotment within 2 business days.
+                </p>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
+                <div class="lg:col-span-8">
+                    <div class="xr-form-card">
+                        <div class="xr-form-card__accent" aria-hidden="true"></div>
+                        <div class="p-7 sm:p-10 md:p-12">
+
+                            <div class="xr-progress">
+                                <div class="xr-progress-step is-active">
+                                    <span class="xr-progress-step__dot">1</span>
+                                    <span class="xr-progress-step__label">Company</span>
+                                </div>
+                                <span class="xr-progress-line"></span>
+                                <div class="xr-progress-step">
+                                    <span class="xr-progress-step__dot">2</span>
+                                    <span class="xr-progress-step__label">Contact</span>
+                                </div>
+                                <span class="xr-progress-line"></span>
+                                <div class="xr-progress-step">
+                                    <span class="xr-progress-step__dot">3</span>
+                                    <span class="xr-progress-step__label">Exhibition</span>
+                                </div>
+                            </div>
+
+                            <form id="exhibitorRegistrationForm" novalidate aria-labelledby="registration-title">
+
+                                <!-- Step 1: Company Information -->
+                                <div class="xr-step is-active">
+                                    <p class="mb-6 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-govt">
+                                        <i class="bi bi-building"></i> Company Information
+                                    </p>
+                                    <div class="grid grid-cols-1 gap-x-6 gap-y-7 md:grid-cols-2">
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-building-fill xr-field__icon"></i>
+                                                <input id="companyName" name="companyName" type="text" required placeholder=" ">
+                                                <label for="companyName">Company Name <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-link-45deg xr-field__icon"></i>
+                                                <input id="website" name="website" type="url" data-validate="optional-url" placeholder=" ">
+                                                <label for="website">Website</label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field xr-field--select">
+                                                <i class="bi bi-diagram-3-fill xr-field__icon"></i>
+                                                <select id="industry" name="industry" required>
+                                                    <option value="" selected disabled>Select Industry</option>
+                                                    <option>AI &amp; Automation</option>
+                                                    <option>Software</option>
+                                                    <option>Manufacturing Tech</option>
+                                                    <option>Healthcare Tech</option>
+                                                    <option>Finance Tech</option>
+                                                    <option>Others</option>
+                                                </select>
+                                                <label for="industry">Industry <span class="req">*</span></label>
+                                                <i class="bi bi-chevron-down xr-field__chevron"></i>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-geo-alt-fill xr-field__icon"></i>
+                                                <input id="city" name="city" type="text" required placeholder=" ">
+                                                <label for="city">City <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-flag-fill xr-field__icon"></i>
+                                                <input id="country" name="country" type="text" required placeholder=" ">
+                                                <label for="country">Country <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-receipt xr-field__icon"></i>
+                                                <input id="gst" name="gst" type="text" maxlength="15" data-validate="optional-gst" placeholder=" " style="text-transform:uppercase;">
+                                                <label for="gst">GST Number (Optional)</label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div class="md:col-span-2" data-field>
+                                            <div class="xr-field xr-field--select">
+                                                <i class="bi bi-people-fill xr-field__icon"></i>
+                                                <select id="companySize" name="companySize" required>
+                                                    <option value="" selected disabled>Select Company Size</option>
+                                                    <option>1-10 Employees</option>
+                                                    <option>11-50 Employees</option>
+                                                    <option>51-200 Employees</option>
+                                                    <option>201-500 Employees</option>
+                                                    <option>500+ Employees</option>
+                                                </select>
+                                                <label for="companySize">Company Size <span class="req">*</span></label>
+                                                <i class="bi bi-chevron-down xr-field__chevron"></i>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                    </div>
+                                    <div class="xr-step-actions">
+                                        <span aria-hidden="true"></span>
+                                        <button type="button" data-step-next class="inline-flex items-center gap-2 rounded-full xr-btn-gradient px-6 py-2.5 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                                            Next: Contact Details <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Contact Information -->
+                                <div class="xr-step">
+                                    <p class="mb-6 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-govt">
+                                        <i class="bi bi-person-vcard"></i> Contact Information
+                                    </p>
+                                    <div class="grid grid-cols-1 gap-x-6 gap-y-7 md:grid-cols-2">
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-person-fill xr-field__icon"></i>
+                                                <input id="fullName" name="fullName" type="text" required placeholder=" ">
+                                                <label for="fullName">Full Name <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-envelope-fill xr-field__icon"></i>
+                                                <input id="email" name="email" type="email" required data-validate="email" placeholder=" ">
+                                                <label for="email">Email Address <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-telephone-fill xr-field__icon"></i>
+                                                <input id="phone" name="phone" type="tel" required data-validate="indian-mobile" placeholder=" ">
+                                                <label for="phone">Phone <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-briefcase-fill xr-field__icon"></i>
+                                                <input id="designation" name="designation" type="text" required placeholder=" ">
+                                                <label for="designation">Designation <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div class="md:col-span-2" data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-linkedin xr-field__icon"></i>
+                                                <input id="linkedin" name="linkedin" type="url" data-validate="optional-url" placeholder=" ">
+                                                <label for="linkedin">LinkedIn Profile</label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                    </div>
+                                    <div class="xr-step-actions">
+                                        <button type="button" data-step-prev class="inline-flex items-center gap-2 rounded-full border border-line px-6 py-2.5 text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">
+                                            <i class="bi bi-arrow-left"></i> Back
+                                        </button>
+                                        <button type="button" data-step-next class="inline-flex items-center gap-2 rounded-full xr-btn-gradient px-6 py-2.5 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                                            Next: Exhibition Details <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Exhibition Details -->
+                                <div class="xr-step">
+                                    <p class="mb-6 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-govt">
+                                        <i class="bi bi-easel3-fill"></i> Exhibition Details
+                                    </p>
+                                    <div class="grid grid-cols-1 gap-x-6 gap-y-7 md:grid-cols-2">
+                                        <div data-field>
+                                            <div class="xr-field xr-field--select">
+                                                <i class="bi bi-grid-1x2-fill xr-field__icon"></i>
+                                                <select id="stallPackage" name="stallPackage" required>
+                                                    <option value="" selected disabled>Select Package</option>
+                                                    <option>Starter (3x3 Mtr)</option>
+                                                    <option>Professional (3x6 Mtr)</option>
+                                                    <option>Premium (6x6 Mtr)</option>
+                                                    <option>Government Pavilion</option>
+                                                    <option>Custom Pavilion</option>
+                                                </select>
+                                                <label for="stallPackage">Stall Package <span class="req">*</span></label>
+                                                <i class="bi bi-chevron-down xr-field__chevron"></i>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field xr-field--select">
+                                                <i class="bi bi-cpu-fill xr-field__icon"></i>
+                                                <select id="technologyArea" name="technologyArea" required>
+                                                    <option value="" selected disabled>Select Technology Area</option>
+                                                    <option>Artificial Intelligence</option>
+                                                    <option>IoT &amp; Embedded Systems</option>
+                                                    <option>Cybersecurity</option>
+                                                    <option>High Performance Computing</option>
+                                                    <option>Semiconductors &amp; Electronics</option>
+                                                    <option>HealthTech</option>
+                                                    <option>Others</option>
+                                                </select>
+                                                <label for="technologyArea">Technology Area <span class="req">*</span></label>
+                                                <i class="bi bi-chevron-down xr-field__chevron"></i>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field xr-field--select">
+                                                <i class="bi bi-lightning-charge-fill xr-field__icon"></i>
+                                                <select id="powerRequirement" name="powerRequirement" required>
+                                                    <option value="" selected disabled>Select Power Requirement</option>
+                                                    <option>Standard (Up to 1kW)</option>
+                                                    <option>Medium (1-3kW)</option>
+                                                    <option>High (3-5kW)</option>
+                                                    <option>Custom / Above 5kW</option>
+                                                </select>
+                                                <label for="powerRequirement">Power Requirement <span class="req">*</span></label>
+                                                <i class="bi bi-chevron-down xr-field__chevron"></i>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-box-seam-fill xr-field__icon"></i>
+                                                <input id="products" name="products" type="text" required placeholder=" ">
+                                                <label for="products">Products / Services <span class="req">*</span></label>
+                                            </div>
+                                            <p class="xr-field-error" data-error></p>
+                                        </div>
+                                        <div class="md:col-span-2" data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-clipboard2-plus-fill xr-field__icon"></i>
+                                                <textarea id="specialRequirements" name="specialRequirements" rows="3" placeholder=" "></textarea>
+                                                <label for="specialRequirements">Special Requirements</label>
+                                            </div>
+                                        </div>
+                                        <div class="md:col-span-2" data-field>
+                                            <div class="xr-field">
+                                                <i class="bi bi-chat-left-text-fill xr-field__icon"></i>
+                                                <textarea id="remarks" name="remarks" rows="3" placeholder=" "></textarea>
+                                                <label for="remarks">Remarks</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xr-step-actions">
+                                        <button type="button" data-step-prev class="inline-flex items-center gap-2 rounded-full border border-line px-6 py-2.5 text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">
+                                            <i class="bi bi-arrow-left"></i> Back
+                                        </button>
+                                        <button type="submit" class="inline-flex items-center gap-2 rounded-full xr-btn-gradient px-7 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                                            <i class="bi bi-send-fill"></i> Submit Application
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="xr-help-card" data-reveal="fade-up" data-reveal-delay="150">
+                        <h3>Need Help?</h3>
+                        <p class="lead">Our exhibitor support team is here for you at every step.</p>
+
+                        <div class="xr-help-item">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div><strong>Email</strong><span>exhibitors@tecverse.in</span></div>
+                        </div>
+                        <div class="xr-help-item">
+                            <i class="bi bi-telephone-fill"></i>
+                            <div><strong>Phone</strong><span>+91 ***** *****</span></div>
+                        </div>
+                        <div class="xr-help-item">
+                            <i class="bi bi-clock-fill"></i>
+                            <div><strong>Working Hours</strong><span>Mon&ndash;Fri, 9:30 AM&ndash;6:00 PM IST</span></div>
+                        </div>
+                        <div class="xr-help-item">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                            <div><strong>Response Time</strong><span>Within 24&ndash;48 business hours</span></div>
+                        </div>
+
+                        <div class="xr-help-actions">
+                            <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-ink transition duration-300 hover:-translate-y-0.5">
+                                <i class="bi bi-download"></i> Download Brochure
+                            </a>
+                            <a href="#exhibitor-faq" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-bold text-white transition duration-300 hover:bg-white/10">
+                                <i class="bi bi-question-circle"></i> Read FAQs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 2. Why Exhibit -->
+    <section id="why-exhibit" class="content-section">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Why Exhibit With Tec-Verse</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">Six reasons exhibitors keep choosing Tec-Verse as their flagship platform.</p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="xr-glow-card" data-reveal="fade-up">
+                    <div class="xr-glow-card-icon"><i class="bi bi-bank2"></i></div>
+                    <h3>Government Buyers</h3>
+                    <p>Direct access to procurement officers and departments actively sourcing new technology.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="80">
+                    <div class="xr-glow-card-icon"><i class="bi bi-building-fill-check"></i></div>
+                    <h3>Industry Leaders</h3>
+                    <p>Meet decision-makers from established enterprises looking for the next technology partner.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="160">
+                    <div class="xr-glow-card-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                    <h3>Startup Networking</h3>
+                    <p>Connect with founders and innovators building the next generation of technology solutions.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="240">
+                    <div class="xr-glow-card-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                    <h3>Research Collaboration</h3>
+                    <p>Engage with academic institutions and R&amp;D labs exploring joint innovation opportunities.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="320">
+                    <div class="xr-glow-card-icon"><i class="bi bi-easel3-fill"></i></div>
+                    <h3>Product Showcase</h3>
+                    <p>A dedicated stage to demonstrate your product in front of an engaged, relevant audience.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="400">
+                    <div class="xr-glow-card-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3>Business Growth</h3>
+                    <p>Generate qualified leads, close deals faster, and expand your footprint across new markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Participation Process Timeline -->
+    <section id="participation-process" class="content-section bg-white">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Participation Process</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">Five simple steps from application to exhibition day.</p>
+            </div>
+
+            <div class="xr-timeline">
+                <div class="xr-timeline-step" data-reveal="fade-up">
+                    <div class="xr-timeline-step__icon"><i class="bi bi-pencil-square"></i></div>
+                    <span class="xr-timeline-step__index">Step 1</span>
+                    <h3>Register</h3>
+                    <p>Submit your exhibitor application online.</p>
+                </div>
+                <div class="xr-timeline-step" data-reveal="fade-up" data-reveal-delay="100">
+                    <div class="xr-timeline-step__icon"><i class="bi bi-search"></i></div>
+                    <span class="xr-timeline-step__index">Step 2</span>
+                    <h3>Application Review</h3>
+                    <p>Our team verifies your details and stall preference.</p>
+                </div>
+                <div class="xr-timeline-step" data-reveal="fade-up" data-reveal-delay="200">
+                    <div class="xr-timeline-step__icon"><i class="bi bi-patch-check-fill"></i></div>
+                    <span class="xr-timeline-step__index">Step 3</span>
+                    <h3>Confirmation</h3>
+                    <p>Receive confirmation along with payment details.</p>
+                </div>
+                <div class="xr-timeline-step" data-reveal="fade-up" data-reveal-delay="300">
+                    <div class="xr-timeline-step__icon"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+                    <span class="xr-timeline-step__index">Step 4</span>
+                    <h3>Booth Allocation</h3>
+                    <p>Your stall location is finalised and shared with you.</p>
+                </div>
+                <div class="xr-timeline-step" data-reveal="fade-up" data-reveal-delay="400">
+                    <div class="xr-timeline-step__icon"><i class="bi bi-flag-fill"></i></div>
+                    <span class="xr-timeline-step__index">Step 5</span>
+                    <h3>Exhibition Ready</h3>
+                    <p>Set up your stall and welcome visitors on show days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Stall Packages -->
+    <section id="stall-packages" class="content-section">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Stall Packages</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">Choose the footprint that matches your organization, from first-time startups to government pavilions.</p>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 xl:grid-cols-3">
+                <div class="xr-stallcard xr-stallcard--red" data-reveal="fade-up">
+                    <div class="xr-stallcard-confetti" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="xr-stallcard-label">Stall Package</span>
+                    <h3 class="xr-stallcard-size">Stall Size : 3 &times; 3 Mtr.</h3>
+                    <ul class="xr-stallcard-details">
+                        <li>2 Exhibitor Passes (Food coupon)</li>
+                        <li>1 Exhibitor Pass for Pre &amp; post party</li>
+                        <li>5 Visitor Passes</li>
+                        <li>TEG Community Network Portal Access</li>
+                        <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                        <li>One-to-one messaging can be done to visitors (in app)</li>
+                        <li><strong>Visibility</strong>
+                            <ul>
+                                <li>On Website (Logo)</li>
+                                <li>On Ground Visibility</li>
+                            </ul>
+                        </li>
+                        <li><strong>Including Infrastructure</strong>
+                            <ul>
+                                <li>Modular Stall Structure (White Octanorm Panels)</li>
+                                <li>Fascia with Company Name</li>
+                                <li>1 Table + 2 Chairs</li>
+                                <li>3 Spotlights</li>
+                                <li>1 Power Socket (15 Amp)</li>
+                                <li>Carpet Flooring</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="xr-stallcard-actions">
+                        <button type="button" data-select-package="Starter (3x3 Mtr)" class="flex-1 rounded-full bg-brand px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                        <a href="#compare-table" class="flex-1 rounded-full border border-line px-4 py-2.5 text-center text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">Compare</a>
+                    </div>
+                </div>
+
+                <div class="xr-stallcard xr-stallcard--yellow" data-reveal="fade-up" data-reveal-delay="100">
+                    <div class="xr-stallcard-confetti" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="xr-stallcard-label">Stall Package</span>
+                    <h3 class="xr-stallcard-size">Stall Size : 3 &times; 6 Mtr.</h3>
+                    <ul class="xr-stallcard-details">
+                        <li>4 Exhibitor Passes (Food coupon)</li>
+                        <li>2 Exhibitor Pass for Pre &amp; post party</li>
+                        <li>10 Visitor Passes</li>
+                        <li>TEG Community Network Portal Access</li>
+                        <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                        <li>One-to-one messaging can be done to visitors (in app)</li>
+                        <li><strong>Visibility</strong>
+                            <ul>
+                                <li>On Website (Logo)</li>
+                                <li>On Ground Visibility</li>
+                            </ul>
+                        </li>
+                        <li><strong>Including Infrastructure</strong>
+                            <ul>
+                                <li>Modular Stall Structure (White Octanorm Panels)</li>
+                                <li>Fascia with Company Name</li>
+                                <li>2 Tables + 4 Chairs</li>
+                                <li>6 Spotlights</li>
+                                <li>2 Power Sockets (15 Amp)</li>
+                                <li>Carpet Flooring</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="xr-stallcard-actions">
+                        <button type="button" data-select-package="Professional (3x6 Mtr)" class="flex-1 rounded-full bg-brand px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                        <a href="#compare-table" class="flex-1 rounded-full border border-line px-4 py-2.5 text-center text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">Compare</a>
+                    </div>
+                </div>
+
+                <div class="xr-stallcard xr-stallcard--blue" data-reveal="fade-up" data-reveal-delay="200">
+                    <div class="xr-stallcard-confetti" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="xr-stallcard-label">Recommended</span>
+                    <h3 class="xr-stallcard-size">Stall Size : 6 &times; 6 Mtr.</h3>
+                    <ul class="xr-stallcard-details">
+                        <li>8 Exhibitor Passes (Food coupon)</li>
+                        <li>3 Exhibitor Passes invited for pre &amp; post party</li>
+                        <li>20 Visitor Passes</li>
+                        <li>TEG Community Network Portal Access</li>
+                        <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                        <li>One-to-one messaging can be done to visitors (in app)</li>
+                        <li><strong>Visibility</strong>
+                            <ul>
+                                <li>On Website (Logo)</li>
+                                <li>On Ground Visibility</li>
+                            </ul>
+                        </li>
+                        <li><strong>Including Infrastructure</strong>
+                            <ul>
+                                <li>Modular Stall Structure (White Octanorm Panels)</li>
+                                <li>Fascia with Company Name</li>
+                                <li>2 Tables + 2 Round Glass Tables</li>
+                                <li>2 Sofas + 6 Chairs</li>
+                                <li>12 Spotlights</li>
+                                <li>3 Power Sockets (15 Amp)</li>
+                                <li>Carpet Flooring</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="xr-stallcard-actions">
+                        <button type="button" data-select-package="Premium (6x6 Mtr)" class="flex-1 rounded-full bg-brand px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                        <a href="#compare-table" class="flex-1 rounded-full border border-line px-4 py-2.5 text-center text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">Compare</a>
+                    </div>
+                </div>
+
+                <div class="xr-stallcard xr-stallcard--green" data-reveal="fade-up" data-reveal-delay="300">
+                    <div class="xr-stallcard-confetti" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="xr-stallcard-label">Government Pavilion</span>
+                    <h3 class="xr-stallcard-size">Stall Size : Custom (On Request)</h3>
+                    <ul class="xr-stallcard-details">
+                        <li>Dedicated pavilion zone &amp; signage</li>
+                        <li>Delegation lounge &amp; meeting rooms</li>
+                        <li>Curated visitor &amp; media walkthroughs</li>
+                        <li>TEG Community Network Portal Access</li>
+                        <li>1:1 Curated Business Meetings (Pre-scheduled)</li>
+                        <li><strong>Visibility</strong>
+                            <ul>
+                                <li>Priority Logo Placement (Website)</li>
+                                <li>Dedicated On Ground Signage</li>
+                            </ul>
+                        </li>
+                        <li><strong>Including Infrastructure</strong>
+                            <ul>
+                                <li>Custom Pavilion Structure &amp; Furnishing</li>
+                                <li>Protocol &amp; Security Coordination</li>
+                                <li>Dedicated Power &amp; Internet Line</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="xr-stallcard-actions">
+                        <button type="button" data-select-package="Government Pavilion" class="flex-1 rounded-full bg-brand px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                        <a href="#compare-table" class="flex-1 rounded-full border border-line px-4 py-2.5 text-center text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">Compare</a>
+                    </div>
+                </div>
+
+                <div class="xr-stallcard xr-stallcard--navy" data-reveal="fade-up" data-reveal-delay="400">
+                    <div class="xr-stallcard-confetti" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="xr-stallcard-label">Custom Pavilion</span>
+                    <h3 class="xr-stallcard-size">Stall Size : Custom (On Request)</h3>
+                    <ul class="xr-stallcard-details">
+                        <li>Fully bespoke design &amp; branding</li>
+                        <li>Flexible layout &amp; furniture</li>
+                        <li>Custom visitor &amp; exhibitor pass allocation</li>
+                        <li>TEG Community Network Portal Access</li>
+                        <li>Dedicated account manager</li>
+                        <li><strong>Visibility</strong>
+                            <ul>
+                                <li>On Website (Logo)</li>
+                                <li>On Ground Visibility</li>
+                            </ul>
+                        </li>
+                        <li><strong>Including Infrastructure</strong>
+                            <ul>
+                                <li>Bespoke Stall Structure &amp; Fascia</li>
+                                <li>Custom Furniture &amp; Lighting</li>
+                                <li>Power Sockets as per requirement</li>
+                                <li>Carpet Flooring</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="xr-stallcard-actions">
+                        <button type="button" data-select-package="Custom Pavilion" class="flex-1 rounded-full bg-brand px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                        <a href="#compare-table" class="flex-1 rounded-full border border-line px-4 py-2.5 text-center text-sm font-bold text-ink transition duration-300 hover:border-brand hover:text-brand">Compare</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Package Comparison -->
+    <section id="compare-table" class="content-section bg-white">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Package Comparison</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">A side-by-side look at what's included in every package.</p>
+            </div>
+
+            <div class="xr-compare-wrap mt-12" data-reveal="fade-up">
+                <table class="xr-compare">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th class="xr-compare__highlight">Premium</th>
+                            <th>Government</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Area</td>
+                            <td>3 &times; 3 Mtr</td>
+                            <td>3 &times; 6 Mtr</td>
+                            <td class="xr-compare__highlight">6 &times; 6 Mtr</td>
+                            <td>Custom</td>
+                        </tr>
+                        <tr>
+                            <td>Visitor Passes</td>
+                            <td>5</td>
+                            <td>10</td>
+                            <td class="xr-compare__highlight">20</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Power Supply</td>
+                            <td>1 Socket (15A)</td>
+                            <td>2 Sockets (15A)</td>
+                            <td class="xr-compare__highlight">3 Sockets (15A)</td>
+                            <td>Dedicated Line</td>
+                        </tr>
+                        <tr>
+                            <td>Furniture</td>
+                            <td>1 Table, 2 Chairs</td>
+                            <td>2 Tables, 4 Chairs</td>
+                            <td class="xr-compare__highlight">Sofas + Glass Tables</td>
+                            <td>Custom Furnishing</td>
+                        </tr>
+                        <tr>
+                            <td>Branding</td>
+                            <td><i class="bi bi-dash-lg"></i></td>
+                            <td><i class="bi bi-check-circle-fill"></i></td>
+                            <td class="xr-compare__highlight"><i class="bi bi-check-circle-fill"></i></td>
+                            <td><i class="bi bi-check-circle-fill"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Meeting Access</td>
+                            <td><i class="bi bi-check-circle-fill"></i></td>
+                            <td><i class="bi bi-check-circle-fill"></i></td>
+                            <td class="xr-compare__highlight"><i class="bi bi-check-circle-fill"></i></td>
+                            <td><i class="bi bi-check-circle-fill"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Logo Display</td>
+                            <td><i class="bi bi-dash-lg"></i></td>
+                            <td>Website</td>
+                            <td class="xr-compare__highlight">Website + On-Ground</td>
+                            <td>Priority Placement</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Standard</td>
+                            <td>Priority</td>
+                            <td class="xr-compare__highlight">Dedicated Concierge</td>
+                            <td>Protocol Desk</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td><i class="bi bi-dash-lg"></i></td>
+                            <td>Shared</td>
+                            <td class="xr-compare__highlight">Dedicated</td>
+                            <td>Dedicated</td>
+                        </tr>
+                        <tr>
+                            <td>Internet</td>
+                            <td>Shared Wi-Fi</td>
+                            <td>Shared Wi-Fi</td>
+                            <td class="xr-compare__highlight">Dedicated Wi-Fi</td>
+                            <td>Leased Line</td>
+                        </tr>
+                        <tr>
+                            <td>Electricity</td>
+                            <td>Standard (1kW)</td>
+                            <td>Medium (3kW)</td>
+                            <td class="xr-compare__highlight">High (5kW+)</td>
+                            <td>Custom</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Benefits -->
+    <section id="benefits" class="content-section bg-white">
+        <div class="container">
+            <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+                <div class="xr-benefit-visual" data-reveal="fade-up">
+                    <i class="bi bi-award-fill" aria-hidden="true"></i>
+                </div>
+                <div data-reveal="fade-up" data-reveal-delay="120">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-line bg-govt-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-govt">
+                        <span class="h-1.5 w-1.5 rounded-full bg-brand"></span> Exhibitor Benefits
+                    </span>
+                    <h2 class="mt-6 text-[27px] font-bold leading-tight tracking-tight text-ink sm:text-[38px]">More Than Just a Stall</h2>
+                    <span class="section-heading-rule !mx-0" aria-hidden="true"><span></span><span></span><span></span></span>
+
+                    <div class="mt-6">
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Dedicated Relationship Manager</strong><span>A single point of contact from registration through exhibition day.</span></div>
+                        </div>
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Business Matching</strong><span>Curated introductions to buyers and partners aligned with your offering.</span></div>
+                        </div>
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Government Exposure</strong><span>Direct visibility to ministries, PSUs, and public sector decision-makers.</span></div>
+                        </div>
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Media Coverage</strong><span>Feature in official press coverage and event media highlights.</span></div>
+                        </div>
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Networking</strong><span>Access to exclusive networking sessions and delegate meet-ups.</span></div>
+                        </div>
+                        <div class="xr-benefit-item">
+                            <i class="bi bi-check-lg"></i>
+                            <div><strong>Investment Opportunities</strong><span>Meet investors and funding bodies scouting emerging technology.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- 8. Why Your Application Gets Priority -->
+    <section id="priority" class="content-section bg-white">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Why Your Application Gets Priority</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">We fast-track applications that strengthen the innovation ecosystem.</p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="xr-glow-card" data-reveal="fade-up">
+                    <div class="xr-glow-card-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                    <h3>Innovation</h3>
+                    <p>Novel products, platforms, or technologies with clear real-world application.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="100">
+                    <div class="xr-glow-card-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                    <h3>Research</h3>
+                    <p>Academic and R&amp;D-led work with strong potential for industry collaboration.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="200">
+                    <div class="xr-glow-card-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                    <h3>Manufacturing</h3>
+                    <p>Homegrown manufacturing capability supporting national self-reliance goals.</p>
+                </div>
+                <div class="xr-glow-card" data-reveal="fade-up" data-reveal-delay="300">
+                    <div class="xr-glow-card-icon"><i class="bi bi-bank2"></i></div>
+                    <h3>Government Collaboration</h3>
+                    <p>Existing or proposed partnerships with government departments and PSUs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Exhibitor Guidelines -->
+    <section id="exhibitor-guidelines" class="content-section">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Exhibitor Guidelines</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-muted">Everything you need to know to set up and run your stall smoothly.</p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="xr-guide-card" data-reveal="fade-up">
+                    <div class="xr-guide-card-icon"><i class="bi bi-tools"></i></div>
+                    <h3>Booth Setup</h3>
+                    <p>Setup begins one day prior to the event; all stalls must be ready two hours before opening.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="60">
+                    <div class="xr-guide-card-icon"><i class="bi bi-easel2-fill"></i></div>
+                    <h3>Display Guidelines</h3>
+                    <p>Displays must stay within your allotted stall boundary and approved height limits.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="120">
+                    <div class="xr-guide-card-icon"><i class="bi bi-plug-fill"></i></div>
+                    <h3>Electricity Usage</h3>
+                    <p>Use only the sanctioned load for your package; report additional power needs in advance.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="180">
+                    <div class="xr-guide-card-icon"><i class="bi bi-shield-fill-check"></i></div>
+                    <h3>Safety Rules</h3>
+                    <p>Keep aisles clear, follow fire-exit signage, and avoid overloading electrical points.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="240">
+                    <div class="xr-guide-card-icon"><i class="bi bi-wifi"></i></div>
+                    <h3>Internet Facility</h3>
+                    <p>Complimentary Wi-Fi is provided; dedicated leased lines can be requested for demos.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="300">
+                    <div class="xr-guide-card-icon"><i class="bi bi-award-fill"></i></div>
+                    <h3>Branding Policy</h3>
+                    <p>All branding must be approved by the organizing team before installation on-site.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up">
+                    <div class="xr-guide-card-icon"><i class="bi bi-people-fill"></i></div>
+                    <h3>Visitor Interaction</h3>
+                    <p>Keep at least one representative at your stall during all published show hours.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="60">
+                    <div class="xr-guide-card-icon"><i class="bi bi-recycle"></i></div>
+                    <h3>Waste Management</h3>
+                    <p>Segregate waste using the bins provided and avoid single-use plastic where possible.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="120">
+                    <div class="xr-guide-card-icon"><i class="bi bi-play-circle-fill"></i></div>
+                    <h3>Product Demonstration</h3>
+                    <p>Live demos are welcome; keep sound levels considerate of neighbouring stalls.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="180">
+                    <div class="xr-guide-card-icon"><i class="bi bi-camera-fill"></i></div>
+                    <h3>Photography Rules</h3>
+                    <p>Photography is permitted at your own stall; official media coverage is arranged separately.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="240">
+                    <div class="xr-guide-card-icon"><i class="bi bi-truck"></i></div>
+                    <h3>Logistics</h3>
+                    <p>Loading and unloading is coordinated through designated bays during setup windows.</p>
+                </div>
+                <div class="xr-guide-card" data-reveal="fade-up" data-reveal-delay="300">
+                    <div class="xr-guide-card-icon"><i class="bi bi-life-preserver"></i></div>
+                    <h3>Emergency Support</h3>
+                    <p>An on-site help desk and medical team are available throughout the exhibition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section id="exhibitor-faq" class="content-section bg-white">
+        <div class="container">
+            <div class="section-heading-wrap" data-reveal="fade-up">
+                <h2 class="section-heading">Frequently Asked Questions</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            </div>
+            <div class="xr-faq mt-12" data-reveal="fade-up">
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>Who can exhibit?</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Startups, MSMEs, corporates, research institutions, and government bodies working in technology-related domains are welcome to exhibit.</p></div>
+                </div>
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>How are stalls allocated?</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Stalls are allocated on a first-come, first-served basis after your application is reviewed and confirmed by our team.</p></div>
+                </div>
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>Can I customize my stall?</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Yes. Standard packages include base infrastructure, and custom branding or layout changes can be arranged with prior approval.</p></div>
+                </div>
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>When should I arrive?</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Exhibitors should arrive during the setup window one day before the event, with stalls ready at least two hours before opening.</p></div>
+                </div>
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>Can international exhibitors participate?</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Yes, international exhibitors are welcome. Please mention your country of origin in the registration form for coordination.</p></div>
+                </div>
+                <div class="xr-faq-item">
+                    <button type="button" class="xr-faq-question"><span>Cancellation Policy</span><i class="bi bi-chevron-down"></i></button>
+                    <div class="xr-faq-answer"><p>Cancellations made well in advance of the event are eligible for a partial refund as per the terms shared at confirmation. Contact our team for details.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Final CTA -->
+    <!-- <section class="xr-darksection xr-cta">
+        <div class="xr-darksection__pattern" aria-hidden="true"></div>
+        <div class="xr-blob xr-blob--a" aria-hidden="true"></div>
+        <div class="xr-blob xr-blob--b" aria-hidden="true"></div>
+        <div class="container position-relative">
+            <div class="mx-auto max-w-2xl" data-reveal="fade-up">
+                <h2 class="text-[28px] font-extrabold leading-tight text-white sm:text-[40px]">Reserve Your Exhibition Space Today</h2>
+                <p class="mt-4 text-base text-white/80">Limited stalls remain for TECVERSE 2026. Secure your spot and put your innovation in front of the people who matter most.</p>
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <a href="#registration-form" class="inline-flex items-center gap-2 rounded-full xr-btn-gradient px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand/30 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                        <i class="bi bi-pencil-square"></i> Register
+                    </a>
+                    <a href="#" class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-bold text-white backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/20">
+                        <i class="bi bi-download"></i> Download Brochure
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+</main>
+
+<div id="registrationSuccessModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/55 px-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+    <div class="w-full max-w-[520px] rounded-[24px] bg-white p-8 text-center shadow-[0_34px_100px_rgba(0,0,0,0.28)]">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 text-3xl font-black text-brand">&#10003;</div>
+        <h2 id="successModalTitle" class="mt-6 text-2xl font-black text-ink">Registration Submitted Successfully</h2>
+        <p class="mt-4 text-sm leading-7 text-muted">Thank you for registering as an exhibitor. Our team will review your application and contact you shortly.</p>
+        <button type="button" data-modal-close class="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-brand px-7 text-sm font-extrabold text-white shadow-[0_16px_34px_rgba(244,122,32,0.28)] transition hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+            Close
+        </button>
+    </div>
+</div>
+
+
+<!-- Exhibitor Information Center -->
+<section class="xr-info-section">
+    <div class="container">
+        <div class="mb-10 text-center" data-reveal="fade-up">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand"></span> Exhibitor Information Center
+            </span>
+            <h2 class="mt-5 text-[24px] font-extrabold text-white sm:text-[32px]">Everything You Need, In One Place</h2>
+            <p class="mx-auto mt-3 max-w-2xl text-sm text-white/70">Quick-reference guides to help you plan, set up, and run a smooth exhibition.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="xr-info-card" data-reveal="fade-up">
+                <div class="xr-info-card-icon"><i class="bi bi-easel2-fill"></i></div>
+                <h3>Booth Design Guidelines</h3>
+                <p>Approved materials, height limits, and design standards for stall construction.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="40">
+                <div class="xr-info-card-icon"><i class="bi bi-calendar2-week-fill"></i></div>
+                <h3>Stall Setup Schedule</h3>
+                <p>Move-in and move-out timings for every exhibitor category.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="xr-info-card-icon"><i class="bi bi-person-badge-fill"></i></div>
+                <h3>Check-in &amp; Badge Collection</h3>
+                <p>Where and when to collect exhibitor badges and access credentials.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="120">
+                <div class="xr-info-card-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                <h3>Furniture &amp; Electrical Facilities</h3>
+                <p>Standard furniture, power load limits, and on-request add-ons.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up">
+                <div class="xr-info-card-icon"><i class="bi bi-badge-ad-fill"></i></div>
+                <h3>Branding &amp; Logo Placement Rules</h3>
+                <p>Approved zones and formats for signage, banners, and logos.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="40">
+                <div class="xr-info-card-icon"><i class="bi bi-wifi"></i></div>
+                <h3>Internet &amp; Wi-Fi Availability</h3>
+                <p>Coverage zones, speeds, and how to request a dedicated connection.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="xr-info-card-icon"><i class="bi bi-fire"></i></div>
+                <h3>Safety &amp; Fire Regulations</h3>
+                <p>Mandatory safety equipment, exits, and fire-compliance checks.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="120">
+                <div class="xr-info-card-icon"><i class="bi bi-truck"></i></div>
+                <h3>Shipping &amp; Logistics Support</h3>
+                <p>Freight forwarding, customs guidance, and on-site material handling.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up">
+                <div class="xr-info-card-icon"><i class="bi bi-play-circle-fill"></i></div>
+                <h3>Product Demo Instructions</h3>
+                <p>Guidelines for live demonstrations, noise levels, and scheduling slots.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="40">
+                <div class="xr-info-card-icon"><i class="bi bi-cup-hot-fill"></i></div>
+                <h3>Food &amp; Hospitality Information</h3>
+                <p>On-site catering options, meal coupons, and hospitality desks.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="xr-info-card-icon"><i class="bi bi-people-fill"></i></div>
+                <h3>Visitor Engagement Tips</h3>
+                <p>Best practices to attract, qualify, and follow up with visitors.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="120">
+                <div class="xr-info-card-icon"><i class="bi bi-headset"></i></div>
+                <h3>Technical Support Desk</h3>
+                <p>On-ground help for power, connectivity, and AV issues during the event.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up">
+                <div class="xr-info-card-icon"><i class="bi bi-recycle"></i></div>
+                <h3>Sustainability &amp; Waste Management</h3>
+                <p>Waste segregation points and our commitment to a low-plastic event.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="40">
+                <div class="xr-info-card-icon"><i class="bi bi-life-preserver"></i></div>
+                <h3>Emergency Contact Information</h3>
+                <p>Direct lines for medical, security, and on-site emergency response.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="xr-info-card-icon"><i class="bi bi-p-square-fill"></i></div>
+                <h3>Parking &amp; Loading Bay Access</h3>
+                <p>Parking zones, loading bay slots, and vehicle access timings.</p>
+            </div>
+            <div class="xr-info-card" data-reveal="fade-up" data-reveal-delay="120">
+                <div class="xr-info-card-icon"><i class="bi bi-list-check"></i></div>
+                <h3>Frequently Requested Services</h3>
+                <p>Housekeeping, extra furniture, additional passes, and more on request.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/exhibitor-registration.js}"></script>
+</body>
+</html>

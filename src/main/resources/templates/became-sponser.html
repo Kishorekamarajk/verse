@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Sponsor | TECVERSE 2026</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = { corePlugins: { preflight: false } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="sponsor-page">
+
+<div th:replace="~{fragments/navbar :: navbar('sponsor')}"></div>
+
+<main>
+    <section class="sp-hero" aria-labelledby="sponsor-hero-title">
+        <div class="sp-hero__media" aria-hidden="true">
+            <img th:src="@{/images/banner.jpg}" alt="">
+        </div>
+        <div class="sp-hero__overlay" aria-hidden="true"></div>
+
+        <div class="container sp-hero__inner">
+            <div class="sp-hero__copy" data-reveal="fade-up">
+                <span class="sp-kicker"><i class="bi bi-stars"></i> TECVERSE 2026 Sponsorship</span>
+                <h1 id="sponsor-hero-title">Put Your Brand at the Center of India's Tech Momentum</h1>
+                <p>
+                    Partner with TECVERSE to meet decision makers, innovators, researchers, startups,
+                    public institutions, and enterprise buyers across the technology ecosystem.
+                </p>
+                <div class="sp-actions">
+                    <a href="#sponsor-contact" class="sp-btn sp-btn--primary"><i class="bi bi-handshake"></i> Become a Sponsor</a>
+                    <a href="#sponsor-packages" class="sp-btn sp-btn--light"><i class="bi bi-grid-3x3-gap"></i> View Packages</a>
+                </div>
+            </div>
+
+            <aside class="sp-hero-panel" data-reveal="fade-up" data-reveal-delay="120" aria-label="Sponsor highlights">
+                <div class="sp-panel-head">
+                    <span>Partnership Snapshot</span>
+                    <strong>26-27 Nov 2026</strong>
+                </div>
+                <div class="sp-signal-grid">
+                    <div><strong>5000+</strong><span>Visitors</span></div>
+                    <div><strong>150+</strong><span>Exhibitors</span></div>
+                    <div><strong>40+</strong><span>Sessions</span></div>
+                    <div><strong>15+</strong><span>Workshops</span></div>
+                </div>
+                <div class="sp-focus-list">
+                    <span><i class="bi bi-cpu-fill"></i> AI &amp; Computing</span>
+                    <span><i class="bi bi-shield-lock-fill"></i> Cyber Security</span>
+                    <span><i class="bi bi-broadcast"></i> IoT &amp; Smart Systems</span>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="sponsor-contact" class="sp-section sp-contact" aria-labelledby="sponsor-contact-title">
+        <div class="container sp-contact-grid">
+            <aside class="sp-contact-card" data-reveal="fade-up">
+                <span class="sp-kicker"><i class="bi bi-envelope-paper"></i> Sponsor Desk</span>
+                <h2 id="sponsor-contact-title" style="color: #FFFFFF !important;">Start Your Sponsorship Conversation</h2>
+                <p>Tell us what you want to achieve. The partnership team will help you choose the right format and visibility mix.</p>
+                <div class="sp-contact-list">
+                    <a href="mailto:partnerships@cdactechexpo.in"><i class="bi bi-envelope-fill"></i> partnerships@cdactechexpo.in</a>
+                    <a href="tel:+914400000000"><i class="bi bi-telephone-fill"></i> +91 44 0000 0000</a>
+                    <span><i class="bi bi-geo-alt-fill"></i> CDAC Technology Centre, Chennai</span>
+                </div>
+            </aside>
+
+            <form action="/become-sponsor" th:action="@{/become-sponsor}" method="post" class="sp-form" data-reveal="fade-up" data-reveal-delay="100">
+                <div th:if="${sponsorInquirySubmitted}" class="sp-form-success" role="status">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Thank you. Your sponsorship enquiry has been received.</span>
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorCompany">Company</label>
+                    <input id="sponsorCompany" name="company" type="text" required>
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorName">Name</label>
+                    <input id="sponsorName" name="name" type="text" required>
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorDesignation">Designation</label>
+                    <input id="sponsorDesignation" name="jobTitle" type="text">
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorEmail">Email</label>
+                    <input id="sponsorEmail" name="email" type="email" required>
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorPhone">Phone</label>
+                    <input id="sponsorPhone" name="phone" type="tel">
+                </div>
+                <div class="sp-field">
+                    <label for="sponsorInterest">Sponsorship Interest</label>
+                    <select id="sponsorInterest" name="sponsorshipInterest">
+                        <option>Title Sponsor</option>
+                        <option>Gold Sponsor</option>
+                        <option>Silver Sponsor</option>
+                        <option>Innovation Partner</option>
+                        <option>Custom Partnership</option>
+                    </select>
+                </div>
+                <div class="sp-field sp-field--full">
+                    <label for="sponsorMessage">Message</label>
+                    <textarea id="sponsorMessage" name="message" rows="5" placeholder="Share your goals, preferred package, or activation idea."></textarea>
+                </div>
+                <button type="submit" class="sp-submit"><i class="bi bi-send-fill"></i> Submit Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="sp-section sp-intro" aria-labelledby="sponsor-value-title">
+        <div class="container">
+            <div class="sp-section-head" data-reveal="fade-up">
+                <span>Partnership Value</span>
+                <h2 id="sponsor-value-title">Why Sponsors Choose TECVERSE</h2>
+                <p>Visibility is only the beginning. Sponsorship gives your team a structured way to start useful conversations before, during, and after the expo.</p>
+            </div>
+
+            <div class="sp-value-grid">
+                <article class="sp-value-card" data-reveal="fade-up">
+                    <i class="bi bi-megaphone-fill"></i>
+                    <h3>Premium Brand Visibility</h3>
+                    <p>Get high-recall placement across venue signage, digital channels, visitor journeys, and event communications.</p>
+                </article>
+                <article class="sp-value-card" data-reveal="fade-up" data-reveal-delay="80">
+                    <i class="bi bi-people-fill"></i>
+                    <h3>Decision Maker Access</h3>
+                    <p>Connect with government teams, enterprises, academia, founders, investors, and technology buyers.</p>
+                </article>
+                <article class="sp-value-card" data-reveal="fade-up" data-reveal-delay="160">
+                    <i class="bi bi-easel2-fill"></i>
+                    <h3>Product Demonstration</h3>
+                    <p>Showcase launches, prototypes, platforms, and live demos in a focused exhibition environment.</p>
+                </article>
+                <article class="sp-value-card" data-reveal="fade-up" data-reveal-delay="240">
+                    <i class="bi bi-diagram-3-fill"></i>
+                    <h3>Ecosystem Partnerships</h3>
+                    <p>Build collaboration paths with startups, research institutions, public sector programs, and industry leaders.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="sponsor-packages" class="sp-section sp-packages" aria-labelledby="sponsor-packages-title">
+        <div class="container">
+            <div class="sp-section-head" data-reveal="fade-up">
+                <span>Packages</span>
+                <h2 id="sponsor-packages-title">Sponsorship Opportunities</h2>
+                <p>Choose the visibility level that matches your launch, growth, or relationship-building goals.</p>
+            </div>
+
+            <div class="sp-package-grid">
+                <article class="sp-package sp-package--featured" data-reveal="fade-up">
+                    <div class="sp-package__tag">Flagship</div>
+                    <h3>Title Sponsor</h3>
+                    <p>Own the headline association across the event experience.</p>
+                    <ul>
+                        <li><i class="bi bi-check2"></i> Main stage logo visibility</li>
+                        <li><i class="bi bi-check2"></i> Premium booth location</li>
+                        <li><i class="bi bi-check2"></i> Keynote or leadership session</li>
+                        <li><i class="bi bi-check2"></i> Top-tier digital promotion</li>
+                    </ul>
+                    <a href="#sponsor-contact">Enquire Now <i class="bi bi-arrow-right"></i></a>
+                </article>
+
+                <article class="sp-package" data-reveal="fade-up" data-reveal-delay="80">
+                    <div class="sp-package__tag">Growth</div>
+                    <h3>Gold Sponsor</h3>
+                    <p>Secure strong brand presence and networking access.</p>
+                    <ul>
+                        <li><i class="bi bi-check2"></i> Venue and website branding</li>
+                        <li><i class="bi bi-check2"></i> Exhibition booth support</li>
+                        <li><i class="bi bi-check2"></i> Social media promotion</li>
+                        <li><i class="bi bi-check2"></i> VIP delegate passes</li>
+                    </ul>
+                    <a href="#sponsor-contact">Enquire Now <i class="bi bi-arrow-right"></i></a>
+                </article>
+
+                <article class="sp-package" data-reveal="fade-up" data-reveal-delay="160">
+                    <div class="sp-package__tag">Visibility</div>
+                    <h3>Silver Sponsor</h3>
+                    <p>Build focused exposure for products, teams, and services.</p>
+                    <ul>
+                        <li><i class="bi bi-check2"></i> Logo on sponsor wall</li>
+                        <li><i class="bi bi-check2"></i> Digital listing and mentions</li>
+                        <li><i class="bi bi-check2"></i> Delegate networking access</li>
+                        <li><i class="bi bi-check2"></i> Brand inclusion in updates</li>
+                    </ul>
+                    <a href="#sponsor-contact">Enquire Now <i class="bi bi-arrow-right"></i></a>
+                </article>
+            </div>
+
+            <div class="sp-partner-strip" data-reveal="fade-up">
+                <div>
+                    <strong>Need a custom partnership?</strong>
+                    <span>Session sponsorship, workshop support, startup showcases, innovation awards, and curated networking can be tailored for your objectives.</span>
+                </div>
+                <a href="#sponsor-contact" class="sp-btn sp-btn--dark"><i class="bi bi-chat-dots"></i> Talk to Team</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="sp-section sp-dark" aria-labelledby="sponsor-journey-title">
+        <div class="container">
+            <div class="sp-section-head sp-section-head--light" data-reveal="fade-up">
+                <span>Sponsor Journey</span>
+                <h2 id="sponsor-journey-title">A Clear Path From Enquiry to Impact</h2>
+            </div>
+
+            <div class="sp-journey">
+                <article data-reveal="fade-up"><span>01</span><h3>Enquiry</h3><p>Share your goals and preferred package.</p></article>
+                <article data-reveal="fade-up" data-reveal-delay="70"><span>02</span><h3>Planning</h3><p>Finalize benefits, branding, booth, and campaign needs.</p></article>
+                <article data-reveal="fade-up" data-reveal-delay="140"><span>03</span><h3>Promotion</h3><p>Activate sponsor visibility across event channels.</p></article>
+                <article data-reveal="fade-up" data-reveal-delay="210"><span>04</span><h3>Expo</h3><p>Meet visitors, host demos, and build partnerships onsite.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="sp-section" aria-labelledby="sponsor-audience-title">
+        <div class="container sp-audience-layout">
+            <div class="sp-section-head sp-section-head--left" data-reveal="fade-up">
+                <span>Audience</span>
+                <h2 id="sponsor-audience-title">Reach the People Building and Buying Technology</h2>
+                <p>TECVERSE brings together a practical audience: teams evaluating solutions, leaders shaping programs, and builders looking for partners.</p>
+            </div>
+
+            <div class="sp-audience-grid" data-reveal="fade-up" data-reveal-delay="100">
+                <span>Government Departments</span>
+                <span>Technology Companies</span>
+                <span>AI Startups</span>
+                <span>Educational Institutions</span>
+                <span>MSMEs</span>
+                <span>Manufacturing</span>
+                <span>Healthcare</span>
+                <span>FinTech</span>
+                <span>Cyber Security</span>
+                <span>Cloud Companies</span>
+                <span>Students</span>
+                <span>Researchers</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="sp-section sp-faq-section" aria-labelledby="sponsor-faq-title">
+        <div class="container sp-faq-layout">
+            <div class="sp-section-head sp-section-head--left" data-reveal="fade-up">
+                <span>Questions</span>
+                <h2 id="sponsor-faq-title">Sponsor FAQ</h2>
+                <p>Answers to the common questions teams ask before reserving a sponsorship package.</p>
+            </div>
+
+            <div class="sp-faq" data-sponsor-faq data-reveal="fade-up" data-reveal-delay="100">
+                <article class="is-open">
+                    <button type="button" aria-expanded="true"><span>Why sponsor TECVERSE?</span><i class="bi bi-chevron-down"></i></button>
+                    <p>Sponsors gain curated visibility and access to a concentrated technology audience across government, industry, academia, and startups.</p>
+                </article>
+                <article>
+                    <button type="button" aria-expanded="false"><span>Can packages be customized?</span><i class="bi bi-chevron-down"></i></button>
+                    <p>Yes. Custom visibility, workshop, booth, award, and networking opportunities can be planned with the partnership team.</p>
+                </article>
+                <article>
+                    <button type="button" aria-expanded="false"><span>Can startups become sponsors?</span><i class="bi bi-chevron-down"></i></button>
+                    <p>Yes. Startup and innovation partnership options are suitable for emerging companies that need focused visibility.</p>
+                </article>
+                <article>
+                    <button type="button" aria-expanded="false"><span>How do we reserve a package?</span><i class="bi bi-chevron-down"></i></button>
+                    <p>Submit the enquiry form and the sponsor team will respond with availability, inclusions, pricing, and onboarding steps.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section th:fragment="testimonials" id="testimonials" aria-labelledby="testimonials-heading" class="relative isolate overflow-hidden bg-[#F8F9FB]">
+
+    <div class="relative mx-auto max-w-[1440px] px-6 py-[120px] lg:px-10">
+
+        <div class="flex items-center justify-center gap-4" data-reveal="fade-up">
+            <div class="text-center">
+                <h2 id="testimonials-heading" class="text-[21px] font-bold leading-tight tracking-tight text-ink sm:text-[31px]">A Few Words About<br class="sm:hidden"> TEC-VERSE 2025</h2>
+                <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            </div>
+        </div>
+
+        <div class="relative mt-16 overflow-hidden" data-testimonial-viewport>
+            <div class="flex gap-6" data-testimonial-track>
+
+                <div th:each="i : ${#numbers.sequence(1, 4)}"
+                     class="w-[300px] shrink-0 rounded-3xl border border-line bg-white p-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:w-[320px]">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-brand/40" aria-hidden="true">
+                        <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
+                    </svg>
+                    <p class="mt-4 text-sm leading-7 text-muted">
+                        TECVERSE creates a focused platform for policy leaders, researchers, startups, and
+                        technology teams to exchange ideas that can scale into public impact.
+                    </p>
+                    <div class="mt-5 border-t border-line pt-5">
+                        <div class="flex items-center gap-3">
+                            <img th:src="@{/images/2.svg}" alt="" class="h-8 w-8 shrink-0 rounded-full border border-line object-contain p-1" />
+                            <div>
+                                <p class="text-sm font-bold text-ink">Technology Delegate</p>
+                                <p class="text-xs text-muted">TECVERSE 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate set for a seamless auto-scroll loop -->
+                <div th:each="i : ${#numbers.sequence(1, 4)}" aria-hidden="true"
+                     class="w-[300px] shrink-0 rounded-3xl border border-line bg-white p-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:w-[320px]">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-brand/40" aria-hidden="true">
+                        <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
+                    </svg>
+                    <p class="mt-4 text-sm leading-7 text-muted">
+                        The event brings institutions and innovators into one ecosystem for practical
+                        demonstrations, high-value networking, and future-ready collaboration.
+                    </p>
+                    <div class="mt-5 border-t border-line pt-5">
+                        <div class="flex items-center gap-3">
+                            <img th:src="@{/images/3.svg}" alt="" class="h-8 w-8 shrink-0 rounded-full border border-line object-contain p-1" />
+                            <div>
+                                <p class="text-sm font-bold text-ink">Industry Participant</p>
+                                <p class="text-xs text-muted">TECVERSE 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

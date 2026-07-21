@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{home.title}">Tec-Verse | Home</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Tailwind CSS (footer component only) - preflight disabled so it doesn't reset the Bootstrap-based page above the footer -->
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar('home')}"></div>
+
+<div th:replace="~{fragments/floating-actions :: floating-actions}"></div>
+
+<!-- Hero -->
+<section class="relative isolate flex h-screen w-screen items-center justify-center overflow-hidden bg-gradient-to-br from-black via-neutral-900 to-black text-white">
+
+    <!-- Background video (YouTube embed): brightened, contrasted, saturated for a vivid, alive feel -->
+    <div data-hero-video-wrap class="pointer-events-none absolute inset-0 overflow-hidden opacity-0 brightness-[1.08] contrast-[1.06] saturate-[1.12] transition-opacity duration-[1400ms] ease-out">
+        <iframe data-hero-video
+                src="https://www.youtube.com/embed/DHZ8p0F0_lQ?autoplay=1&mute=1&loop=1&playlist=DHZ8p0F0_lQ&controls=0&playsinline=1&modestbranding=1&rel=0"
+                allow="autoplay; encrypted-media; fullscreen"
+                frameborder="0"
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        </iframe>
+    </div>
+
+    <!-- Black overlay layer over the hero video -->
+    <div class="pointer-events-none absolute inset-0 z-[1] bg-black/30" aria-hidden="true"></div>
+
+    <!-- Decorative particles + faint circuit lines -->
+    <div class="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
+        <span class="absolute left-[12%] top-[24%] h-1.5 w-1.5 animate-pulse rounded-full bg-brand/70 shadow-[0_0_10px_rgba(255,107,26,0.8)]"></span>
+        <span class="absolute right-[16%] top-[32%] h-1 w-1 animate-ping rounded-full bg-brand-light/60 [animation-duration:3.5s]"></span>
+        <span class="absolute left-[22%] bottom-[28%] h-1 w-1 animate-pulse rounded-full bg-brand-light/60 [animation-delay:1.2s]"></span>
+        <span class="absolute right-[26%] bottom-[20%] h-1.5 w-1.5 animate-pulse rounded-full bg-brand/60 [animation-delay:0.6s]"></span>
+        <span class="absolute left-[8%] top-[60%] h-1 w-1 animate-ping rounded-full bg-white/50 [animation-duration:4s] [animation-delay:1.8s]"></span>
+        <span class="absolute left-[6%] top-[45%] h-24 w-px rotate-12 bg-gradient-to-b from-transparent via-brand/25 to-transparent"></span>
+        <span class="absolute right-[10%] top-[55%] h-32 w-px -rotate-12 bg-gradient-to-b from-transparent via-brand/20 to-transparent"></span>
+    </div>
+
+    <div class="relative z-10 mx-auto flex max-w-[900px] flex-col items-center px-6 text-center">
+
+        <span data-hero-reveal
+              class="opacity-0 scale-75 transition-all duration-700 ease-out inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-light shadow-[0_0_24px_rgba(255,107,26,0.35)] backdrop-blur-md">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 text-brand-light">
+                <path d="M12 2.5 13.9 9l6.6.1-5.3 4 2 6.4L12 15.8 6.8 19.5l2-6.4-5.3-4L10.1 9 12 2.5z"/>
+            </svg>
+            TECVERSE 26-27 NOV 2026
+        </span>
+
+        <h1 data-hero-reveal
+            class="opacity-0 translate-y-8 delay-150 transition-all duration-700 ease-out mt-6 text-[34px] font-extrabold leading-[1.05] tracking-tight text-white [text-shadow:0_8px_30px_rgba(0,0,0,0.45)] md:text-[46px] lg:text-[60px]">
+            Driving Progress <br>
+            <span class="text-white">Through Innovation</span><br>
+        </h1>
+
+        <!-- <p data-hero-reveal
+           class="opacity-0 translate-y-6 delay-300 transition-all duration-700 ease-out mt-8 max-w-[700px] text-base leading-[1.8] text-white/[0.95] [text-shadow:0_2px_10px_rgba(0,0,0,0.35)] sm:text-[20px]"
+           th:text="#{hero.subtitle}">
+            TECVERSE 2026 brings together researchers, innovators, startups, academia, industry leaders, and government organizations to shape the future of technology.
+        </p> -->
+
+    </div>
+
+    <div data-hero-reveal
+         class="opacity-0 [transition-delay:600ms] transition-opacity duration-700 absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-2 text-white/80">
+        <span class="flex h-9 w-6 items-start justify-center rounded-full border-2 border-white/50 p-1 shadow-[0_0_16px_rgba(255,107,26,0.45)]">
+            <span class="h-2 w-1 animate-bounce rounded-full bg-brand-light"></span>
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 animate-bounce text-brand-light">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+        </svg>
+    </div>
+</section>
+
+<!-- Thematic Areas -->
+<section id="thematic-areas" class="thematic-section">
+    <div class="container position-relative">
+        <div class="thematic-panel text-center mx-auto" data-reveal="fade-up">
+            <h2 class="section-heading thematic-title" th:text="#{thematic.heading}">THEMATIC AREASs</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            <p class="thematic-lead mx-auto" th:utext="#{thematic.subheading}">Our work spans cutting-edge domains, addressing real-world challenges across strategic</p>
+        </div>
+
+        <div class="thematic-grid-wrap">
+            <!-- Row 1: first 8 areas -->
+            <div class="thematic-row thematic-row-wide" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(0, 8)}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: next 8 areas -->
+            <div class="thematic-row thematic-row-wide" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(8, 16)}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: remaining areas, centered -->
+            <div class="thematic-row thematic-row-centered" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(16, thematicAreas.size())}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragments/about-section :: about-section}"></div>
+
+<div th:replace="~{fragments/exhibitors :: exhibitors}"></div>
+
+<div th:replace="~{fragments/venue :: venue}"></div>
+
+<div th:replace="~{fragments/speakers :: speakers}"></div>
+
+<div th:replace="~{fragments/testimonials :: testimonials}"></div>
+
+<div th:replace="~{fragments/organizers :: organizers}"></div>
+
+<div th:replace="~{fragments/media-coverage :: media-coverage}"></div>
+
+<div th:replace="~{fragments/faq :: faq}"></div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/hero.js}"></script>
+<script th:src="@{/js/about-section.js}"></script>
+<script th:src="@{/js/testimonials.js}"></script>
+</body>
+</html>

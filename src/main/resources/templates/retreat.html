@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${retreat.badge()} + ' | TECVERSE'">CDAC Annual Retreat | TECVERSE</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = { corePlugins: { preflight: false } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="retreat-page" th:classappend="' retreat-page--' + ${retreat.accent()}">
+
+<div th:replace="~{fragments/navbar :: navbar('retreat')}"></div>
+
+<main>
+    <section class="retreat-hero" aria-labelledby="retreat-hero-title">
+        <img class="retreat-hero__image" th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' technology conference visual'">
+        <div class="retreat-hero__shade" aria-hidden="true"></div>
+        <div class="container retreat-hero__inner">
+            <div class="retreat-hero__copy" data-reveal="fade-up">
+                <span class="retreat-badge" th:text="${retreat.badge()}">CDAC Annual Retreat 2026</span>
+                <h1 id="retreat-hero-title" th:text="${retreat.heading()}">Building India's Digital Future</h1>
+                <strong th:text="${retreat.subheading()}">Empowering Innovation for a Self-Reliant Digital Nation</strong>
+                <p th:text="${retreat.description()}">Retreat description.</p>
+                <div class="retreat-hero__actions">
+                    <a href="#retreat-gallery" class="retreat-btn retreat-btn--primary"><i class="bi bi-images"></i> View Gallery</a>
+                    <a href="#retreat-speakers" class="retreat-btn retreat-btn--ghost"><i class="bi bi-people-fill"></i> Speakers</a>
+                </div>
+            </div>
+            <aside class="retreat-hero__panel" data-reveal="fade-up" data-reveal-delay="120">
+                <span>Annual Focus</span>
+                <p th:text="${retreat.focus()}">National collaborations and emerging technologies.</p>
+                <div>
+                    <small th:each="stat : ${retreat.stats()}">
+                        <strong th:text="${stat.value()}">700+</strong>
+                        <span th:text="${stat.label()}">Participants</span>
+                    </small>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-about" aria-labelledby="retreat-about-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>About the Retreat</span>
+                <h2 id="retreat-about-title">A National Platform for Research-Led Digital Progress</h2>
+            </div>
+            <div class="retreat-prose" data-reveal="fade-up" data-reveal-delay="100">
+                <p th:each="paragraph : ${retreat.about()}" th:text="${paragraph}">About paragraph.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-stats-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Impact in Numbers</span>
+                <h2 id="retreat-stats-title" th:text="'Retreat ' + ${retreat.year()} + ' Statistics'">Retreat Statistics</h2>
+            </div>
+            <div class="retreat-stat-grid">
+                <article th:each="stat, iter : ${retreat.stats()}" class="retreat-stat-card" data-reveal="zoom" th:attr="data-reveal-delay=${iter.index * 60}">
+                    <strong th:text="${stat.value()}">700+</strong>
+                    <span th:text="${stat.label()}">Participants</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-highlights-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Event Highlights</span>
+                <h2 id="retreat-highlights-title">Experiences Designed for Technology Leadership</h2>
+            </div>
+            <div class="retreat-card-grid retreat-card-grid--four">
+                <article th:each="highlight, iter : ${retreat.highlights()}" class="retreat-feature-card" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 80}">
+                    <img th:src="${highlight.image()}" th:alt="${highlight.title()}" loading="lazy">
+                    <div>
+                        <i th:class="'bi bi-' + ${highlight.icon()}"></i>
+                        <h3 th:text="${highlight.title()}">Technology Showcase</h3>
+                        <p th:text="${highlight.description()}">Highlight description.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="retreat-gallery" class="retreat-section retreat-band" aria-labelledby="retreat-gallery-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Photo Gallery</span>
+                <h2 id="retreat-gallery-title">Retreat Moments in Focus</h2>
+            </div>
+            <div class="retreat-gallery-grid">
+                <article th:each="photo, iter : ${retreat.gallery()}" class="retreat-gallery-card" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 4) * 60}">
+                    <img th:src="${photo.image()}" th:alt="${photo.title()}" loading="lazy">
+                    <div>
+                        <h3 th:text="${photo.title()}">Research Collaboration Workshop</h3>
+                        <p th:text="${photo.description()}">Scientists exchanging ideas during collaborative sessions.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-videos-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Featured Videos</span>
+                <h2 id="retreat-videos-title">Sessions, Stories and Demonstrations</h2>
+            </div>
+            <div class="retreat-video-grid">
+                <article th:each="video, iter : ${retreat.videos()}" class="retreat-video-card" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 70}">
+                    <div class="retreat-video-card__media">
+                        <img th:src="${video.image()}" th:alt="${video.title()}" loading="lazy">
+                        <span><i class="bi bi-play-fill"></i></span>
+                    </div>
+                    <div class="retreat-video-card__body">
+                        <h3 th:text="${video.title()}">Opening Ceremony</h3>
+                        <p th:text="${video.description()}">Featured video description.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-dark" aria-labelledby="retreat-timeline-title">
+        <div class="container">
+            <div class="retreat-section-head retreat-section-head--light" data-reveal="fade-up">
+                <span>Program Timeline</span>
+                <h2 id="retreat-timeline-title">From Registration to Roadmap</h2>
+            </div>
+            <div class="retreat-timeline">
+                <article th:each="step, iter : ${retreat.timeline()}" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 5) * 50}">
+                    <span th:text="${#numbers.formatInteger(iter.index + 1, 2)}">01</span>
+                    <i th:class="'bi bi-' + ${step.icon()}"></i>
+                    <h3 th:text="${step.title()}">Registration</h3>
+                    <p th:text="${step.description()}">Timeline description.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="retreat-speakers" class="retreat-section" aria-labelledby="retreat-speakers-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Key Speakers</span>
+                <h2 id="retreat-speakers-title">Leaders Across Research, Government and Industry</h2>
+            </div>
+            <div class="retreat-speaker-grid">
+                <article th:each="speaker, iter : ${retreat.speakers()}" class="retreat-speaker-card" data-reveal="zoom" th:attr="data-reveal-delay=${(iter.index % 4) * 70}">
+                    <img th:src="${speaker.image()}" th:alt="${speaker.name()}" loading="lazy">
+                    <h3 th:text="${speaker.name()}">Dr. Rajesh Kumar</h3>
+                    <p th:text="${speaker.designation()}">Director</p>
+                    <span th:text="${speaker.organization()}">Centre for Development of Advanced Computing</span>
+                    <small th:text="${speaker.expertise()}">Artificial Intelligence Research</small>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-moments-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>Retreat Moments</span>
+                <h2 id="retreat-moments-title">The Story Behind the Sessions</h2>
+            </div>
+            <div class="retreat-moment-grid">
+                <article th:each="moment, iter : ${retreat.moments()}" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 4) * 60}">
+                    <i th:class="'bi bi-' + ${moment.icon()}"></i>
+                    <h3 th:text="${moment.title()}">Innovation</h3>
+                    <p th:text="${moment.description()}">Moment description.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-achievements-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>Achievements</span>
+                <h2 id="retreat-achievements-title">Measurable Progress for the Ecosystem</h2>
+            </div>
+            <div class="retreat-achievement-list" data-reveal="fade-up" data-reveal-delay="100">
+                <article th:each="achievement : ${retreat.achievements()}">
+                    <i class="bi bi-check2-circle"></i>
+                    <span th:text="${achievement}">Successfully showcased innovative research projects.</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-testimonials-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Testimonials</span>
+                <h2 id="retreat-testimonials-title">Voices From the Retreat</h2>
+            </div>
+            <div class="retreat-testimonial-grid">
+                <article th:each="testimonial, iter : ${retreat.testimonials()}" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 70}">
+                    <i class="bi bi-quote"></i>
+                    <p th:text="${testimonial.quote()}">Testimonial quote.</p>
+                    <strong th:text="${testimonial.name()}">Director</strong>
+                    <span th:text="${testimonial.role()}">Centre for Development of Advanced Computing</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-faq-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>FAQ</span>
+                <h2 id="retreat-faq-title">Common Questions</h2>
+            </div>
+            <div class="retreat-faq-list" data-reveal="fade-up" data-reveal-delay="100">
+                <details th:each="faq, iter : ${retreat.faqs()}" th:attr="open=${iter.index == 0 ? 'open' : null}">
+                    <summary><span th:text="${faq.title()}">Who can attend the retreat?</span><i class="bi bi-chevron-down"></i></summary>
+                    <p th:text="${faq.description()}">FAQ answer.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-cta" aria-labelledby="retreat-cta-title">
+        <div class="container" data-reveal="fade-up">
+            <span th:text="${retreat.badge()}">CDAC Annual Retreat 2026</span>
+            <h2 id="retreat-cta-title" th:text="${retreat.ctaTitle()}">Join Future Retreats</h2>
+            <p th:text="${retreat.ctaText()}">Stay connected with CDAC.</p>
+            <a class="retreat-btn retreat-btn--primary" th:href="${retreat.ctaLink()}">
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                <span th:text="${retreat.ctaLabel()}">Stay Connected with CDAC</span>
+            </a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section th:fragment="speakers" id="speakers" aria-labelledby="speakers-heading" class="relative isolate overflow-hidden bg-white">
+
+    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div class="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-brand/5 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 py-[120px] lg:px-10">
+
+        <div class="mx-auto max-w-2xl text-center" data-reveal="fade-up">
+            <!-- <span class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Our</span> -->
+            <h2 id="speakers-heading" class="mt-3 text-[24px] font-bold tracking-tight text-ink sm:text-[38px]">OUR SPEAKERS</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+                
+        <div class="mt-16 speakers-marquee">
+        <div class="speakers-track flex gap-8">
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="80">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/spe3.png}" alt="Ankur Warikoo speaking at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Ankur Warikoo</p>
+                <a href="#" aria-label="Ankur Warikoo on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="160">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/speaker1.png}" alt="Savjibhai Dholakia at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Savjibhai Dholakia</p>
+                <a href="#" aria-label="Savjibhai Dholakia on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="240">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/speke2.png}" alt="Sonu Sharma speaking at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Sonu Sharma</p>
+                <a href="#" aria-label="Sonu Sharma on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="320">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/spe3.png}" alt="Priya Nair speaking at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Priya Nair</p>
+                <a href="#" aria-label="Priya Nair on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="400">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/speaker1.png}" alt="Rahul Mehta at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Rahul Mehta</p>
+                <a href="#" aria-label="Rahul Mehta on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="480">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/speke2.png}" alt="Neha Kapoor speaking at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Neha Kapoor</p>
+                <a href="#" aria-label="Neha Kapoor on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="560">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/speaker1.png}" alt="Arjun Menon at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Arjun Menon</p>
+                <a href="#" aria-label="Arjun Menon on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="group w-56 shrink-0 text-center" data-reveal="zoom" data-reveal-delay="640">
+                <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:h-52 sm:w-52">
+                    <img th:src="@{/images/spe3.png}" alt="Kavya Iyer speaking at TECVERSE"
+                         class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+                <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Kavya Iyer</p>
+                <a href="#" aria-label="Kavya Iyer on LinkedIn"
+                   class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                        <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div style="display:contents" aria-hidden="true">
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/spe3.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Ankur Warikoo</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/speaker1.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Savjibhai Dholakia</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/speke2.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Sonu Sharma</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/spe3.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Priya Nair</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/speaker1.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Rahul Mehta</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/speke2.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Neha Kapoor</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/speaker1.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Arjun Menon</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="group w-56 shrink-0 text-center">
+                    <div class="speaker-photo-frame relative mx-auto h-44 w-44 overflow-hidden rounded-full sm:h-52 sm:w-52">
+                        <img th:src="@{/images/spe3.png}" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    </div>
+                    <p class="mt-6 text-lg font-bold uppercase tracking-wide text-ink">Kavya Iyer</p>
+                    <a href="#" tabindex="-1"
+                       class="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.74V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
