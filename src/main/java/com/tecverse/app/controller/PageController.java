@@ -168,16 +168,16 @@ public class PageController {
     private static final List<NewsItem> NEWS_ITEMS = List.of(
             new NewsItem(
                     "shri-chandubhai-virani-keynote-speaker",
-                    "Shri Chandubhai Virani Joins Tech Expo Gujarat 2026 As An Esteemed Speaker",
+                    "Shri Chandubhai Virani Joins Tech Expo Chennai 2026 As An Esteemed Speaker",
                     "18 Jun 2026",
                     "/images/about-tec.png",
-                    "Tech Expo Gujarat 2026 is proud to announce the participation of Shri Chandubhai Virani, Founder and Director of Balaji Wafers Pvt. Ltd.",
+                    "Tech Expo Chennai 2026 is proud to announce the participation of Shri Chandubhai Virani, Founder and Director of Balaji Wafers Pvt. Ltd.",
                     List.of(
-                            "Tech Expo Gujarat 2026 is proud to announce the participation of Shri Chandubhai Virani, Founder & Director of Balaji Wafers Pvt. Ltd., as an esteemed speaker for the upcoming edition of Gujarat's largest technology expo.",
-                            "A visionary entrepreneur and one of Gujarat's most respected business leaders, Chandubhai Virani has built Balaji Wafers into one of India's most recognized FMCG brands through innovation, operational excellence, and a deep understanding of market dynamics. His entrepreneurial journey continues to inspire business leaders, startups, and aspiring entrepreneurs across the country.",
-                            "As Tech Expo Gujarat 2026 embraces its theme, \"Beacon of Rising Innovation & AI,\" his presence will bring valuable perspectives on business growth, scaling operations, leadership, and adapting to an ever-evolving market landscape.",
-                            "Scheduled to take place from 27-29 November 2026 at GUCEC (GMDC Ground), Ahmedabad, Tech Expo Gujarat 2026 will bring together 15,000+ visitors, 250+ exhibitors, and 25+ speakers from across industries to explore the future of technology, innovation, and digital transformation.",
-                            "Stay tuned for more speaker announcements as we continue to build a powerful lineup of industry leaders shaping the next tech era of Gujarat."
+                            "Tech Expo Chennai 2026 is proud to announce the participation of Shri Chandubhai Virani, Founder & Director of Balaji Wafers Pvt. Ltd., as an esteemed speaker for the upcoming edition of Chennai's largest technology expo.",
+                            "A visionary entrepreneur and one of Chennai's most respected business leaders, Chandubhai Virani has built Balaji Wafers into one of India's most recognized FMCG brands through innovation, operational excellence, and a deep understanding of market dynamics. His entrepreneurial journey continues to inspire business leaders, startups, and aspiring entrepreneurs across the country.",
+                            "As Tech Expo Chennai 2026 embraces its theme, \"Beacon of Rising Innovation & AI,\" his presence will bring valuable perspectives on business growth, scaling operations, leadership, and adapting to an ever-evolving market landscape.",
+                            "Scheduled to take place from 27-29 November 2026 at GUCEC (GMDC Ground), Ahmedabad, Tech Expo Chennai 2026 will bring together 15,000+ visitors, 250+ exhibitors, and 25+ speakers from across industries to explore the future of technology, innovation, and digital transformation.",
+                            "Stay tuned for more speaker announcements as we continue to build a powerful lineup of industry leaders shaping the next tech era of Chennai."
                     )
             ),
             new NewsItem(
@@ -189,19 +189,19 @@ public class PageController {
                     List.of(
                             "The most successful tech businesses today are not the ones that outbuilt everyone else. They are the ones that partner faster, learn faster, and execute better with the right ecosystem around them.",
                             "Across industries, collaboration has become the multiplier. It helps companies reduce duplication, access new customers, and combine specialist capabilities that would take years to build alone.",
-                            "Tech Expo Gujarat 2026 is designed around that shift, bringing exhibitors, buyers, innovators, and public institutions into the same room for focused business conversations."
+                            "Tech Expo Chennai 2026 is designed around that shift, bringing exhibitors, buyers, innovators, and public institutions into the same room for focused business conversations."
                     )
             ),
             new NewsItem(
                     "gujarat-tech-evolution",
-                    "Gujarat's Tech Evolution: From Industrial Giant To Innovation Powerhouse",
+                    "Chennai's Tech Evolution: From Industrial Giant To Innovation Powerhouse",
                     "10 May 2026",
                     "/images/about.jpeg",
-                    "Gujarat has never been a state that waits. It builds, it trades, it leads, and then it reinvents.",
+                    "Chennai has never been a state that waits. It builds, it trades, it leads, and then it reinvents.",
                     List.of(
-                            "Gujarat has never been a state that waits. It builds, it trades, it leads, and then it reinvents. From industrial output to intelligent enterprise, the state is moving into a new chapter.",
-                            "Its established manufacturing base, business-friendly mindset, and expanding digital infrastructure make Gujarat a natural home for technology-led transformation.",
-                            "Tech Expo Gujarat 2026 captures this momentum by connecting traditional industries with modern tools across AI, automation, cybersecurity, electronics, and digital platforms."
+                            "Chennai has never been a state that waits. It builds, it trades, it leads, and then it reinvents. From industrial output to intelligent enterprise, the state is moving into a new chapter.",
+                            "Its established manufacturing base, business-friendly mindset, and expanding digital infrastructure make Chennai a natural home for technology-led transformation.",
+                            "Tech Expo Chennai 2026 captures this momentum by connecting traditional industries with modern tools across AI, automation, cybersecurity, electronics, and digital platforms."
                     )
             ),
             new NewsItem(
@@ -215,31 +215,31 @@ public class PageController {
                             "Across industries, in boardrooms and factory floors alike, the conversation has shifted from whether to adopt AI to how fast teams can make it part of daily operations.",
                             "AI is moving from differentiator to baseline. Customers expect personalization, enterprises expect automation, and investors expect intelligent systems that can scale.",
                             "This shift is not limited to the technology industry. Manufacturing, logistics, healthcare, retail, real estate, and finance are all being reshaped by intelligent workflows.",
-                            "Gujarat's strength has always been execution. As AI rewrites the logic of every industry it touches, the next advantage will belong to organizations that combine execution with adoption.",
+                            "Chennai's strength has always been execution. As AI rewrites the logic of every industry it touches, the next advantage will belong to organizations that combine execution with adoption.",
                             "That is where platforms like Tec-Verse matter: they bring solution providers, industry adopters, and decision-makers into the same room so the conversation moves from concept to implementation."
                     )
             ),
             new NewsItem(
                     "gucec-ahmedabad-november",
-                    "Why Every Tech Business In Gujarat Needs To Be At GUCEC, A'bad This November?",
+                    "Why Every Tech Business In Chennai Needs To Be At GUCEC, A'bad This November?",
                     "18 Apr 2026",
                     "/images/img.jpeg",
-                    "Gujarat's tech landscape is shifting faster than most businesses realise. New players are emerging and demand is maturing.",
+                    "Chennai's tech landscape is shifting faster than most businesses realise. New players are emerging and demand is maturing.",
                     List.of(
-                            "Gujarat's tech landscape is shifting faster than most businesses realise. New players are emerging, customers are asking sharper questions, and the market is rewarding visible expertise.",
+                            "Chennai's tech landscape is shifting faster than most businesses realise. New players are emerging, customers are asking sharper questions, and the market is rewarding visible expertise.",
                             "GUCEC, Ahmedabad brings that market together in November with the right mix of exhibitors, buyers, partners, institutions, and growth-focused conversations.",
                             "For technology businesses, presence matters. A strong booth, a clear solution story, and direct conversations can create opportunities that are difficult to unlock through digital outreach alone."
                     )
             ),
             new NewsItem(
                     "teg-ignite-2026-concludes",
-                    "TEG Ignite 2026 Concludes Successfully; Tech Expo Gujarat 2026 Launched With 55% Inventory Booked",
+                    "TEG Ignite 2026 Concludes Successfully; Tech Expo Chennai 2026 Launched With 55% Inventory Booked",
                     "10 Apr 2026",
                     "/images/cdactexh.png",
-                    "Tech Expo Gujarat successfully hosted TEG Ignite - AI & Growth Sessions, a high-impact gathering for the technology community.",
+                    "Tech Expo Chennai successfully hosted TEG Ignite - AI & Growth Sessions, a high-impact gathering for the technology community.",
                     List.of(
-                            "Tech Expo Gujarat successfully hosted TEG Ignite - AI & Growth Sessions, a high-impact gathering that brought together entrepreneurs, founders, exhibitors, and growth leaders.",
-                            "The event marked an energetic launch for Tech Expo Gujarat 2026, with 55% inventory already booked and strong interest from the regional technology ecosystem.",
+                            "Tech Expo Chennai successfully hosted TEG Ignite - AI & Growth Sessions, a high-impact gathering that brought together entrepreneurs, founders, exhibitors, and growth leaders.",
+                            "The event marked an energetic launch for Tech Expo Chennai 2026, with 55% inventory already booked and strong interest from the regional technology ecosystem.",
                             "The response signals clear demand for a focused platform where businesses can showcase capability, meet serious visitors, and build partnerships for the year ahead."
                     )
             )
