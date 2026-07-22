@@ -139,35 +139,3 @@
 
     document.addEventListener('DOMContentLoaded', initSpeakerMoreButton);
 })();
-
-(function () {
-    function initSponsorFaq() {
-        var faq = document.querySelector('[data-sponsor-faq]');
-        if (!faq) return;
-
-        var items = faq.querySelectorAll('article');
-        items.forEach(function (item) {
-            var button = item.querySelector('button');
-            if (!button) return;
-
-            button.addEventListener('click', function () {
-                var isOpen = item.classList.contains('is-open');
-
-                items.forEach(function (entry) {
-                    var entryButton = entry.querySelector('button');
-                    entry.classList.remove('is-open');
-                    if (entryButton) {
-                        entryButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                if (!isOpen) {
-                    item.classList.add('is-open');
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', initSponsorFaq);
-})();

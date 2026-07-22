@@ -183,27 +183,6 @@
 
     if (steps.length) showStep(0, { scroll: false });
 
-    /* ---------------- FAQ accordion ---------------- */
-    document.querySelectorAll(".xr-faq-question").forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const item = btn.closest(".xr-faq-item");
-            if (!item) return;
-            const answer = item.querySelector(".xr-faq-answer");
-            const wasOpen = item.classList.contains("is-open");
-
-            document.querySelectorAll(".xr-faq-item.is-open").forEach((openItem) => {
-                if (openItem !== item) {
-                    openItem.classList.remove("is-open");
-                    const openAnswer = openItem.querySelector(".xr-faq-answer");
-                    if (openAnswer) openAnswer.style.maxHeight = "";
-                }
-            });
-
-            item.classList.toggle("is-open", !wasOpen);
-            if (answer) answer.style.maxHeight = wasOpen ? "" : `${answer.scrollHeight}px`;
-        });
-    });
-
     /* ---------------- Hero / CTA stat counters ---------------- */
     const counters = document.querySelectorAll("[data-xr-counter]");
     if (counters.length) {

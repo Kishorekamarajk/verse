@@ -57,6 +57,9 @@
             <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
                 <span>About the Retreat</span>
                 <h2 id="retreat-about-title">A National Platform for Research-Led Digital Progress</h2>
+                <div class="retreat-about-image" data-reveal="fade-up" data-reveal-delay="100">
+                    <img th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' retreat highlight visual'" loading="lazy">
+                </div>
             </div>
             <div class="retreat-prose" data-reveal="fade-up" data-reveal-delay="100">
                 <p th:each="paragraph : ${retreat.about()}" th:text="${paragraph}">About paragraph.</p>
@@ -173,17 +176,19 @@
     </section>
 
     <section class="retreat-section retreat-band" aria-labelledby="retreat-moments-title">
-        <div class="container retreat-two-col">
-            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
                 <span>Retreat Moments</span>
                 <h2 id="retreat-moments-title">The Story Behind the Sessions</h2>
             </div>
-            <div class="retreat-moment-grid">
-                <article th:each="moment, iter : ${retreat.moments()}" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 4) * 60}">
-                    <i th:class="'bi bi-' + ${moment.icon()}"></i>
-                    <h3 th:text="${moment.title()}">Innovation</h3>
-                    <p th:text="${moment.description()}">Moment description.</p>
-                </article>
+            <div class="retreat-story-timeline">
+                <div class="retreat-story-item" th:each="moment, iter : ${retreat.moments()}" data-reveal="slide-right" th:attr="data-reveal-delay=${(iter.index % 4) * 80}">
+                    <div class="retreat-story-marker"><i th:class="'bi bi-' + ${moment.icon()}"></i></div>
+                    <div class="retreat-story-card">
+                        <h3 th:text="${moment.title()}">Innovation</h3>
+                        <p th:text="${moment.description()}">Moment description.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -193,6 +198,9 @@
             <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
                 <span>Achievements</span>
                 <h2 id="retreat-achievements-title">Measurable Progress for the Ecosystem</h2>
+                <div class="retreat-achievements-image" data-reveal="fade-up" data-reveal-delay="100">
+                    <img th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' retreat highlight visual'" loading="lazy">
+                </div>
             </div>
             <div class="retreat-achievement-list" data-reveal="fade-up" data-reveal-delay="100">
                 <article th:each="achievement : ${retreat.achievements()}">
@@ -221,15 +229,24 @@
     </section>
 
     <section class="retreat-section" aria-labelledby="retreat-faq-title">
-        <div class="container retreat-two-col">
-            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
                 <span>FAQ</span>
-                <h2 id="retreat-faq-title">Common Questions</h2>
+                <h2 id="retreat-faq-title" class="section-heading font-sans">Common Questions</h2>
             </div>
-            <div class="retreat-faq-list" data-reveal="fade-up" data-reveal-delay="100">
-                <details th:each="faq, iter : ${retreat.faqs()}" th:attr="open=${iter.index == 0 ? 'open' : null}">
-                    <summary><span th:text="${faq.title()}">Who can attend the retreat?</span><i class="bi bi-chevron-down"></i></summary>
-                    <p th:text="${faq.description()}">FAQ answer.</p>
+
+            <div class="mt-[68px] grid grid-cols-1 gap-x-[60px] gap-y-[9px] lg:grid-cols-2" data-reveal="fade-up" data-reveal-delay="120">
+                <details th:each="faq, iter : ${retreat.faqs()}"
+                          class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                    <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                        <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]" th:text="${faq.title()}">Who can attend the retreat?</span>
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="h-4 w-4">
+                                <path stroke-linecap="round" d="M12 5v14M5 12h14"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] sm:px-9" th:text="${faq.description()}">FAQ answer.</p>
                 </details>
             </div>
         </div>

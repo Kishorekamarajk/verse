@@ -322,22 +322,15 @@
     </div>
 </section>
 
-<nav class="contact-social-rail" aria-label="Social media links">
-    <a href="https://www.facebook.com/TechExpoGujarat" target="_blank" class="contact-social-rail__facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-    <a href="https://www.linkedin.com/company/techexpogujarat" target="_blank" class="contact-social-rail__linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-    <a href="https://www.instagram.com/techexpogujarat/" target="_blank" class="contact-social-rail__instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-    <a href="https://www.youtube.com/@TechExpoGujarat" target="_blank" class="contact-social-rail__youtube" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-</nav>
-
 <section class="contact-info-strip" aria-label="Contact details">
     <div class="container">
         <div class="contact-info">
-            <span class="contact-info__icon contact-info__icon--red"><i class="bi bi-envelope-fill"></i></span>
+            <span class="contact-info__icon contact-info__icon--brand"><i class="bi bi-envelope-fill"></i></span>
             <h2>Email</h2>
             <p>**************@cdac.in</p>
         </div>
         <div class="contact-info">
-            <span class="contact-info__icon contact-info__icon--blue"><i class="bi bi-geo-alt-fill"></i></span>
+            <span class="contact-info__icon contact-info__icon--govt"><i class="bi bi-geo-alt-fill"></i></span>
             <h2>Venue Office</h2>
             <p>
                 <strong>8th Floor, D Block (North & South),</strong><br>
@@ -346,7 +339,7 @@
             </p>
         </div>
         <div class="contact-info">
-            <span class="contact-info__icon contact-info__icon--green"><i class="bi bi-telephone-fill"></i></span>
+            <span class="contact-info__icon contact-info__icon--navy"><i class="bi bi-telephone-fill"></i></span>
             <h2>Phone</h2>
             <p>+91 ***** *****</p>
         </div>
@@ -355,9 +348,9 @@
 
 <section class="contact-page">
     <div class="container contact-layout">
-        <div class="contact-event">
+        <aside class="contact-event">
             <span class="contact-event__badge">Event Help Desk</span>
-            <h1>Tec-Verse 2026</h1>
+            <h2>Tec-Verse 2026</h2>
             <span class="accent-line"></span>
             <p class="contact-event__subtitle">Beacon of Rising Tech Innovation &amp; AI</p>
 
@@ -368,80 +361,69 @@
                 </div>
                 <div class="contact-event__item">
                     <span><i class="bi bi-geo-alt-fill"></i></span>
-                    <p>CDAC</p>
-                </div>
-                <div class="contact-event__item">
-                    <span><i class="bi bi-telephone-fill"></i></span>
-                    <p>+91 ***** *****</p>
-                </div>
-                <div class="contact-event__item">
-                    <span><i class="bi bi-envelope-fill"></i></span>
-                    <p>***********@cdac.in</p>
+                    <p>CDAC, Chennai</p>
                 </div>
             </div>
 
             <div class="contact-event__actions">
-                <a th:href="@{/exhibitor-registration}" class="btn btn-contact-outline">Book Your Stall</a>
-                <a th:href="@{/inquiry}" class="btn btn-contact-outline">Become Sponsor</a>
+                <a th:href="@{/exhibitor-registration}" class="btn-contact-outline">Book Your Stall</a>
+                <a th:href="@{/inquiry}" class="btn-contact-outline">Become Sponsor</a>
             </div>
 
             <div class="contact-event__social">
-                <span>Follow us:</span>
+                <span>Follow us</span>
                 <a href="https://www.facebook.com/TechExpoGujarat" target="_blank" class="social-dot social-dot--facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                 <a href="https://www.linkedin.com/company/techexpogujarat" target="_blank" class="social-dot social-dot--linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                 <a href="https://www.instagram.com/techexpogujarat/" target="_blank" class="social-dot social-dot--instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                 <a href="https://www.youtube.com/@TechExpoGujarat" target="_blank" class="social-dot social-dot--youtube" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
             </div>
-
-            <img th:src="@{/images/tecverselogo.png}" alt="" class="contact-event__mark" aria-hidden="true">
-        </div>
+        </aside>
 
         <form th:action="@{/inquiry}" th:object="${inquiry}" method="post" class="contact-form contact-form--panel">
-            <span class="contact-form__corner" aria-hidden="true"></span>
-            <h2>Interested In</h2>
+            <span class="contact-form__icon"><i class="bi bi-send-fill"></i></span>
+            <h2>Send Us a Message</h2>
             <span class="accent-line"></span>
             <p>Let's talk about what you want to accomplish and how we can make it happen.</p>
 
             <div class="form-row">
-                <label>Name*</label>
-                <input type="text" th:field="*{name}" placeholder="Name*" />
+                <label for="contact-name">Full Name*</label>
+                <input id="contact-name" type="text" th:field="*{name}" placeholder="Your full name" />
                 <small class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
             </div>
-            <div class="form-row">
-                <label>Email*</label>
-                <input type="email" th:field="*{email}" placeholder="Email*" />
-                <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+            <div class="form-row-group">
+                <div class="form-row">
+                    <label for="contact-email">Email*</label>
+                    <input id="contact-email" type="email" th:field="*{email}" placeholder="you@company.com" />
+                    <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                </div>
+                <div class="form-row">
+                    <label for="contact-phone">Phone Number</label>
+                    <input id="contact-phone" type="text" th:field="*{phone}" placeholder="+91 00000 00000" />
+                </div>
+            </div>
+            <div class="form-row-group">
+                <div class="form-row">
+                    <label for="contact-company">Company Name*</label>
+                    <input id="contact-company" type="text" th:field="*{company}" placeholder="Company name" />
+                    <small class="error" th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></small>
+                </div>
+                <div class="form-row">
+                    <label for="contact-jobtitle">Job Title</label>
+                    <input id="contact-jobtitle" type="text" th:field="*{jobTitle}" placeholder="Your role" />
+                </div>
             </div>
             <div class="form-row">
-                <label>Phone Number</label>
-                <input type="text" th:field="*{phone}" placeholder="Phone Number" />
+                <label for="contact-country">Country</label>
+                <input id="contact-country" type="text" th:field="*{country}" placeholder="Country" />
             </div>
             <div class="form-row">
-                <label>Company Name*</label>
-                <input type="text" th:field="*{company}" placeholder="Company Name*" />
-                <small class="error" th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></small>
-            </div>
-            <div class="form-row">
-                <label>Job title</label>
-                <input type="text" th:field="*{jobTitle}" placeholder="Job title" />
-            </div>
-            <div class="form-row">
-                <label>Country</label>
-                <input type="text" th:field="*{country}" placeholder="Country" />
-            </div>
-            <div class="form-row">
-                <label>Describe Your Message*</label>
-                <textarea rows="3" th:field="*{message}" placeholder="Describe Your Message*"></textarea>
+                <label for="contact-message">Message*</label>
+                <textarea id="contact-message" rows="4" th:field="*{message}" placeholder="Tell us what you're looking for..."></textarea>
                 <small class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></small>
             </div>
-            <button class="btn btn-contact-submit" type="submit">Submit</button>
+            <button class="btn-contact-submit" type="submit">Send Message</button>
             <p class="success" th:if="${successMessage}" th:text="${successMessage}"></p>
         </form>
-    </div>
-
-    <div class="contact-bottom-actions">
-        <a th:href="@{/exhibitor-registration}"><i class="bi bi-calendar-event-fill"></i><span>Book Your Stall</span></a>
-        <a th:href="@{/inquiry}"><i class="bi bi-credit-card-2-front-fill"></i><span>Become Sponsor</span></a>
     </div>
 </section>
 </th:block>
