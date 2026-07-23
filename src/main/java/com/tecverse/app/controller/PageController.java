@@ -366,6 +366,7 @@ public class PageController {
     @PostMapping({"/inquiry", "/inquiry.html"})
     public String submitInquiry(@Valid @ModelAttribute("inquiry") InquiryForm inquiry, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("inquirySubmitFailed", true);
             return "fragments/inquiry";
         }
 
@@ -379,6 +380,7 @@ public class PageController {
             bindingResult.rejectValue("phone", "duplicate", "This phone number is already registered.");
         }
         if (bindingResult.hasErrors()) {
+            model.addAttribute("inquirySubmitFailed", true);
             return "fragments/inquiry";
         }
 
@@ -411,6 +413,7 @@ public class PageController {
     @PostMapping({"/became-sponser", "/becamesponser", "/become-sponser", "/become-sponsor", "/becomesponsor"})
     public String submitSponsorInquiry(@Valid @ModelAttribute("inquiry") SponsorEnquiryForm inquiry, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("sponsorInquiryFailed", true);
             return "became-sponser";
         }
 
@@ -419,10 +422,12 @@ public class PageController {
 
         if (sponsorEnquiryRepository.existsByEmail(normalizedEmail)) {
             model.addAttribute("sponsorEnquiryError", "This email address is already registered.");
+            model.addAttribute("sponsorInquiryFailed", true);
             return "became-sponser";
         }
         if (sponsorEnquiryRepository.existsByPhone(normalizedPhone)) {
             model.addAttribute("sponsorEnquiryError", "This phone number is already registered.");
+            model.addAttribute("sponsorInquiryFailed", true);
             return "became-sponser";
         }
 

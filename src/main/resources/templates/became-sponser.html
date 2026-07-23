@@ -326,5 +326,31 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script th:src="@{/js/main.js}"></script>
+<script th:inline="javascript">
+    const sponsorSubmitted = /*[[${sponsorInquirySubmitted}]]*/ false;
+    const sponsorFailed = /*[[${sponsorInquiryFailed}]]*/ false;
+    const sponsorError = /*[[${sponsorEnquiryError}]]*/ null;
+
+    if (sponsorSubmitted) {
+        alert("Form submitted successfully.");
+    } else if (sponsorError) {
+        alert("Form not submitted. " + sponsorError);
+    } else if (sponsorFailed) {
+        alert("Form not submitted. Please check the form details.");
+    }
+
+    document.querySelectorAll("form").forEach((form) => {
+        form.addEventListener("invalid", () => {
+            if (form.dataset.invalidAlertShown === "true") {
+                return;
+            }
+            form.dataset.invalidAlertShown = "true";
+            alert("Form not submitted. Please check the required fields.");
+            setTimeout(() => {
+                form.dataset.invalidAlertShown = "false";
+            }, 300);
+        }, true);
+    });
+</script>
 </body>
 </html>

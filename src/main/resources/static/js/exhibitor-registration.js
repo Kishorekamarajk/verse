@@ -226,6 +226,7 @@
         const lastStep = steps.length - 1;
         for (let i = 0; i <= lastStep; i += 1) {
             if (!validateStep(i)) {
+                alert("Form not submitted. Please check the highlighted fields.");
                 showStep(i);
                 focusFirstInvalid(i);
                 return;
@@ -247,10 +248,12 @@
             const result = await response.json().catch(() => null);
 
             if (response.ok && result?.success) {
+                alert("Form submitted successfully.");
                 openModal();
                 form.reset();
                 showStep(0, { scroll: false });
             } else if (response.status === 400 && result?.data && typeof result.data === "object") {
+                alert("Form not submitted. Please check the highlighted fields.");
                 Object.entries(result.data).forEach(([fieldName, message]) => {
                     const field = form.querySelector(`[name="${fieldName}"]`);
                     if (field) setError(field, message);
@@ -262,6 +265,7 @@
                 }
             } else if (response.status === 409) {
                 const message = result?.message || "This registration already exists.";
+                alert(`Form not submitted. ${message}`);
                 const targetField = /email/i.test(message) ? emailField : /phone/i.test(message) ? phoneField : null;
                 if (targetField) {
                     showStep(1);
@@ -271,15 +275,30 @@
                     showFormError(message);
                 }
             } else {
-                showFormError(result?.message || "Something went wrong while submitting your application. Please try again.");
+                const message = result?.message || "Something went wrong while submitting your application. Please try again.";
+                alert(`Form not submitted. ${message}`);
+                showFormError(message);
             }
         } catch {
-            showFormError("Unable to reach the server. Please check your connection and try again.");
+            const message = "Unable to reach the server. Please check your connection and try again.";
+            alert(`Form not submitted. ${message}`);
+            showFormError(message);
         } finally {
             isSubmitting = false;
             setSubmitting(false);
         }
     });
+
+    form?.addEventListener("invalid", () => {
+        if (form.dataset.invalidAlertShown === "true") {
+            return;
+        }
+        form.dataset.invalidAlertShown = "true";
+        alert("Form not submitted. Please check the required fields.");
+        setTimeout(() => {
+            form.dataset.invalidAlertShown = "false";
+        }, 300);
+    }, true);
 
     form?.addEventListener("reset", () => {
         form.querySelectorAll("input, select, textarea").forEach(clearError);
