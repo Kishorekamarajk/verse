@@ -83,6 +83,10 @@
                     <i class="bi bi-check-circle-fill"></i>
                     <span>Thank you. Your sponsorship enquiry has been received.</span>
                 </div>
+                <div th:if="${sponsorEnquiryError}" class="sp-form-error" role="alert">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span th:text="${sponsorEnquiryError}"></span>
+                </div>
                 <div class="sp-field">
                     <label for="sponsorCompany">Company</label>
                     <input id="sponsorCompany" name="company" type="text" required>

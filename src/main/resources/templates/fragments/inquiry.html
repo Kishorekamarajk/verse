@@ -59,18 +59,22 @@
                         <label>
                             <span>Full Name*</span>
                             <input type="text" th:field="*{name}" placeholder="Name*" required>
+                            <small class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
                         </label>
                         <label>
                             <span>Email Address*</span>
                             <input type="email" th:field="*{email}" placeholder="Email*" required>
+                            <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
                         </label>
                         <label>
                             <span>Mobile Number*</span>
                             <input type="tel" th:field="*{phone}" placeholder="Mobile Number*" required>
+                            <small class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
                         </label>
                         <label>
                             <span>Company Name*</span>
                             <input type="text" th:field="*{company}" placeholder="Company Name*" required>
+                            <small class="error" th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></small>
                         </label>
                         <label>
                             <span>Designation*</span>
@@ -120,6 +124,7 @@
                     <label class="exhibitor-form-message">
                         <span>Message / Remarks</span>
                         <textarea rows="3" th:field="*{message}" placeholder="Message / Remarks" required></textarea>
+                        <small class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></small>
                     </label>
 
                     <button type="submit" class="exhibitor-submit">Submit</button>
@@ -399,6 +404,7 @@
                 <div class="form-row">
                     <label for="contact-phone">Phone Number</label>
                     <input id="contact-phone" type="text" th:field="*{phone}" placeholder="+91 00000 00000" />
+                    <small class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
                 </div>
             </div>
             <div class="form-row-group">

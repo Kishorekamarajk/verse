@@ -1753,7 +1753,8 @@ section[id] h2 {
     box-shadow: 0 0 0 3px rgba(var(--brand-accent-rgb), 0.15);
 }
 
-.contact-form .error {
+.contact-form .error,
+.exhibitor-form .error {
     display: block;
     margin-top: 5px;
     color: #D93434;
@@ -4017,6 +4018,21 @@ section[id] h2 {
     border-radius: 8px;
     background: var(--gov-green-soft);
     color: var(--gov-green);
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.sp-form-error {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 48px;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(217, 52, 52, 0.28);
+    border-radius: 8px;
+    background: rgba(217, 52, 52, 0.08);
+    color: #D93434;
     font-size: 0.9rem;
     font-weight: 900;
 }

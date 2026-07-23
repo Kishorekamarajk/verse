@@ -1,7 +1,16 @@
 package com.tecverse.app.controller;
 
+import com.tecverse.app.entity.ContactUs;
+import com.tecverse.app.entity.SponsorEnquiry;
+import com.tecverse.app.repository.ContactUsRepository;
+import com.tecverse.app.repository.SponsorEnquiryRepository;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +22,11 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Controller
+@RequiredArgsConstructor
 public class PageController {
+
+    private final ContactUsRepository contactUsRepository;
+    private final SponsorEnquiryRepository sponsorEnquiryRepository;
 
     public record ThematicArea(String name, String icon) {
     }
@@ -68,13 +81,23 @@ public class PageController {
     }
 
     public static class InquiryForm {
+        @NotBlank(message = "Full name is required")
         private String name;
+
+        @NotBlank(message = "Email is required")
+        @Email(message = "Please enter a valid email address")
         private String email;
+
         private String phone;
+
+        @NotBlank(message = "Company name is required")
         private String company;
+
         private String jobTitle;
         private String country;
         private String sponsorshipInterest;
+
+        @NotBlank(message = "Message is required")
         private String message;
 
         public String getName() {
@@ -123,6 +146,84 @@ public class PageController {
 
         public void setCountry(String country) {
             this.country = country;
+        }
+
+        public String getSponsorshipInterest() {
+            return sponsorshipInterest;
+        }
+
+        public void setSponsorshipInterest(String sponsorshipInterest) {
+            this.sponsorshipInterest = sponsorshipInterest;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+
+    public static class SponsorEnquiryForm {
+        @NotBlank(message = "Company name is required")
+        private String company;
+
+        @NotBlank(message = "Name is required")
+        private String name;
+
+        private String jobTitle;
+
+        @NotBlank(message = "Email is required")
+        @Email(message = "Please enter a valid email address")
+        private String email;
+
+        @NotBlank(message = "Phone number is required")
+        private String phone;
+
+        @NotBlank(message = "Sponsorship interest is required")
+        private String sponsorshipInterest;
+
+        private String message;
+
+        public String getCompany() {
+            return company;
+        }
+
+        public void setCompany(String company) {
+            this.company = company;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getJobTitle() {
+            return jobTitle;
+        }
+
+        public void setJobTitle(String jobTitle) {
+            this.jobTitle = jobTitle;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
         }
 
         public String getSponsorshipInterest() {
@@ -262,15 +363,82 @@ public class PageController {
         return "fragments/inquiry";
     }
 
+    @PostMapping({"/inquiry", "/inquiry.html"})
+    public String submitInquiry(@Valid @ModelAttribute("inquiry") InquiryForm inquiry, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "fragments/inquiry";
+        }
+
+        String normalizedEmail = inquiry.getEmail().trim().toLowerCase();
+        String normalizedPhone = blankToNull(inquiry.getPhone());
+
+        if (contactUsRepository.existsByEmail(normalizedEmail)) {
+            bindingResult.rejectValue("email", "duplicate", "This email address is already registered.");
+        }
+        if (normalizedPhone != null && contactUsRepository.existsByPhoneNumber(normalizedPhone)) {
+            bindingResult.rejectValue("phone", "duplicate", "This phone number is already registered.");
+        }
+        if (bindingResult.hasErrors()) {
+            return "fragments/inquiry";
+        }
+
+        ContactUs contactUs = ContactUs.builder()
+                .fullName(inquiry.getName().trim())
+                .email(normalizedEmail)
+                .phoneNumber(normalizedPhone)
+                .companyName(inquiry.getCompany().trim())
+                .jobTitle(blankToNull(inquiry.getJobTitle()))
+                .country(blankToNull(inquiry.getCountry()))
+                .message(inquiry.getMessage().trim())
+                .build();
+        contactUsRepository.save(contactUs);
+
+        model.addAttribute("successMessage", "Thanks for reaching out! Our team will get back to you shortly.");
+        model.addAttribute("inquiry", new InquiryForm());
+        return "fragments/inquiry";
+    }
+
+    private static String blankToNull(String value) {
+        return (value == null || value.isBlank()) ? null : value.trim();
+    }
+
     @GetMapping({"/became-sponser", "/becamesponser", "/become-sponser", "/become-sponsor", "/becomesponsor"})
     public String becomeSponsor(Model model) {
-        model.addAttribute("inquiry", new InquiryForm());
+        model.addAttribute("inquiry", new SponsorEnquiryForm());
         return "became-sponser";
     }
 
     @PostMapping({"/became-sponser", "/becamesponser", "/become-sponser", "/become-sponsor", "/becomesponsor"})
-    public String submitSponsorInquiry(@ModelAttribute("inquiry") InquiryForm inquiry, Model model) {
+    public String submitSponsorInquiry(@Valid @ModelAttribute("inquiry") SponsorEnquiryForm inquiry, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "became-sponser";
+        }
+
+        String normalizedEmail = inquiry.getEmail().trim().toLowerCase();
+        String normalizedPhone = inquiry.getPhone().trim();
+
+        if (sponsorEnquiryRepository.existsByEmail(normalizedEmail)) {
+            model.addAttribute("sponsorEnquiryError", "This email address is already registered.");
+            return "became-sponser";
+        }
+        if (sponsorEnquiryRepository.existsByPhone(normalizedPhone)) {
+            model.addAttribute("sponsorEnquiryError", "This phone number is already registered.");
+            return "became-sponser";
+        }
+
+        SponsorEnquiry sponsorEnquiry = SponsorEnquiry.builder()
+                .company(inquiry.getCompany().trim())
+                .name(inquiry.getName().trim())
+                .designation(blankToNull(inquiry.getJobTitle()))
+                .email(normalizedEmail)
+                .phone(normalizedPhone)
+                .sponsorshipInterest(inquiry.getSponsorshipInterest().trim())
+                .message(blankToNull(inquiry.getMessage()))
+                .build();
+        sponsorEnquiryRepository.save(sponsorEnquiry);
+
         model.addAttribute("sponsorInquirySubmitted", true);
+        model.addAttribute("inquiry", new SponsorEnquiryForm());
         return "became-sponser";
     }
 

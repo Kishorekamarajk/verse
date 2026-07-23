@@ -3,6 +3,46 @@
     const modal = document.getElementById("registrationSuccessModal");
     const modalClose = modal?.querySelector("[data-modal-close]");
 
+    /* ---------------- Backend integration helpers ---------------- */
+    const submitButton = form?.querySelector('button[type="submit"]');
+    const submitButtonDefaultHtml = submitButton?.innerHTML;
+
+    const setSubmitting = (isSubmitting) => {
+        if (!submitButton) return;
+        submitButton.disabled = isSubmitting;
+        submitButton.setAttribute("aria-busy", String(isSubmitting));
+        submitButton.innerHTML = isSubmitting
+            ? '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...'
+            : submitButtonDefaultHtml;
+    };
+
+    const showFormError = (message) => {
+        if (!form) return;
+        let banner = form.querySelector("#formSubmitError");
+        if (!banner) {
+            banner = document.createElement("p");
+            banner.id = "formSubmitError";
+            banner.className = "xr-field-error is-visible";
+            banner.setAttribute("role", "alert");
+            banner.style.textAlign = "center";
+            banner.style.marginBottom = "1rem";
+            form.insertBefore(banner, form.firstChild);
+        }
+        banner.textContent = message;
+    };
+
+    const clearFormError = () => {
+        form?.querySelector("#formSubmitError")?.remove();
+    };
+
+    const debounce = (fn, delay = 400) => {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
+        };
+    };
+
     /* ---------------- Multi-step form ---------------- */
     const steps = Array.from(document.querySelectorAll(".xr-step"));
     const progressSteps = Array.from(document.querySelectorAll(".xr-progress-step"));
@@ -56,6 +96,7 @@
     };
 
     const GST_PATTERN = /^\d{2}[A-Z]{5}\d{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+    const LINKEDIN_PATTERN = /^https?:\/\/([a-zA-Z]{2,3}\.)?linkedin\.com\/.*$/i;
 
     const validateField = (field) => {
         if (!field.id) return true;
@@ -90,6 +131,11 @@
             return false;
         }
 
+        if (field.id === "linkedin" && !LINKEDIN_PATTERN.test(value)) {
+            setError(field, "Please enter a valid LinkedIn profile URL.");
+            return false;
+        }
+
         return true;
     };
 
@@ -103,6 +149,29 @@
         const firstInvalid = steps[index]?.querySelector("[aria-invalid='true']");
         firstInvalid?.focus();
     };
+
+    /* ---------------- AJAX duplicate email/phone check ---------------- */
+    const checkDuplicate = async (field, endpoint, paramName) => {
+        const value = field.value.trim();
+        if (!value || !validateField(field)) return;
+        try {
+            const response = await fetch(`${endpoint}?${paramName}=${encodeURIComponent(value)}`, {
+                headers: { Accept: "application/json" },
+            });
+            if (!response.ok) return;
+            const body = await response.json();
+            if (body?.data === true) {
+                setError(field, body.message || "This value is already registered.");
+            }
+        } catch {
+            /* Non-fatal: the authoritative duplicate check still runs server-side on submit. */
+        }
+    };
+
+    const emailField = document.getElementById("email");
+    const phoneField = document.getElementById("phone");
+    emailField?.addEventListener("blur", debounce(() => checkDuplicate(emailField, "/check-email", "email"), 200));
+    phoneField?.addEventListener("blur", debounce(() => checkDuplicate(phoneField, "/check-phone", "phone"), 200));
 
     document.querySelectorAll("[data-step-next]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -148,10 +217,13 @@
     });
 
     /* ---------------- Form submit / reset / live validation ---------------- */
-    form?.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const lastStep = steps.length - 1;
+    let isSubmitting = false;
 
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (isSubmitting) return;
+
+        const lastStep = steps.length - 1;
         for (let i = 0; i <= lastStep; i += 1) {
             if (!validateStep(i)) {
                 showStep(i);
@@ -160,9 +232,53 @@
             }
         }
 
-        openModal();
-        form.reset();
-        showStep(0, { scroll: false });
+        clearFormError();
+        isSubmitting = true;
+        setSubmitting(true);
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        try {
+            const response = await fetch("/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const result = await response.json().catch(() => null);
+
+            if (response.ok && result?.success) {
+                openModal();
+                form.reset();
+                showStep(0, { scroll: false });
+            } else if (response.status === 400 && result?.data && typeof result.data === "object") {
+                Object.entries(result.data).forEach(([fieldName, message]) => {
+                    const field = form.querySelector(`[name="${fieldName}"]`);
+                    if (field) setError(field, message);
+                });
+                const firstInvalidStep = steps.findIndex((step) => step.querySelector("[aria-invalid='true']"));
+                if (firstInvalidStep >= 0) {
+                    showStep(firstInvalidStep);
+                    focusFirstInvalid(firstInvalidStep);
+                }
+            } else if (response.status === 409) {
+                const message = result?.message || "This registration already exists.";
+                const targetField = /email/i.test(message) ? emailField : /phone/i.test(message) ? phoneField : null;
+                if (targetField) {
+                    showStep(1);
+                    setError(targetField, message);
+                    targetField.focus();
+                } else {
+                    showFormError(message);
+                }
+            } else {
+                showFormError(result?.message || "Something went wrong while submitting your application. Please try again.");
+            }
+        } catch {
+            showFormError("Unable to reach the server. Please check your connection and try again.");
+        } finally {
+            isSubmitting = false;
+            setSubmitting(false);
+        }
     });
 
     form?.addEventListener("reset", () => {
