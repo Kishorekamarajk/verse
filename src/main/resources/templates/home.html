@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{home.title}">Tec-Verse | Home</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Tailwind CSS (footer component only) - preflight disabled so it doesn't reset the Bootstrap-based page above the footer -->
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="home-page">
+
+<!-- Tec-Verse intro: 3s splash -> live Nov 26 countdown for 4s -> home -->
+<div id="site-intro" class="site-intro" aria-label="Tec-Verse introduction">
+    <div class="site-intro__splash">
+        <div class="site-intro__splash-grid" aria-hidden="true"></div>
+        <div class="site-intro__splash-glow site-intro__splash-glow--one" aria-hidden="true"></div>
+        <div class="site-intro__splash-glow site-intro__splash-glow--two" aria-hidden="true"></div>
+        <div class="site-intro__splash-content">
+            <div class="site-intro__splash-eyebrow">26.11.2026 is </div>
+            <div class="site-intro__splash-word">TEC-VERSE</div>
+            <div class="site-intro__splash-date">DAY</div>
+        </div>
+    </div>
+
+    <div id="site-intro-countdown-panel" class="site-intro__countdown-panel" aria-hidden="true">
+        <div class="site-intro__countdown-label">TEC-VERSE STARTS IN</div>
+        <div class="site-intro__countdown-grid">
+            <div class="site-intro__time-unit"><div id="cd-days" class="site-intro__time-value">00</div><div class="site-intro__time-label">DAYS</div></div>
+            <div class="site-intro__time-unit"><div id="cd-hours" class="site-intro__time-value">00</div><div class="site-intro__time-label">HOURS</div></div>
+            <div class="site-intro__time-unit"><div id="cd-minutes" class="site-intro__time-value">00</div><div class="site-intro__time-label">MINUTES</div></div>
+            <div class="site-intro__time-unit"><div id="cd-seconds" class="site-intro__time-value">00</div><div class="site-intro__time-label">SECONDS</div></div>
+        </div>
+        <div class="site-intro__event-date">Start on 26 NOVEMBER 2026 </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/navbar :: navbar('home')}"></div>
+
+<div th:replace="~{fragments/floating-actions :: floating-actions}"></div>
+
+<!-- Hero -->
+<section class="hero-section relative isolate flex h-screen w-screen items-center justify-center overflow-hidden bg-black text-white">
+
+    <!-- Background video -->
+    <div data-hero-video-wrap class="pointer-events-none absolute inset-0 overflow-hidden opacity-0 brightness-[1.05] contrast-[1.05] saturate-[1.08] transition-opacity duration-[1400ms] ease-out">
+        <iframe data-hero-video
+                src="https://www.youtube.com/embed/DHZ8p0F0_lQ?autoplay=1&mute=1&loop=1&playlist=DHZ8p0F0_lQ&controls=0&playsinline=1&modestbranding=1&rel=0"
+                allow="autoplay; encrypted-media; fullscreen"
+                frameborder="0"
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        </iframe>
+    </div>
+
+    <!-- Single clean scrim: dark only where the content sits, clear at the top so the video reads on its own -->
+    <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/90 via-black/25 to-transparent" aria-hidden="true"></div>
+
+    <!-- One quiet accent glow, bottom-left, instead of scattered particles -->
+    <div class="pointer-events-none absolute -bottom-24 -left-24 z-[1] h-[420px] w-[420px] rounded-full bg-brand/25 blur-[110px]" aria-hidden="true"></div>
+
+    <!-- Content: anchored low, left-aligned, off a vertical rule — reads calm, not busy -->
+    <div class="hero-content relative z-10 w-full pl-6 sm:pl-10 md:pl-16 lg:pl-24">
+        <div class="flex max-w-[760px] flex-col items-start text-left">
+
+            <span data-hero-reveal class="hero-kicker opacity-0 translate-y-3 transition-all duration-700 ease-out flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.32em] text-white/70">
+                <span class="hero-kicker__dot"></span>
+                <span th:text="#{hero.badge}">TECVERSE 26-27 NOV 2026</span>
+            </span>
+
+            <h1 data-hero-reveal
+                class="opacity-0 translate-y-6 delay-150 transition-all duration-700 ease-out mt-5 text-[40px] font-extrabold leading-[1.06] tracking-tight text-white md:text-[56px] lg:text-[72px]">
+                <span th:text="#{hero.title.line1}">Driving Progress</span>
+                <span class="block text-white/55" th:text="#{hero.title.line2}">Through Innovation</span>
+            </h1>
+
+            <!-- Slim horizontal countdown rail instead of a boxed card -->
+            <div data-hero-reveal class="hero-rail mt-8 flex w-full flex-wrap items-center gap-x-8 gap-y-4 opacity-0 translate-y-4 transition-all duration-700 ease-out" data-reveal-delay="300" data-event-countdown>
+                <div class="hero-rail__group flex items-baseline gap-5">
+                    <div class="hero-rail__unit"><strong data-event-days>00</strong><span>Days</span></div>
+                    <div class="hero-rail__unit"><strong data-event-hours>00</strong><span>Hrs</span></div>
+                    <div class="hero-rail__unit"><strong data-event-minutes>00</strong><span>Min</span></div>
+                    <div class="hero-rail__unit"><strong data-event-seconds>00</strong><span>Sec</span></div>
+                </div>
+                <div class="hero-rail__divider" aria-hidden="true"></div>
+                <div class="hero-rail__date text-[13px] text-white/60">26 November 2026 · Chennai Trade Centre</div>
+            </div>
+
+            <div class="hero-event-live mt-6 hidden items-center gap-2 text-sm" data-event-live hidden>
+                <span class="hero-event-live__dot"></span>
+                <span class="font-semibold">TEC-VERSE IS LIVE</span>
+                <small class="text-white/60">Chennai Trade Centre</small>
+            </div>
+
+            <!-- CTA row -->
+            <div data-hero-reveal class="mt-9 flex items-center gap-4 opacity-0 translate-y-4 transition-all duration-700 ease-out" data-reveal-delay="420">
+                <a class="hero-cta-primary" th:href="@{/become-sponsor}">
+                    <span>Become a Sponsor</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+                <a class="hero-cta-ghost" th:href="@{/register}">
+                    <span>Register</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll cue, kept minimal -->
+    <div data-hero-reveal
+         class="opacity-0 [transition-delay:700ms] transition-opacity duration-700 absolute right-8 bottom-8 z-10 hidden flex-col items-center gap-2 text-white/50 md:flex">
+        <span class="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <span class="hero-scroll-line"></span>
+    </div>
+</section>
+
+<style>
+    /* ================= Unique, quieter hero treatment ================= */
+
+    .hero-kicker__dot{
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #F47A20;
+        box-shadow: 0 0 0 0 rgba(244,122,32,.55);
+        animation: kickerPing 2.4s ease-out infinite;
+    }
+    @keyframes kickerPing{
+        0%   { box-shadow: 0 0 0 0 rgba(244,122,32,.55); }
+        70%  { box-shadow: 0 0 0 8px rgba(244,122,32,0); }
+        100% { box-shadow: 0 0 0 0 rgba(244,122,32,0); }
+    }
+
+    /* Slim countdown rail — no box, just typography + a hairline divider */
+    .hero-rail__unit{
+        display: flex;
+        align-items: baseline;
+        gap: .35rem;
+    }
+    .hero-rail__unit strong{
+        font-family: 'Inter', sans-serif;
+        font-size: 2.6rem;
+        font-weight: 800;
+        line-height: 1;
+        color: #fff;
+        font-variant-numeric: tabular-nums;
+    }
+    .hero-rail__unit span{
+        font-size: .78rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.5);
+    }
+    .hero-rail__divider{
+        width: 1px;
+        height: 28px;
+        background: rgba(255,255,255,.18);
+    }
+    @media (max-width: 560px){
+        .hero-rail__divider{ display:none; }
+    }
+
+    .hero-event-live__dot{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #35AA75;
+        box-shadow: 0 0 0 0 rgba(53,170,117,.6);
+        animation: kickerPing 1.8s ease-out infinite;
+        display: inline-block;
+    }
+
+    /* CTAs: one solid, one ghost — clear hierarchy, minimal chrome */
+    .hero-cta-primary{
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: 1rem 1.85rem;
+        border-radius: 999px;
+        background: #fff;
+        color: #07182F;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        box-shadow: 0 10px 24px -10px rgba(0,0,0,.5);
+    }
+    .hero-cta-primary:hover{
+        transform: translateY(-2px);
+        background: #FFF6EF;
+        box-shadow: 0 14px 30px -8px rgba(0,0,0,.55);
+    }
+    .hero-cta-primary i{
+        transition: transform .25s ease;
+    }
+    .hero-cta-primary:hover i{
+        transform: translate(2px, -2px);
+    }
+
+    .hero-cta-ghost{
+        display: inline-flex;
+        align-items: center;
+        padding: 1rem 1.85rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.35);
+        color: #fff;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: border-color .25s ease, background .25s ease;
+    }
+    .hero-cta-ghost:hover{
+        border-color: rgba(255,255,255,.7);
+        background: rgba(255,255,255,.08);
+    }
+
+    .hero-scroll-line{
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(to bottom, rgba(255,255,255,.7), transparent);
+        animation: scrollLineMove 2s ease-in-out infinite;
+    }
+    @keyframes scrollLineMove{
+        0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+        40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+        60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+        100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+        .hero-kicker__dot,
+        .hero-event-live__dot,
+        .hero-scroll-line{
+            animation: none !important;
+        }
+    }
+</style>
+
+<div th:replace="~{fragments/stats-bar :: stats-bar}"></div>
+
+<div th:replace="~{fragments/about-section :: about-section}"></div>
+
+<!-- Thematic Areas -->
+<section id="thematic-areas" class="thematic-section">
+    <div class="container position-relative">
+        <div class="thematic-panel text-center mx-auto" data-reveal="fade-up">
+            <h2 class="section-heading thematic-title" th:text="#{thematic.heading}">THEMATIC AREAS</h2>
+            <span class="section-heading-rule" aria-hidden="true"><span></span><span></span><span></span></span>
+            <p class="thematic-lead mx-auto" th:utext="#{thematic.subheading}">Our work spans cutting-edge domains, addressing real-world challenges across strategic</p>
+        </div>
+
+        <div class="thematic-grid-wrap">
+            <!-- Row 1: first 8 areas -->
+            <div class="thematic-row thematic-row-wide" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(0, 8)}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: next 8 areas -->
+            <div class="thematic-row thematic-row-wide" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(8, 16)}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: remaining areas, centered -->
+            <div class="thematic-row thematic-row-centered" data-reveal="fade-up">
+                <div th:each="area, areaStat : ${thematicAreas.subList(16, thematicAreas.size())}">
+                    <div class="thematic-card" data-reveal="fade-up" th:attr="data-reveal-delay=${areaStat.index * 50}">
+                        <div class="thematic-card-icon">
+                            <i th:class="|bi bi-${area.icon()}|"></i>
+                        </div>
+                        <span class="thematic-card-label" th:text="${area.name()}">Quantum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{fragments/guests-dates :: guests-dates}"></div>
+
+<div th:replace="~{fragments/speakers :: speakers}"></div>
+
+<div th:replace="~{fragments/exhibitors :: exhibitors}"></div>
+
+<div th:replace="~{fragments/venue :: venue}"></div>
+
+<!-- <div th:replace="~{fragments/schedule-section:: schedule-section}"></div> -->
+
+<!-- <div th:replace="~{fragments/speakers :: speakers}"></div> -->
+
+
+<div th:replace="~{fragments/organizers :: organizers}"></div>
+
+<div th:replace="~{fragments/testimonials :: testimonials}"></div>
+
+<div th:replace="~{fragments/media-coverage :: media-coverage}"></div>
+
+<div th:replace="~{fragments/faq :: faq}"></div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/hero.js}"></script>
+<script th:src="@{/js/stats-bar.js}"></script>
+<script th:src="@{/js/about-section.js}"></script>
+<script th:src="@{/js/testimonials.js}"></script>
+    <script th:src="@{/js/site-intro.js}"></script>
+<script th:src="@{/js/event-countdown.js}"></script>
+</body>
+</html>
