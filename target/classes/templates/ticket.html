@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Your Ticket | TEC-VERSE 2026</title>
+<link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/ticket-registration.css}">
+</head>
+<body class="ticket-page no-hero">
+<div th:replace="~{fragments/navbar :: navbar('ticket')}"></div>
+<main>
+<section class="tr-hero">
+  <div class="tr-hero-orb tr-hero-orb--1"></div>
+  <div class="tr-hero-orb tr-hero-orb--2"></div>
+  <div class="tr-hero-orb tr-hero-orb--3"></div>
+  <div class="tr-hero-grid"></div>
+  <div class="container">
+  <div class="tr-hero-card"><div><span class="tr-kicker">TEC-VERSE 2026</span>
+  <h1>Book Your Ticket</h1><p>One unified registration for Academia, Central Government, State Government, Industry and Startups.</p>
+  <div class="tr-event-meta"><span><i class="bi bi-calendar-event"></i> 26 &amp; 27 November 2026</span><span><i class="bi bi-geo-alt"></i> Chennai Trade Centre</span></div></div>
+  <img th:src="@{/images/trade.png}" alt="Chennai Trade Centre"></div>
+</div></section>
+
+<section class="tr-shell"><div class="container">
+<div class="tr-card">
+  <div class="tr-progress">
+    <div class="tr-progress-track"><div class="tr-progress-fill" id="progressFill"></div></div>
+    <div class="tr-step active" data-step-dot="1"><b>1</b><span>Verify</span></div><i></i><div class="tr-step" data-step-dot="2"><b>2</b><span>Details</span></div><i></i><div class="tr-step" data-step-dot="3"><b>3</b><span>Preview</span></div><i></i><div class="tr-step" data-step-dot="4"><b>4</b><span>Complete</span></div>
+  </div>
+
+  <div id="trOverlay" class="tr-overlay" hidden><div class="tr-overlay-spinner"></div><span id="trOverlayText">Working on it…</span></div>
+
+  <div class="tr-view" data-view="verify">
+    <div class="tr-heading"><span class="tr-icon"><i class="bi bi-shield-lock"></i></span><div><h2>Verify your email</h2><p>Your account is <strong>not created</strong> at this stage. We only verify the email so an abandoned form never creates an account.</p></div></div>
+    <div class="tr-grid">
+      <label>Name as per Official ID Card<input id="verifyName" type="text" autocomplete="name" placeholder="Full name exactly as on ID" required></label>
+      <label>Email address<input id="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+      <label>Phone number<input id="phone" type="tel" autocomplete="tel" placeholder="+91 9876543210" required></label>
+    </div>
+    <div class="tr-actions"><button id="sendOtp" class="tr-primary">Send OTP <i class="bi bi-arrow-right"></i></button></div>
+    <div id="otpBox" class="tr-otp" hidden><p>Enter the 6-digit OTP sent to <strong id="otpEmail"></strong>.</p>
+      <div class="tr-otp-inputs"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"></div>
+      <button id="verifyOtp" class="tr-primary">Verify &amp; Continue</button><button id="resendOtp" class="tr-link" type="button">Resend OTP</button>
+    </div>
+    <div id="verifyMsg" class="tr-msg"></div>
+  </div>
+
+  <form id="detailsForm" class="tr-view" data-view="details" hidden>
+    <div class="tr-heading"><span class="tr-icon"><i class="bi bi-person-vcard"></i></span><div><h2>Your registration details</h2><p>Enter the name exactly as shown on your official ID card.</p></div></div>
+    <div class="tr-grid">
+      <label class="full">Name as per Official ID Card<input name="officialName" required maxlength="150"></label>
+      <label>Registration category<select name="category" id="category" required><option value="">Choose category</option><option value="ACADEMIA">Academia</option><option value="CENTRAL_GOVERNMENT">Central Government</option><option value="STATE_GOVERNMENT">State Government</option><option value="INDUSTRY_STARTUP">Industry / Startup</option></select></label>
+      <label class="full">Citizenship / residency status<select name="citizenshipStatus" id="citizenship" required><option value="">Choose</option><option value="INDIAN">Indian</option><option value="NRI">NRI</option><option value="FOREIGNER">Foreigner</option></select></label>
+    </div>
+
+    <div id="conditional"></div>
+
+    <fieldset class="tr-fieldset"><legend>Attendance</legend><p>Select the day(s) you will attend.</p>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_1"> Day 1 — 26 November 2026</label>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_2"> Day 2 — 27 November 2026</label>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="BOTH"> Both days — 26 &amp; 27 November 2026</label>
+    </fieldset>
+    <div id="detailsMsg" class="tr-msg"></div>
+    <div class="tr-actions"><button type="button" id="backVerify" class="tr-secondary">Back</button><button type="submit" class="tr-primary">Review Application <i class="bi bi-arrow-right"></i></button></div>
+  </form>
+
+  <div class="tr-view" data-view="preview" hidden>
+    <div class="tr-heading"><span class="tr-icon"><i class="bi bi-clipboard-check"></i></span><div><h2>Preview your application</h2><p>Check every field before submitting. You can edit anything that is incorrect.</p></div></div>
+    <div id="preview" class="tr-preview"></div>
+    <div id="previewMsg" class="tr-msg"></div>
+    <div class="tr-actions"><button id="editForm" class="tr-secondary">Edit Details</button><button id="submitFinal" class="tr-primary">Submit Registration <i class="bi bi-check2-circle"></i></button></div>
+  </div>
+
+  <div class="tr-view tr-complete" data-view="complete" hidden>
+    <canvas id="confettiCanvas" class="tr-confetti-canvas" aria-hidden="true"></canvas>
+    <div class="tr-complete-intro">
+      <div class="tr-check-burst"><i class="bi bi-check-lg"></i></div>
+      <h2>Registration successful</h2>
+      <p>A confirmation email with the Event Timeline &amp; Visitor Guidance PDF has been sent to <span id="completeEmail"></span>.</p>
+    </div>
+
+    <div class="id-card-stage" id="idCardStage">
+      <div class="id-card" id="idCard">
+        <div class="id-card__head">
+          <div class="id-card__hole"></div>
+          <div class="id-card__top">
+            <img th:src="@{/images/tecverselogo.png}" alt="TEC-VERSE" class="id-card__logo">
+            <div class="id-card__brand"><span><b>TEC-</b>VERSE</span><small>2026</small></div>
+            <span class="id-card__category" id="cardCategory"><i class="bi bi-shield-check"></i>Delegate</span>
+          </div>
+          <div class="id-card__body">
+            <div class="id-card__avatar"><i class="bi bi-person-fill"></i></div>
+            <div class="id-card__holder">
+              <span class="id-card__label">Attendee</span>
+              <strong id="cardName">Guest</strong>
+              <span class="id-card__days"><i class="bi bi-calendar-event"></i><span id="cardDays">TEC-VERSE 2026</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="id-card__panel">
+          <div class="id-card__ref">
+            <div class="id-card__ref-label"><i class="bi bi-person-vcard"></i> Reference Number <i class="id-card__ref-line"></i></div>
+            <div class="id-card__digits" id="referenceNumber" aria-live="polite"></div>
+          </div>
+
+          <div class="id-card__grid">
+            <div class="id-card__cell">
+              <span class="id-card__chip id-card__chip--date"><i class="bi bi-calendar-event"></i></span>
+              <div><span class="id-card__cell-label">Date</span><strong>26 &amp; 27</strong><small>November 2026</small></div>
+            </div>
+            <div class="id-card__cell">
+              <span class="id-card__chip id-card__chip--venue"><i class="bi bi-geo-alt"></i></span>
+              <div><span class="id-card__cell-label">Venue</span><strong>Chennai Trade Centre</strong><small>Chennai, Tamil Nadu</small></div>
+            </div>
+          </div>
+
+          <div class="id-card__qr">
+            <svg id="cardQr" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+            <div class="id-card__qr-copy">
+              <span class="id-card__qr-title"><i class="bi bi-shield-check"></i> Show this badge</span>
+              <span class="id-card__qr-note">Present this badge (screenshot or printout) at the venue check-in desk.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="id-card__tagline"><span>Innovate</span><i></i><span>Integrate</span><i></i><span>Elevate</span></div>
+        <div class="id-card__shine"></div>
+        <div class="id-card__glow"></div>
+      </div>
+      <p class="id-card__hint"><i class="bi bi-arrows-move"></i> Tilt to explore · tap <i class="bi bi-download"></i> to save</p>
+    </div>
+
+    <div class="tr-actions tr-complete-actions">
+      <button type="button" id="downloadCard" class="tr-secondary"><i class="bi bi-download"></i> Download Badge</button>
+      <a th:href="@{/}" class="tr-primary">Back to TEC-VERSE <i class="bi bi-arrow-right"></i></a>
+    </div>
+  </div>
+</div></div></section>
+</main>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/ticket-registration.js}"></script>
+</body></html>

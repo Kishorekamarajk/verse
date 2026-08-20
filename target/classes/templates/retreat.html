@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${retreat.badge()} + ' | TECVERSE'">CDAC Annual Tec-verse | TECVERSE</title>
+    <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = { corePlugins: { preflight: false } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="retreat-page" th:classappend="' retreat-page--' + ${retreat.accent()}">
+
+<div th:replace="~{fragments/navbar :: navbar('retreat')}"></div>
+
+<main>
+    <section class="retreat-hero" aria-labelledby="retreat-hero-title">
+        <img class="retreat-hero__image" th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' technology conference visual'">
+        <div class="retreat-hero__shade" aria-hidden="true"></div>
+        <div class="container retreat-hero__inner">
+            <div class="retreat-hero__copy" data-reveal="fade-up">
+                <span class="retreat-badge" th:text="${retreat.badge()}">CDAC Annual Tec-verse 2026</span>
+                <h1 id="retreat-hero-title" th:text="${retreat.heading()}">Building India's Digital Future</h1>
+                <strong th:text="${retreat.subheading()}">Empowering Innovation for a Self-Reliant Digital Nation</strong>
+                <p th:text="${retreat.description()}">Tec-verse description.</p>
+                <div class="retreat-hero__actions">
+                    <a href="#retreat-gallery" class="retreat-btn retreat-btn--primary"><i class="bi bi-images"></i> View Gallery</a>
+                    <a href="#retreat-speakers" class="retreat-btn retreat-btn--ghost"><i class="bi bi-people-fill"></i> Speakers</a>
+                </div>
+            </div>
+            <aside class="retreat-hero__panel" data-reveal="fade-up" data-reveal-delay="120">
+                <span>Annual Focus</span>
+                <p th:text="${retreat.focus()}">National collaborations and emerging technologies.</p>
+                <div>
+                    <small th:each="stat : ${retreat.stats()}">
+                        <strong th:text="${stat.value()}">700+</strong>
+                        <span th:text="${stat.label()}">Participants</span>
+                    </small>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-about" aria-labelledby="retreat-about-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>About Tec-verse</span>
+                <h2 id="retreat-about-title">A National Platform for Research-Led Digital Progress</h2>
+                <div class="retreat-about-image" data-reveal="fade-up" data-reveal-delay="100">
+                    <img th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' Tec-verse highlight visual'" loading="lazy">
+                </div>
+            </div>
+            <div class="retreat-prose" data-reveal="fade-up" data-reveal-delay="100">
+                <p th:each="paragraph : ${retreat.about()}" th:text="${paragraph}">About paragraph.</p>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="conference-schedule" class="conference-schedule" aria-labelledby="conference-schedule-title">
+        <div class="container conference-schedule__inner">
+            <div class="conference-schedule__intro">
+                <div class="conference-schedule__reveal text-center">
+                    <span class="conference-schedule__eyebrow"><i class="bi bi-stars" aria-hidden="true"></i> Program Flow</span>
+                </div>
+                <div class="conference-schedule__reveal text-center">
+                    <h2 id="conference-schedule-title">Conference Schedule</h2>
+                </div>
+                <p class="conference-schedule__reveal">Discover an immersive Two-day experience featuring visionary keynotes, hands-on workshops, technology showcases, networking opportunities, startup presentations, and expert-led panel discussions. Every session is thoughtfully curated to inspire innovation, foster collaboration, and shape the future of technology.Opening ceremony, keynote sessions, technology showcases, startup expo, and networking opportunities.</p>
+                <!-- <ul class="conference-schedule__stats" aria-label="Conference statistics">
+                    <li><strong>2 Days</strong><span>program</span></li>
+                    <li><strong>50+</strong><span>Sessions</span></li>
+                    <li><strong>30</strong><span>Speakers</span></li>
+                    <li><strong>5000+</strong><span>Visitors</span></li>
+                </ul> -->
+            </div>
+
+            <div class="conference-schedule__program">
+                <!-- <nav class="conference-schedule__tabs" aria-label="Conference schedule days">
+                    <button class="conference-schedule__tab is-active" type="button" data-conference-tab="conference-day-01">Day 01</button>
+                    <button class="conference-schedule__tab" type="button" data-conference-tab="conference-day-02">Day 02</button>
+                </nav> -->
+
+                <div class="conference-schedule__days">
+                    <section id="conference-day-01" class="conference-schedule__day" aria-labelledby="conference-day-01-title">
+                        <header class="conference-schedule__day-head pt-5">
+                            <div class="conference-schedule__day-title">
+                                <i class="bi bi-cpu" aria-hidden="true"></i>
+                                <div>
+                                    <h3 id="conference-day-01-title">Day 01</h3>
+                                    <time datetime="2026-11-26">26 November 2026</time>
+                                </div>
+                            </div>
+                            <span class="conference-schedule__divider" aria-hidden="true"></span>
+                        </header>
+                        <div class="conference-schedule__timeline" role="region" aria-label="Day 01 sessions">
+                            <div class="conference-schedule__track">
+                                <article class="conference-schedule__card is-active">
+                                    <span class="conference-schedule__pulse" aria-hidden="true"></span>
+                                    <time datetime="09:00">09:00 AM - 10:00 AM</time>
+                                    <h4>Registration</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="10:15">10:00 AM - 10:30 AM</time>
+                                    <h4>Arrival of Guests</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="11:30">10:35 am – 10:45 am</time>
+                                    <h4>Inaugural Ceremony (Lamp Lighting)</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="14:00">10:45 am – 10:50 am</time>
+                                    <h4>Tamil Thai Vazhthu</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">10:50 am – 11:00 am</time>
+                                    <h4>C-DAC, Sameer &amp; C-MET Achievements Video</h4>
+                                </article>
+
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">11:00 am – 12:00 pm</time>
+                                    <h4>Keynote Address by Chief Guest</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">12:00 pm – 12:45 pm</time>
+                                    <h4>Product Launch / IoA / MoU</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">1:00 pm – 2:00 pm</time>
+                                    <h4>Stall Visit by Chief Guest</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">2:00 pm – 3:00 pm</time>
+                                    <h4>Lunch Break</h4>
+                                </article>
+                                 <article class="conference-schedule__card">
+                                    <time datetime="16:00">4:30 pm – 5:00 pm</time>
+                                    <h4>High Tea</h4>
+                                </article>
+                                 <article class="conference-schedule__card">
+                                    <time datetime="16:00">6:00 pm – 8:00 pm</time>
+                                    <h4>Cultural Program</h4>
+                                </article>
+                                 <article class="conference-schedule__card">
+                                    <time datetime="16:00">8:00 pm – 9:30 pm</time>
+                                    <h4>Dinner</h4>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="conference-day-02" class="conference-schedule__day" aria-labelledby="conference-day-02-title">
+                        <header class="conference-schedule__day-head">
+                            <div class="conference-schedule__day-title">
+                                <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                                <div>
+                                    <h3 id="conference-day-02-title">Day 02</h3>
+                                    <time datetime="2026-11-27">27 November 2026</time>
+                                </div>
+                            </div>
+                            <span class="conference-schedule__divider" aria-hidden="true"></span>
+                        </header>
+                        <div class="conference-schedule__timeline" role="region" aria-label="Day 02 sessions">
+                            <div class="conference-schedule__track">
+                                <article class="conference-schedule__card">
+                                    <time datetime="09:30">9:00 am – 10:00 am</time>
+                                    <h4>Registration</h4>
+                                </article>
+                                <article class="conference-schedule__card is-active">
+                                    <span class="conference-schedule__pulse" aria-hidden="true"></span>
+                                    <time datetime="10:45">10:00 am – 10:15 am</time>
+                                    <h4>Welcome Address</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="12:00">11:30 am – 11:45 am</time>
+                                    <h4>High Tea</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="14:30">2:00 pm – 3:00 pm</time>
+                                    <h4>Lunch Break</h4>
+                                </article>
+                                 <article class="conference-schedule__card">
+                                    <time datetime="14:30">3:00 pm – 3:10 pm</time>
+                                    <h4>MoU Signing Inauguration</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="14:30">3:20 pm – 3:40 pm</time>
+                                    <h4>Keynote Address by Chief Guest</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="14:30">4:00 pm – 4:30 pm</time>
+                                    <h4>High Tea</h4>
+                                </article>
+                                <article class="conference-schedule__card">
+                                    <time datetime="16:00">3:00 pm – 6:30 pm</time>
+                                    <h4>Stall Visit by College Students</h4>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            var section = document.querySelector('.conference-schedule');
+            if (!section) return;
+
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var tabs = Array.prototype.slice.call(section.querySelectorAll('[data-conference-tab]'));
+            var days = Array.prototype.slice.call(section.querySelectorAll('.conference-schedule__day'));
+            var marquees = Array.prototype.slice.call(section.querySelectorAll('.conference-schedule__marquee'));
+            var runners = [];
+
+            function setActiveTab(id) {
+                tabs.forEach(function (tab) {
+                    tab.classList.toggle('is-active', tab.getAttribute('data-conference-tab') === id);
+                });
+            }
+
+            function initTabs() {
+                tabs.forEach(function (tab) {
+                    tab.addEventListener('click', function () {
+                        var target = document.getElementById(tab.getAttribute('data-conference-tab'));
+                        if (!target) return;
+
+                        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                        setActiveTab(target.id);
+                    });
+                });
+            }
+
+            function initReveal() {
+                var revealItems = Array.prototype.slice.call(section.querySelectorAll('.conference-schedule__reveal')).concat(days);
+
+                if (reduceMotion || !('IntersectionObserver' in window)) {
+                    section.classList.add('is-visible');
+                    revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+                    return;
+                }
+
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        entry.target.classList.toggle('is-visible', entry.isIntersecting);
+                        if (entry.target === section) section.classList.toggle('is-visible', entry.isIntersecting);
+                    });
+                }, { threshold: 0.18, rootMargin: '0px 0px -70px 0px' });
+
+                observer.observe(section);
+                revealItems.forEach(function (item) { observer.observe(item); });
+            }
+
+            function cloneTrack(track) {
+                var cards = Array.prototype.slice.call(track.children);
+                cards.forEach(function (card) {
+                    var clone = card.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    clone.tabIndex = -1;
+                    track.appendChild(clone);
+                });
+            }
+
+            function initMarquee(marquee) {
+                var track = marquee.querySelector('.conference-schedule__track');
+                if (!track) return;
+
+                cloneTrack(track);
+
+                var halfWidth = track.scrollWidth / 2;
+                var speed = window.matchMedia('(max-width: 767.98px)').matches ? 22 : 35;
+                var offset = 0;
+                var paused = false;
+                var dragging = false;
+                var startX = 0;
+                var startOffset = 0;
+                var lastTime = performance.now();
+                var animationId;
+                var running = true;
+
+                function wrap() {
+                    if (!halfWidth) halfWidth = track.scrollWidth / 2;
+                    while (offset >= halfWidth) offset -= halfWidth;
+                    while (offset < 0) offset += halfWidth;
+                }
+
+                function render() {
+                    track.style.transform = 'translate3d(' + (-offset) + 'px, 0, 0)';
+                }
+
+                function frame(now) {
+                    if (!running) return;
+                    var delta = (now - lastTime) / 1000;
+                    lastTime = now;
+
+                    if (!paused && !dragging && !reduceMotion) {
+                        offset += speed * delta;
+                        wrap();
+                        render();
+                    }
+
+                    animationId = requestAnimationFrame(frame);
+                }
+
+                marquee.addEventListener('mouseenter', function () { paused = true; });
+                marquee.addEventListener('mouseleave', function () { paused = false; dragging = false; });
+                marquee.addEventListener('focusin', function () { paused = true; });
+                marquee.addEventListener('focusout', function () { paused = false; });
+
+                marquee.addEventListener('wheel', function (event) {
+                    event.preventDefault();
+                    offset += event.deltaY || event.deltaX;
+                    wrap();
+                    render();
+                }, { passive: false });
+
+                marquee.addEventListener('pointerdown', function (event) {
+                    dragging = true;
+                    paused = true;
+                    startX = event.clientX;
+                    startOffset = offset;
+                    marquee.setPointerCapture(event.pointerId);
+                });
+
+                marquee.addEventListener('pointermove', function (event) {
+                    if (!dragging) return;
+                    offset = startOffset - (event.clientX - startX);
+                    wrap();
+                    render();
+                });
+
+                marquee.addEventListener('pointerup', function (event) {
+                    dragging = false;
+                    paused = false;
+                    if (marquee.hasPointerCapture(event.pointerId)) marquee.releasePointerCapture(event.pointerId);
+                });
+
+                marquee.addEventListener('keydown', function (event) {
+                    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+                    event.preventDefault();
+                    offset += event.key === 'ArrowRight' ? 72 : -72;
+                    wrap();
+                    render();
+                });
+
+                animationId = requestAnimationFrame(frame);
+                runners.push(function () {
+                    running = false;
+                    cancelAnimationFrame(animationId);
+                });
+            }
+
+            function initActiveDayObserver() {
+                if (!('IntersectionObserver' in window)) return;
+
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        setActiveTab(entry.target.id);
+                    });
+                }, { threshold: 0.48 });
+
+                days.forEach(function (day) { observer.observe(day); });
+            }
+
+            initTabs();
+            initReveal();
+            marquees.forEach(initMarquee);
+            initActiveDayObserver();
+
+            window.addEventListener('pagehide', function () {
+                runners.forEach(function (stop) { stop(); });
+            });
+        })();
+    </script>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-stats-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Impact in Numbers</span>
+                <h2 id="retreat-stats-title" th:text="'Tec-verse ' + ${retreat.year()} + ' Statistics'">Tec-verse Statistics</h2>
+            </div>
+            <div class="retreat-stat-grid">
+                <article th:each="stat, iter : ${retreat.stats()}" class="retreat-stat-card" data-reveal="zoom" th:attr="data-reveal-delay=${iter.index * 60}">
+                    <strong th:text="${stat.value()}">700+</strong>
+                    <span th:text="${stat.label()}">Participants</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-highlights-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Event Highlights</span>
+                <h2 id="retreat-highlights-title">Experiences Designed for Technology Leadership</h2>
+            </div>
+            <div class="retreat-card-grid retreat-card-grid--four">
+                <article th:each="highlight, iter : ${retreat.highlights()}" class="retreat-feature-card" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 80}">
+                    <img th:src="${highlight.image()}" th:alt="${highlight.title()}" loading="lazy">
+                    <div>
+                        <i th:class="'bi bi-' + ${highlight.icon()}"></i>
+                        <h3 th:text="${highlight.title()}">Technology Showcase</h3>
+                        <p th:text="${highlight.description()}">Highlight description.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="retreat-gallery" class="retreat-section retreat-band" aria-labelledby="retreat-gallery-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Photo Gallery</span>
+                <h2 id="retreat-gallery-title">Tec-verse Moments in Focus</h2>
+            </div>
+            <div class="retreat-gallery-grid">
+                <article th:each="photo, iter : ${retreat.gallery()}" class="retreat-gallery-card" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 4) * 60}">
+                    <img th:src="${photo.image()}" th:alt="${photo.title()}" loading="lazy">
+                    <div>
+                        <h3 th:text="${photo.title()}">Research Collaboration Workshop</h3>
+                        <p th:text="${photo.description()}">Scientists exchanging ideas during collaborative sessions.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-videos-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Featured Videos</span>
+                <h2 id="retreat-videos-title">Sessions, Stories and Demonstrations</h2>
+            </div>
+            <div class="retreat-video-grid">
+                <article th:each="video, iter : ${retreat.videos()}" class="retreat-video-card" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 70}">
+                    <div class="retreat-video-card__media">
+                        <img th:src="${video.image()}" th:alt="${video.title()}" loading="lazy">
+                        <span><i class="bi bi-play-fill"></i></span>
+                    </div>
+                    <div class="retreat-video-card__body">
+                        <h3 th:text="${video.title()}">Opening Ceremony</h3>
+                        <p th:text="${video.description()}">Featured video description.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-dark" aria-labelledby="retreat-timeline-title">
+        <div class="container">
+            <div class="retreat-section-head retreat-section-head--light" data-reveal="fade-up">
+                <span style="color:#ffffff">Program Timeline</span>
+                <h2 id="retreat-timeline-title">From Registration to Roadmap</h2>
+            </div>
+            <div class="retreat-timeline">
+                <article th:each="step, iter : ${retreat.timeline()}" data-reveal="fade-up" th:attr="data-reveal-delay=${(iter.index % 5) * 50}">
+                    <span th:text="${#numbers.formatInteger(iter.index + 1, 2)}">01</span>
+                    <i th:class="'bi bi-' + ${step.icon()}"></i>
+                    <h3 th:text="${step.title()}">Registration</h3>
+                    <p th:text="${step.description()}">Timeline description.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="retreat-speakers" class="retreat-section" aria-labelledby="retreat-speakers-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Key Speakers</span>
+                <h2 id="retreat-speakers-title">Leaders Across Research, Government and Industry</h2>
+            </div>
+            <div class="retreat-speaker-grid">
+                <article th:each="speaker, iter : ${retreat.speakers()}" class="retreat-speaker-card" data-reveal="zoom" th:attr="data-reveal-delay=${(iter.index % 4) * 70}">
+                    <img th:src="${speaker.image()}" th:alt="${speaker.name()}" loading="lazy">
+                    <h3 th:text="${speaker.name()}">Dr. Rajesh Kumar</h3>
+                    <p th:text="${speaker.designation()}">Director</p>
+                    <span th:text="${speaker.organization()}">Centre for Development of Advanced Computing</span>
+                    <small th:text="${speaker.expertise()}">Artificial Intelligence Research</small>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-moments-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Tec-verse Moments</span>
+                <h2 id="retreat-moments-title">The Story Behind the Sessions</h2>
+            </div>
+            <div class="retreat-story-timeline">
+                <div class="retreat-story-item" th:each="moment, iter : ${retreat.moments()}" data-reveal="slide-right" th:attr="data-reveal-delay=${(iter.index % 4) * 80}">
+                    <div class="retreat-story-marker"><i th:class="'bi bi-' + ${moment.icon()}"></i></div>
+                    <div class="retreat-story-card">
+                        <h3 th:text="${moment.title()}">Innovation</h3>
+                        <p th:text="${moment.description()}">Moment description.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-achievements-title">
+        <div class="container retreat-two-col">
+            <div class="retreat-section-head retreat-section-head--left" data-reveal="fade-up">
+                <span>Achievements</span>
+                <h2 id="retreat-achievements-title">Measurable Progress for the Ecosystem</h2>
+                <div class="retreat-achievements-image" data-reveal="fade-up" data-reveal-delay="100">
+                    <img th:src="${retreat.heroImage()}" th:alt="${retreat.badge()} + ' Tec-verse highlight visual'" loading="lazy">
+                </div>
+            </div>
+            <div class="retreat-achievement-list" data-reveal="fade-up" data-reveal-delay="100">
+                <article th:each="achievement : ${retreat.achievements()}">
+                    <i class="bi bi-check2-circle"></i>
+                    <span th:text="${achievement}">Successfully showcased innovative research projects.</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section retreat-band" aria-labelledby="retreat-testimonials-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>Testimonials</span>
+                <h2 id="retreat-testimonials-title">Voices From Tec-verse</h2>
+            </div>
+            <div class="retreat-testimonial-grid">
+                <article th:each="testimonial, iter : ${retreat.testimonials()}" data-reveal="fade-up" th:attr="data-reveal-delay=${iter.index * 70}">
+                    <i class="bi bi-quote"></i>
+                    <p th:text="${testimonial.quote()}">Testimonial quote.</p>
+                    <strong th:text="${testimonial.name()}">Director</strong>
+                    <span th:text="${testimonial.role()}">Centre for Development of Advanced Computing</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-section" aria-labelledby="retreat-faq-title">
+        <div class="container">
+            <div class="retreat-section-head" data-reveal="fade-up">
+                <span>FAQ</span>
+                <h2 id="retreat-faq-title" class="section-heading font-sans">Common Questions</h2>
+            </div>
+
+            <div class="mt-[68px] grid grid-cols-1 gap-x-[60px] gap-y-[9px] lg:grid-cols-2" data-reveal="fade-up" data-reveal-delay="120">
+                <details th:each="faq, iter : ${retreat.faqs()}"
+                          class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                    <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                        <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]" th:text="${faq.title()}">Who can attend Tec-verse?</span>
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="h-4 w-4">
+                                <path stroke-linecap="round" d="M12 5v14M5 12h14"/>
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] sm:px-9" th:text="${faq.description()}">FAQ answer.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="retreat-cta" aria-labelledby="retreat-cta-title">
+        <div class="container" data-reveal="fade-up">
+            <span th:text="${retreat.badge()}">CDAC Annual Tec-verse 2026</span>
+            <h2 id="retreat-cta-title" th:text="${retreat.ctaTitle()}">Join Future Tec-verse</h2>
+            <p th:text="${retreat.ctaText()}">Stay connected with CDAC.</p>
+            <a class="retreat-btn retreat-btn--primary" th:href="${retreat.ctaLink()}">
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                <span th:text="${retreat.ctaLabel()}">Stay Connected with CDAC</span>
+            </a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

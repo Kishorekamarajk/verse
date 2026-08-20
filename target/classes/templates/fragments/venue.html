@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section th:fragment="venue" id="venue" aria-labelledby="venue-heading" class="venue-showcase">
+    <div class="container-custom">
+        <div class="venue-heading" data-reveal="fade-up">
+            <div class="venue-eyebrow" aria-hidden="true">
+                <span></span>
+                <strong th:text="#{venue.eyebrow}">OUR VENUE</strong>
+                <span></span>
+            </div>
+            <h2 id="venue-heading" th:text="#{venue.heading}">A VENUE THAT MATCHES YOUR VISION</h2>
+            <p th:text="#{venue.subtitle}">World-class facilities. Endless possibilities. Designed to deliver unforgettable experiences.</p>
+            <div class="section-heading-rule" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="venue-layout">
+            <article class="venue-profile" data-reveal="fade-up" data-reveal-delay="80">
+                <div class="venue-photo">
+                    <img th:src="@{/images/trade.png}" alt="Chennai Trade Centre">
+                    <a class="venue-location" href="https://www.google.com/maps/search/?api=1&amp;query=Chennai+Trade+Centre%2C+Nandambakkam%2C+Chennai" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Nandambakkam, Chennai</span>
+                    </a>
+                </div>
+
+                <div class="venue-profile-body">
+                    <span class="venue-kicker" th:text="#{venue.kicker}">Premier Venue</span>
+                    <h3 th:text="#{venue.name}">Chennai Trade Centre</h3>
+                    <span class="venue-title-rule" aria-hidden="true"></span>
+                    <p>
+                        <span th:text="#{venue.p1}">Chennai Trade Centre is one of South India's most prominent exhibition and convention venues.</span>
+                    </p>
+                    <p>
+                        <span th:text="#{venue.p2}">Located in Nandambakkam, this venue plays a vital role in hosting international trade fairs, B2B expos, and industry conferences across sectors like technology, construction, energy, manufacturing, and retail.</span>
+                    </p>
+                    <p>
+                        <span th:text="#{venue.p3}">With world-class infrastructure and versatile spaces, it is the preferred destination for business organizations to connect, showcase, and grow.</span>
+                    </p>
+
+                    <div class="venue-highlights">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span th:text="#{venue.highlight1.title}">Prime Location</span>
+                            <small th:text="#{venue.highlight1.desc}">Well-connected &amp; accessible</small>
+                        </div>
+                        <div>
+                            <i class="bi bi-buildings"></i>
+                            <span th:text="#{venue.highlight2.title}">World-Class Infrastructure</span>
+                            <small th:text="#{venue.highlight2.desc}">Modern facilities &amp; amenities</small>
+                        </div>
+                        <div>
+                            <i class="bi bi-grid-3x3-gap-fill"></i>
+                            <span th:text="#{venue.highlight3.title}">Versatile Spaces</span>
+                            <small th:text="#{venue.highlight3.desc}">Flexible for events of all sizes</small>
+                        </div>
+                        <div>
+                            <i class="bi bi-award-fill"></i>
+                            <span th:text="#{venue.highlight4.title}">Proven Excellence</span>
+                            <small th:text="#{venue.highlight4.desc}">Trusted by global organizations</small>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="venue-facilities" data-reveal="fade-up" data-reveal-delay="120">
+                <div class="venue-facilities-head">
+                    <h3 th:text="#{venue.facilities.heading}">Venue Facilities</h3>
+                    <span aria-hidden="true"></span>
+                </div>
+
+                <div class="venue-facilities-map">
+                <div class="venue-facilities-grid">
+                    <article class="facility-card facility-card--hall">
+                        <div class="facility-copy">
+                            <i class="bi bi-people-fill"></i>
+                            <div>
+                                <strong th:text="#{venue.facility.convention}">Convention Hall</strong>
+                                <span>51M x 55M</span>
+                            </div>
+                        </div>
+                        <div class="facility-photo" aria-hidden="true"></div>
+                    </article>
+
+                    <article class="facility-card facility-card--food">
+                        <i class="bi bi-fork-knife"></i>
+                        <strong th:text="#{venue.facility.food}">Food Court</strong>
+                        <span class="facility-line-art"><i class="bi bi-umbrella"></i></span>
+                    </article>
+
+                    <article class="facility-card facility-card--food">
+                        <i class="bi bi-fork-knife"></i>
+                        <strong th:text="#{venue.facility.food}">Food Court</strong>
+                        <span class="facility-line-art"><i class="bi bi-umbrella"></i></span>
+                    </article>
+
+                    <article class="facility-card facility-card--dining">
+                        <div>
+                            <i class="bi bi-bell-fill"></i>
+                            <strong th:text="#{venue.facility.dining}">Dining Space</strong>
+                            <span>48M x 24M</span>
+                        </div>
+                        <span class="facility-line-art"><i class="bi bi-shop-window"></i></span>
+                    </article>
+
+                    <article class="facility-card facility-card--startup">
+                        <div class="facility-copy">
+                            <i class="bi bi-box-seam-fill"></i>
+                            <div>
+                                <strong th:text="#{venue.facility.startup}">Start Up Booth</strong>
+                                <span>2M x 2M - 40 Nos.</span>
+                            </div>
+                        </div>
+                        <span class="facility-booth-art" aria-hidden="true"></span>
+                    </article>
+
+                    <article class="facility-card facility-card--mini facility-card--green">
+                        <i class="bi bi-tree-fill"></i>
+                        <strong th:text="#{venue.facility.courtyard}">Open Courtyard</strong>
+                        <span>22M x 22M</span>
+                    </article>
+
+                    <article class="facility-card facility-card--mini facility-card--cyan">
+                        <i class="bi bi-people-fill"></i>
+                        <strong th:text="#{venue.facility.conference1}">Conference 1</strong>
+                    </article>
+
+                    <article class="facility-card facility-card--mini facility-card--yellow">
+                        <i class="bi bi-display-fill"></i>
+                        <strong th:text="#{venue.facility.waiting}">Waiting Area</strong>
+                    </article>
+
+                    <article class="facility-card facility-card--mini facility-card--cyan">
+                        <i class="bi bi-people-fill"></i>
+                        <strong th:text="#{venue.facility.conference2}">Conference 2</strong>
+                    </article>
+                </div>
+                <a class="facility-map-overlay" th:href="@{/docs/event_map.pdf}" target="_blank" rel="noopener noreferrer">
+                    <span><i class="bi bi-arrows-fullscreen"></i> <span th:text="#{venue.facility.fullView}">Full Centre View</span></span>
+                </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

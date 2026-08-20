@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<footer th:fragment="footer" aria-label="Site footer" class="bg-[#F8F9FB] font-sans">
+
+    <section class="border-y border-line bg-white py-5" aria-label="Event support">
+        <div class="container-custom grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="flex items-center gap-3 border-r border-[#EAEAEA] last:border-r-0">
+                <i class="bi bi-headset text-[28px] text-[#00856F]"></i>
+                <div>
+                    <p class="text-[12px] font-extrabold uppercase leading-tight text-[#111111]" th:text="#{footer.support.help.title}">Help Desk</p>
+                    <p class="mt-0.5 text-[11px] leading-tight text-[#666666]" th:text="#{footer.support.help.desc}">Conference support and queries</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 border-r border-[#EAEAEA] last:border-r-0">
+                <i class="bi bi-shield-check text-[28px] text-[#00856F]"></i>
+                <div>
+                    <p class="text-[12px] font-extrabold uppercase leading-tight text-[#111111]" th:text="#{footer.support.updates.title}">Official Updates</p>
+                    <p class="mt-0.5 text-[11px] leading-tight text-[#666666]" th:text="#{footer.support.updates.desc}">Verified event information</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 border-r border-[#EAEAEA] last:border-r-0">
+                <i class="bi bi-building-check text-[28px] text-[#00856F]"></i>
+                <div>
+                    <p class="text-[12px] font-extrabold uppercase leading-tight text-[#111111]" th:text="#{footer.support.partners.title}">Institutional Partners</p>
+                    <p class="mt-0.5 text-[11px] leading-tight text-[#666666]" th:text="#{footer.support.partners.desc}">Government and industry network</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <i class="bi bi-calendar2-event text-[31px] text-[#00856F]"></i>
+                <div>
+                    <p class="text-[12px] font-extrabold uppercase leading-tight text-[#111111]" th:text="#{footer.support.registration.title}">Event Registration</p>
+                    <p class="mt-0.5 text-[11px] leading-tight text-[#666666]" th:text="#{footer.support.registration.desc}">Delegate, sponsor, and exhibitor access</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#0F3D36] py-8 text-white">
+        <div class="container-custom grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-5">
+            <nav aria-label="Our stores">
+                <h3 class="mb-3 text-[13px] font-extrabold uppercase text-[#FF8C42]">TECVERSE</h3>
+                <ul class="space-y-1 text-[12px] leading-[1.35] text-white">
+                    <li><a th:href="@{/}" class="hover:text-[#FF8C42]" th:text="#{nav.home}">Home</a></li>
+                    <li><a th:href="@{/about}" class="hover:text-[#FF8C42]" th:text="#{footer.link.about}">About</a></li>
+                    <li><a th:href="@{/#exhibitors}" class="hover:text-[#FF8C42]" th:text="#{footer.link.exhibitors}">Exhibitors</a></li>
+                    <li><a th:href="@{/#speakers}" class="hover:text-[#FF8C42]" th:text="#{footer.link.speakers}">Speakers</a></li>
+                    <li><a th:href="@{/#faq}" class="hover:text-[#FF8C42]" th:text="#{footer.link.faqs}">FAQs</a></li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Our service">
+                <h3 class="mb-3 text-[13px] font-extrabold uppercase text-[#FF8C42]" th:text="#{footer.participation}">Participation</h3>
+                <ul class="space-y-1 text-[12px] leading-[1.35] text-white">
+                    <li><a th:href="@{/inquiry}" class="hover:text-[#FF8C42]" th:text="#{footer.link.delegate}">Delegate Registration</a></li>
+                    <li><a th:href="@{/exhibitor-registration}" class="hover:text-[#FF8C42]" th:text="#{footer.link.exhibitorZone}">Exhibitor Zone</a></li>
+                    <li><a th:href="@{/become-sponsor}" class="hover:text-[#FF8C42]" th:text="#{footer.link.sponsorDesk}">Sponsor Desk</a></li>
+                    <li><a th:href="@{/#media-coverage}" class="hover:text-[#FF8C42]" th:text="#{footer.link.media}">Media Coverage</a></li>
+                    <li><a th:href="@{/#venue}" class="hover:text-[#FF8C42]" th:text="#{footer.link.venue}">Venue Details</a></li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Our offers">
+                <h3 class="mb-3 text-[13px] font-extrabold uppercase text-[#FF8C42]" th:text="#{footer.resources}">Resources</h3>
+                <ul class="space-y-1 text-[12px] leading-[1.35] text-white">
+                    <li><a th:href="@{/docs/tecverse-brochure.pdf}" download="TECVERSE-2026-Brochure.pdf" type="application/pdf" class="hover:text-[#FF8C42]" th:text="#{footer.link.brochure}">Brochure</a></li>
+                    <li><a th:href="@{/news-updates}" class="hover:text-[#FF8C42]" th:text="#{footer.link.schedule}">Programme Schedule</a></li>
+                    <li><a th:href="@{/news-updates}" class="hover:text-[#FF8C42]" th:text="#{footer.link.press}">Press Release</a></li>
+                    <li><a th:href="@{/about}" class="hover:text-[#FF8C42]" th:text="#{footer.link.accessibility}">Accessibility</a></li>
+                    <li><a th:href="@{/inquiry}" class="hover:text-[#FF8C42]" th:text="#{nav.contact}">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="md:col-span-2">
+                <div class="grid grid-cols-1 gap-7 sm:grid-cols-2">
+                    <div>
+                        <h3 class="mb-3 text-[13px] font-extrabold uppercase text-[#FF8C42]" th:text="#{footer.follow}">Follow Updates</h3>
+                        <div class="flex flex-wrap gap-2" aria-label="Social links">
+                            <a href="https://www.facebook.com/CDACINDIA/" target="_blank" rel="noopener" aria-label="Facebook" class="flex h-8 w-8 items-center justify-center rounded bg-[#FF6B1A] text-white"><i class="bi bi-facebook text-[15px]"></i></a>
+                            <a href="https://www.instagram.com/c_dacindia/" target="_blank" rel="noopener" aria-label="Instagram" class="flex h-8 w-8 items-center justify-center rounded bg-[#FF6B1A] text-white"><i class="bi bi-instagram text-[13px]"></i></a>
+                            <a href="https://www.linkedin.com/company/cdacindia/" target="_blank" rel="noopener" aria-label="LinkedIn" class="flex h-8 w-8 items-center justify-center rounded bg-[#FF6B1A] text-white"><i class="bi bi-linkedin text-[14px]"></i></a>
+                            <a href="https://www.youtube.com/@TecVerse-CDAC" target="_blank" rel="noopener" aria-label="YouTube" class="flex h-8 w-8 items-center justify-center rounded bg-[#FF6B1A] text-white"><i class="bi bi-youtube text-[15px]"></i></a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="mb-3 text-[13px] font-extrabold uppercase text-[#FF8C42]" th:text="#{footer.standards}">Portal Standards</h3>
+                        <div class="flex flex-wrap gap-2" aria-label="Portal standards">
+                            <span class="flex h-8 items-center justify-center rounded bg-white px-3 text-[10px] font-extrabold text-[#0F3D36]" th:text="#{footer.standard.secure}">Secure</span>
+                            <span class="flex h-8 items-center justify-center rounded bg-white px-3 text-[10px] font-extrabold text-[#0F3D36]" th:text="#{footer.standard.accessible}">Accessible</span>
+                            <span class="flex h-8 items-center justify-center rounded bg-white px-3 text-[10px] font-extrabold text-[#0F3D36]" th:text="#{footer.standard.responsive}">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 grid max-w-[10rem] grid-cols-3 items-center gap-1 rounded-lg bg-white p-1.5 shadow-sm ring-1 ring-black/5" aria-label="Organizing institution logos">
+                    <span class="flex h-11 items-center justify-center rounded-md bg-slate-50 ring-1 ring-black/5">
+                        <img th:src="@{/images/2.svg}" alt="MeitY logo" class="max-h-9 max-w-full object-contain" loading="lazy" />
+                    </span>
+                    <span class="flex h-11 items-center justify-center rounded-md bg-slate-50 ring-1 ring-black/5">
+                        <img th:src="@{/images/cmet.webp}" alt="C-MET logo" class="max-h-9 max-w-full object-contain" loading="lazy" />
+                    </span>
+                    <span class="flex h-11 items-center justify-center rounded-md bg-slate-50 ring-1 ring-black/5">
+                        <img th:src="@{/images/cdac.webp}" alt="C-DAC logo" class="max-h-9 max-w-full object-contain" loading="lazy" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#FF6B1A] py-3 text-center text-[12px] font-semibold text-white">
+        <p th:text="#{footer.copyright}">&copy; 2026 TECVERSE. All rights reserved.</p>
+    </section>
+
+    <div th:replace="~{fragments/floating-actions :: floating-actions}"></div>
+</footer>
+
+</body>
+</html>
