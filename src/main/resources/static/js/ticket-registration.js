@@ -168,17 +168,23 @@ initCardTilt();
 $('#downloadCard').onclick=async()=>{
  const btn=$('#downloadCard'); if(typeof html2canvas!=='function')return;
  setLoading(btn,true);
+ const card=$('#idCard');
  try{
-  const card=$('#idCard');
   const shine=card.querySelector('.id-card__shine'); if(shine)shine.style.display='none';
-  const canvas=await html2canvas(card,{backgroundColor:null,scale:2});
+  // freeze all animations/transforms to their end state so the snapshot isn't caught mid-animation
+  card.classList.add('tr-exporting');
+  const prevTransform=card.style.transform; card.style.transform='none';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const canvas=await html2canvas(card,{backgroundColor:null,scale:2,useCORS:true});
   if(shine)shine.style.display='';
+  card.classList.remove('tr-exporting');
+  card.style.transform=prevTransform;
   const link=document.createElement('a');
   link.download='tecverse-2026-badge.png';
   link.href=canvas.toDataURL('image/png');
   link.click();
   btn.classList.add('is-saved');
- } catch(e){ /* silent — download is a bonus affordance */ }
+ } catch(e){ card.classList.remove('tr-exporting'); /* silent — download is a bonus affordance */ }
  finally{setLoading(btn,false);}
 };
 
