@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<style>
+    @keyframes ticketFaqAnswerIn {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<section th:fragment="ticket-faq" id="faq" aria-labelledby="ticket-faq-heading"
+         class="relative isolate overflow-hidden bg-white pb-[104px] pt-[40px] sm:pb-[112px] sm:pt-[48px]">
+
+    <div class="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block" aria-hidden="true">
+        <span class="absolute left-[50px] top-0 h-[34px] w-[62px] bg-[#E7FFF7] [clip-path:polygon(50%_0,0_100%,100%_100%)]"></span>
+        <span class="absolute left-[190px] top-0 h-[44px] w-[46px] bg-[#FF8C42] [clip-path:polygon(50%_100%,0_0,100%_0)]"></span>
+        <span class="absolute left-[300px] top-2 h-[66px] w-[64px] rotate-[-10deg] bg-[#E7FFF7] [clip-path:polygon(50%_0,0_100%,100%_82%)]"></span>
+        <span class="absolute left-0 top-[192px] h-[152px] w-[136px] bg-[#E7FFF7] [clip-path:polygon(0_0,100%_52%,0_100%)]"></span>
+        <span class="absolute right-[460px] top-0 h-[32px] w-[48px] rotate-[-16deg] bg-[#E7FFF7] [clip-path:polygon(50%_0,0_100%,100%_100%)]"></span>
+        <span class="absolute right-[310px] top-0 h-[44px] w-[48px] bg-[#FF8C42] [clip-path:polygon(50%_100%,0_0,100%_0)]"></span>
+        <span class="absolute right-0 top-[192px] h-[160px] w-[138px] bg-[#E7FFF7] [clip-path:polygon(100%_0,0_50%,100%_100%)]"></span>
+        <span class="absolute right-[82px] bottom-[68px] h-[74px] w-[74px] rotate-[14deg] bg-[#FF8C42] [clip-path:polygon(50%_0,0_100%,100%_82%)]"></span>
+    </div>
+
+    <div class="container-custom relative">
+        <div class="text-center" data-reveal="fade-up">
+            <h2 id="ticket-faq-heading" class="section-heading font-sans">Ticket &amp; Payment FAQ</h2>
+
+            <div class="section-heading-rule" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="mt-[68px] grid grid-cols-1 gap-x-[60px] gap-y-[9px] lg:grid-cols-2" data-reveal="fade-up" data-reveal-delay="120">
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">Which passes are available?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    You can choose from Normal Pass, VIP Pass, and Exclusive Pass based on the access and benefits you need.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">How do I book a ticket?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    Select your preferred pass, click Book Now, register with your details, verify the OTP, and continue to complete your booking.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">What payment methods are accepted?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    Payment options will be shown during checkout. Common options may include UPI, cards, net banking, or supported digital wallets.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">Will I receive a confirmation after payment?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    Yes. After successful booking, your confirmation details will be sent to the email address or phone number used during registration.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">Can I change my selected pass?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    You can choose a different pass before completing payment. After confirmation, pass changes may depend on availability and event policy.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">Are ticket payments refundable?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    Refunds, cancellations, and transfers are handled according to the event ticketing policy shared at the time of booking.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">What should I do if payment fails?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    If payment fails, please retry after checking your bank status. If money is debited but no confirmation is received, contact the support team with your payment reference.
+                </p>
+            </details>
+
+            <details class="group overflow-hidden rounded-lg bg-[#F8F9FB] transition-all duration-300 ease-out open:scale-[1.01] open:bg-white open:shadow-[0_16px_38px_rgba(15,23,42,0.08)]">
+                <summary class="flex min-h-[76px] cursor-pointer list-none items-center justify-between gap-5 px-7 py-4 text-left marker:hidden sm:px-9">
+                    <span class="text-[16px] font-extrabold leading-snug text-[#0F3D36] sm:text-[18px]">Do I need to carry ID with my ticket?</span>
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border border-[#EAEAEA] bg-white text-[#0F3D36] transition-all duration-300 group-open:rotate-45 group-open:border-[#0F3D36]">
+                        <i class="bi bi-plus-lg"></i>
+                    </span>
+                </summary>
+                <p class="px-7 pb-6 text-[15px] leading-7 text-[#666666] [animation:ticketFaqAnswerIn_260ms_ease-out] sm:px-9">
+                    Yes. Please carry a valid government or institution ID along with your booking confirmation for smooth entry at the venue.
+                </p>
+            </details>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
