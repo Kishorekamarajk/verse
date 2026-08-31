@@ -4,15 +4,40 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Book Your Ticket | TEC-VERSE 2026</title>
 <link rel="icon" type="image/png" th:href="@{/images/tecverselogo.png}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="stylesheet" th:href="@{/css/ticket-registration.css}">
+<script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#F47A20', light: '#FF9A3D' },
+                        govt: { DEFAULT: '#35AA75', dark: '#061933', soft: '#EAF8F1' },
+                        ink: '#07182F',
+                        muted: '#4B5563',
+                        line: '#DDE7EF',
+                        surface: '#F3F7FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="ticket-page no-hero">
 <div th:replace="~{fragments/navbar :: navbar('ticket')}"></div>
 <main>
-<section class="tr-hero">
+<!-- <section class="tr-hero">
   <div class="tr-hero-orb tr-hero-orb--1"></div>
   <div class="tr-hero-orb tr-hero-orb--2"></div>
   <div class="tr-hero-orb tr-hero-orb--3"></div>
@@ -22,16 +47,72 @@
   <h1>Book Your Ticket</h1><p>One unified registration for Academia, Central Government, State Government, Industry and Startups.</p>
   <div class="tr-event-meta"><span><i class="bi bi-calendar-event"></i> 26 &amp; 27 November 2026</span><span><i class="bi bi-geo-alt"></i> Chennai Trade Centre</span></div></div>
   <img th:src="@{/images/trade.png}" alt="Chennai Trade Centre"></div>
-</div></section>
+</div></section> -->
+<section class="ticket-hero-section" aria-labelledby="ticket-hero-title">
+        <div class="container">
+            <div class="ticket-hero">
+                <div class="ticket-hero__copy" data-reveal="fade-up">
+                    <p class="ticket-hero__eyebrow">Book Your</p>
+                    <h1 id="ticket-hero-title">Ticket</h1>
+                    <p class="ticket-hero__text">
+                        Join Tec-Verse 2026 - The Next Era of Technology.<br>
+                        Explore, Connect &amp; Innovate with the best in Tech!
+                    </p>
+                    <div class="ticket-hero__meta" aria-label="Event details">
+                        <span><i class="bi bi-calendar-event-fill"></i> 27 - 29 August 2026</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> Chennai Trade Centre</span>
+                    </div>
+                    <a class="ticket-hero__cta" href="#registration">
+                        Book Now <i class="bi bi-arrow-down-circle"></i>
+                    </a>
+                </div>
 
-<section class="tr-shell"><div class="container">
-<div class="tr-card">
-  <div class="tr-progress">
+                <div class="ticket-hero__visual" data-reveal="fade-up" data-reveal-delay="120">
+                    <img th:src="@{/images/trade.png}" alt="Chennai Trade Centre">
+                    <div class="ticket-hero__stage-label" aria-hidden="true">
+                        <strong>TEC-VERSE</strong>
+                        <span>2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="registration" class="tr-shell" aria-labelledby="registration-title">
+  <div class="container">
+    <div class="tr-section-head">
+      <span>Registration</span>
+      <h2 id="registration-title">Complete your delegate registration</h2>
+      <p>Verify your email, fill in your official details, and review everything before submitting.</p>
+    </div>
+
+    <div class="tr-registration-layout">
+      <aside class="tr-registration-summary" aria-label="Registration information">
+        <div class="tr-summary-badge">
+          <i class="bi bi-ticket-perforated"></i>
+          <span>TEC-VERSE 2026</span>
+        </div>
+        <h3>Keep these ready</h3>
+        <ul>
+          <li><i class="bi bi-person-vcard"></i><span>Name as per official ID card</span></li>
+          <li><i class="bi bi-envelope-check"></i><span>Valid email address for OTP verification</span></li>
+          <li><i class="bi bi-building"></i><span>Institution, organization, or company details</span></li>
+          <li><i class="bi bi-passport"></i><span>Passport details for foreign visitors</span></li>
+        </ul>
+        <div class="tr-summary-note">
+          <strong>Event venue</strong>
+          <span>Chennai Trade Centre, Chennai</span>
+        </div>
+      </aside>
+
+      <div class="tr-card">
+  <div class="tr-progress" aria-label="Registration progress">
     <div class="tr-progress-track"><div class="tr-progress-fill" id="progressFill"></div></div>
     <div class="tr-step active" data-step-dot="1"><b>1</b><span>Verify</span></div><i></i><div class="tr-step" data-step-dot="2"><b>2</b><span>Details</span></div><i></i><div class="tr-step" data-step-dot="3"><b>3</b><span>Preview</span></div><i></i><div class="tr-step" data-step-dot="4"><b>4</b><span>Complete</span></div>
   </div>
 
-  <div id="trOverlay" class="tr-overlay" hidden><div class="tr-overlay-spinner"></div><span id="trOverlayText">Working on it…</span></div>
+  <div id="trOverlay" class="tr-overlay" hidden><div class="tr-overlay-spinner"></div><span id="trOverlayText">Working on it...</span></div>
 
   <div class="tr-view" data-view="verify">
     <div class="tr-heading"><span class="tr-icon"><i class="bi bi-shield-lock"></i></span><div><h2>Verify your email</h2><p>Your account is <strong>not created</strong> at this stage. We only verify the email so an abandoned form never creates an account.</p></div></div>
@@ -59,9 +140,9 @@
     <div id="conditional"></div>
 
     <fieldset class="tr-fieldset"><legend>Attendance</legend><p>Select the day(s) you will attend.</p>
-      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_1"> Day 1 — 26 November 2026</label>
-      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_2"> Day 2 — 27 November 2026</label>
-      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="BOTH"> Both days — 26 &amp; 27 November 2026</label>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_1"> Day 1 - 26 November 2026</label>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="DAY_2"> Day 2 - 27 November 2026</label>
+      <label class="tr-check"><input type="checkbox" name="attendanceDays" value="BOTH"> Both days - 26 &amp; 27 November 2026</label>
     </fieldset>
     <div id="detailsMsg" class="tr-msg"></div>
     <div class="tr-actions"><button type="button" id="backVerify" class="tr-secondary">Back</button><button type="submit" class="tr-primary">Review Application <i class="bi bi-arrow-right"></i></button></div>
@@ -131,7 +212,7 @@
         <div class="id-card__shine"></div>
         <div class="id-card__glow"></div>
       </div>
-      <p class="id-card__hint"><i class="bi bi-arrows-move"></i> Tilt to explore · tap <i class="bi bi-download"></i> to save</p>
+      <p class="id-card__hint"><i class="bi bi-arrows-move"></i> Tilt to explore - tap <i class="bi bi-download"></i> to save</p>
     </div>
 
     <div class="tr-actions tr-complete-actions">
@@ -139,8 +220,12 @@
       <a th:href="@{/}" class="tr-primary">Back to TEC-VERSE <i class="bi bi-arrow-right"></i></a>
     </div>
   </div>
-</div></div></section>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
+<div th:replace="~{fragments/ticket-faq :: ticket-faq}"></div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
