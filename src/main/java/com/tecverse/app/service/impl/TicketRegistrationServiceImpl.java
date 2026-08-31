@@ -9,8 +9,11 @@ import com.tecverse.app.service.TicketOtpService;
 import com.tecverse.app.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class TicketRegistrationServiceImpl implements TicketRegistrationService {
+    private static final Logger log = LoggerFactory.getLogger(TicketRegistrationServiceImpl.class);
     private static final SecureRandom RANDOM = new SecureRandom();
     private final TicketRegistrationRepository repo;
     private final JavaMailSender mailSender;
@@ -78,8 +82,9 @@ public class TicketRegistrationServiceImpl implements TicketRegistrationService 
             ClassPathResource pdf=new ClassPathResource("static/docs/tecverse-event-timeline.pdf");
             if(pdf.exists()) helper.addAttachment("TEC-VERSE-2026-Event-Timeline-and-Visitor-Guidance.pdf",pdf);
             mailSender.send(msg);
-        } catch(MessagingException ex) {
-            throw new IllegalStateException("Registration was saved, but confirmation email could not be sent. Contact the administrator.",ex);
+        } catch(MessagingException | MailException ex) {
+            log.warn("Ticket registration confirmation email could not be sent: reference={}, email={}",
+                    e.getReferenceNumber(), e.getEmail(), ex);
         }
     }
     private String normEmail(String v){return v==null?"":v.trim().toLowerCase();}

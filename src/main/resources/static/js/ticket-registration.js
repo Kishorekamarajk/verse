@@ -1,6 +1,16 @@
 (function(){
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
-const API={send:'/ticket/send-otp',verify:'/ticket/verify-otp',register:'/ticket/register'};
+function mountedPathPrefix(){
+ const segments=window.location.pathname.split('/').filter(Boolean);
+ const pageNames=new Set(['ticket','ticket.html']);
+ const pageIndex=segments.findIndex(segment=>pageNames.has(segment));
+ return pageIndex>0?`/${segments.slice(0,pageIndex).join('/')}`:'';
+}
+function endpoint(path){
+ const prefix=mountedPathPrefix();
+ return `${prefix}${path}`.replace(/\/{2,}/g,'/');
+}
+const API={send:endpoint('/ticket/send-otp'),verify:endpoint('/ticket/verify-otp'),register:endpoint('/ticket/register')};
 const ministries=[
 "Ministry of Agriculture and Farmers Welfare","Ministry of Ayush","Ministry of Chemicals and Fertilizers","Ministry of Civil Aviation",
 "Ministry of Coal","Ministry of Commerce and Industry","Ministry of Communications","Ministry of Consumer Affairs, Food and Public Distribution",
